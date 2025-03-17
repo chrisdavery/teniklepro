@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "shipping_message_eeqRyp": {
+      "type": "shipping-message",
+      "settings": {
+        "remaining_title": "<em><strong>[price] AWAY FROM FREE SHIPPING</strong></em>",
+        "success_title": "<strong>Congrats! You’ve earned </strong><em><strong>FREE SHIPPING!</strong></em>",
+        "heading_size": "h2",
+        "color_scheme": "scheme-9f2a4824-7cbe-48c3-ac6f-e0e450371741",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "upsell_addons_hans_JBfthi": {
+      "type": "upsell-addons-hans",
+      "blocks": {
+        "item_jxxLFT": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/ShutterbugKit1.png",
+            "video": "shopify://files/videos/shutterbug demo for upsell.mp4",
+            "title": "BLUETOOTH REMOTE",
+            "subtitle": "<p>Snap pictures & start/stop videos from up to 30 feet away!</p>",
+            "option_label": "Choose Color",
+            "product": "bluetooth-shutter-remote-addon",
+            "hide_oos": false,
+            "discount_code": "5_OFF"
+          }
+        },
+        "item_6WUNXX": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/octopad upsell video white bg v2.mp4",
+            "title": "Octopads",
+            "subtitle": "<p>Portable phone mount that suctions to any smooth surface for hands-free photos & videos.</p>",
+            "option_label": "Choose Color",
+            "product": "squammies-addon",
+            "hide_oos": false,
+            "discount_code": "5_OFF"
+          }
+        },
+        "item_TeBdyk": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/tablet clip v2.mp4",
+            "title": "iPad Tablet Clip",
+            "subtitle": "<p>Securely attach your iPad/tablet to your Tenikle for hands-free use.</p>",
+            "option_label": "Choose Color",
+            "product": "ipad-tablet-clip-add-on",
+            "hide_oos": false,
+            "discount_code": "5_OFF"
+          }
+        },
+        "item_yWYztB": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/Octopus Plushie v3.mp4",
+            "title": "Reversible Octopus Plushie",
+            "subtitle": "<p>Inspired by the octopus that inspired Tenikle, this cute plushie flips to match your mood!</p>",
+            "option_label": "Choose Color",
+            "product": "plushie-add-on",
+            "hide_oos": false,
+            "discount_code": "5_OFF"
+          }
+        },
+        "item_yNXyD3": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/gopro mount upsell.mp4",
+            "title": "GOPRO MOUNT",
+            "subtitle": "<p>Easily attach your GoPro to your Tenikle</p>",
+            "option_label": "Choose Color",
+            "product": "gopro-mount-addon",
+            "hide_oos": false,
+            "discount_code": "5_OFF"
+          }
+        },
+        "item_eHbE7r": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/tenikle gift upsell v2.mp4",
+            "title": "BONUS TENIKLE",
+            "subtitle": "<p>Makes a great gift for friends & family!</p>",
+            "option_label": "Choose Color",
+            "product": "bonus-tenikle®-pro",
+            "hide_oos": false,
+            "discount_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_jxxLFT",
+        "item_6WUNXX",
+        "item_TeBdyk",
+        "item_yWYztB",
+        "item_yNXyD3",
+        "item_eHbE7r"
+      ],
+      "custom_css": [
+        ".title-wrapper--no-top-margin h2.title {padding: 0 1rem; border: 0.4rem solid rgb(var(--color-button)); max-width: fit-content; margin-left: auto; margin-right: auto; line-height: 1.2em;}",
+        ".gradient {--color-card-background: 213, 255, 36;}",
+        ".collection__description {font-weight: normal;}",
+        ".collection__description p {margin: 1rem 0 0;}",
+        "em {font-style: italic; color: rgb(var(--color-foreground));}",
+        "@media (max-width: 749px) {.collection__description {margin-top: 1rem; } .collection__description h3 {font-size: 1.5rem; margin: 0; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "title": "Congratulations!",
+        "heading_size": "h1",
+        "description": "<h3>You've Earned [money] Toward Tenikle Accessories<br/>Use it now before it expires! [countdown]</h3><p><a href=\"/checkout\" title=\"/checkout\"><strong>No thanks, continue to checkout</strong></a></p>",
+        "description_style": "body",
+        "saved_text": "Nice! You saved [save]!",
+        "label": "or make 4 interest-free payments weekly of [ddd] with:",
+        "image1": "shopify://shop_images/Shop_Pay_logo_purple.png",
+        "image2": "shopify://shop_images/sezzle-ezgif.com-svg-to-png-converter_1.png",
+        "button_color": "#813be3",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "shipping_message_eeqRyp",
+    "upsell_addons_hans_JBfthi"
+  ]
+}

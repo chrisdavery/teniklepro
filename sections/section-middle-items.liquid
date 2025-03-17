@@ -1,0 +1,798 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+#shopify-section-{{ section.id }} .banner__media {
+    background: transparent;
+}
+#shopify-section-{{ section.id }} .banner--desktop-transparent .banner__box {
+    max-width: 100%;
+    width: 100%;
+}
+
+.tenikle-grid-wrapper {
+    --grid-desktop-horizontal-spacing: 40px;
+}
+
+.tenikle-middle-items>div:first-child {
+    width: 60px;
+}
+
+.tenikle-middle-items>div:last-child {
+    flex: 1 auto;
+    max-width: 20rem;
+}
+
+.tenikle-middle-items h3 {
+    margin: 0;
+    color: #000;
+}
+
+.tenikle-middle-items {
+    display: flex;
+    align-items: center;
+    justify-content: var(--justify);
+    gap: 1rem;
+}
+
+.tenikle-grid-wrapper {
+    max-width: 135rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.items-middle-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.media--wrapper {
+    position: relative;
+}
+
+.badge-middle {
+    max-width: 18rem;
+    position: absolute;
+    bottom: -2rem;
+    width: 100%;
+}
+
+.tenikle-middle-items h3 {
+    margin: 0;
+    text-align: left;
+}
+
+
+
+@media (min-width: 990px) {
+    .tenikle-grid-wrapper {
+        margin-bottom: 4rem;
+    }
+    .right-items-column .tenikle-middle-items>div:first-child {
+        order: 1;
+    }
+    .right-items-column .tenikle-middle-items h3 {
+        text-align: right;
+    }
+}
+
+@media (min-width: 750px) {
+    .middle-items .banner__box {
+        padding: 0;
+    }
+}
+
+@media (max-width: 989px) {
+    .middle-tenikle {
+        max-width: 18rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tenikle-middle-items h3 {
+        font-size: 1.25rem;
+    }
+    .middle-items .banner__box {
+        padding: 4rem 1.5rem;
+    }
+}
+
+@media (max-width: 989px) and (min-width: 750px) {
+    .tenikle-middle-items:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 749px) {
+    .badge-middle {
+        max-width: 7rem;
+        bottom: -3rem;
+    }
+    .middle-tenikle {
+        max-width: 44rem;
+        position: relative;
+        margin-bottom: 16rem;
+        margin-top: 16rem;
+    }
+
+    .media--wrapper {
+        max-width: 14rem;
+    }
+
+    .tenikle-middle-items {
+        position: absolute;
+        --justify: flex-start !important;
+    }
+    .tenikle-middle-items h3 {
+        font-size: 1.4rem;
+        line-height: 1.2em;
+        font-weight: normal;
+        letter-spacing: 0.06rem;
+        font-family: var(--font-body-family) !important;
+        font-style: var(--font-body-style);
+    }
+
+    .tenikle-middle-items:first-child {
+        top: -12rem;
+        left: 5rem;
+    }
+
+    .tenikle-middle-items:nth-child(2) {
+        top: -6rem;
+        left: 8rem;
+    }
+
+    .tenikle-middle-items:nth-child(3) {
+        top: 0rem;
+        left: 15rem;
+    }
+
+    .tenikle-middle-items:nth-child(4) {
+        top: 5rem;
+        left: 15rem;
+    }
+
+    .tenikle-middle-items:nth-child(5) {
+        top: 11rem;
+        left: 16rem;
+    }
+
+    .tenikle-middle-items:nth-child(6) {
+        top: 17rem;
+        left: 13rem;
+    }
+
+    .tenikle-middle-items:nth-child(7) {
+        top: 23rem;
+        left: 8rem;
+    }
+
+    .tenikle-middle-items:last-child {
+        top: 29rem;
+        left: 4rem;
+    }
+    .tenikle-middle-items>div:first-child {
+        width: 37px;
+        min-width: 37px;
+        max-width: 37px;
+    }
+}
+{%- endstyle -%}
+
+
+{%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
+    {%- style -%}
+      @media screen and (max-width: 749px) {
+        #Banner-{{ section.id }}::before,
+        #Banner-{{ section.id }} .banner__media::before,
+        #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+          padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+          content: '';
+          display: block;
+        }
+      }
+  
+      @media screen and (min-width: 750px) {
+        #Banner-{{ section.id }}::before,
+        #Banner-{{ section.id }} .banner__media::before {
+          padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+          content: '';
+          display: block;
+        }
+      }
+    {%- endstyle -%}
+{%- endif -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+    {%- liquid
+        assign full_width = '100vw'
+        assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+      
+        if section.settings.image_behavior == 'ambient'
+          assign half_width = '60vw'
+          assign full_width = '120vw'
+          assign stacked_sizes = '(min-width: 750px) 60vw, 120vw'
+          assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+        elsif section.settings.image_behavior == 'fixed' or section.settings.image_behavior == 'zoom-in'
+          assign half_width = '100vw'
+          assign stacked_sizes = '100vw'
+        else
+          assign half_width = '50vw'
+          assign stacked_sizes = '(min-width: 750px) 50vw, 100vw'
+        endif
+    -%}
+    
+    <div
+    id="Banner-{{ section.id }}"
+    class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    >
+        {%- if section.settings.image != blank -%}
+            <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+            {%- liquid
+                assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+                if section.settings.image_2 != blank
+                assign image_class = 'banner__media-image-half'
+                endif
+                if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
+                assign sizes = stacked_sizes
+                elsif section.settings.image_2 != blank
+                assign sizes = half_width
+                else
+                assign sizes = full_width
+                endif
+            -%}
+            {{
+                section.settings.image
+                | image_url: width: 3840
+                | image_tag:
+                loading: 'lazy',
+                width: section.settings.image.width,
+                height: image_height,
+                class: image_class,
+                sizes: sizes,
+                widths: widths
+            }}
+            </div>
+        {%- endif -%}
+        <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+                {%- unless section.settings.title == blank -%}
+                    <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+                      <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+                        {{ section.settings.title }}
+                      </h2>
+                    </div>
+                {%- endunless -%}
+                <div class="tenikle-grid-wrapper grid grid--1-col grid--3-col-tablet">
+                    <div class="grid__item left-items-column small-hide">
+                        <div class="items-middle-wrapper">
+                            {% for block in section.blocks %}
+                                {% if block.settings.column_position == 'left' %}
+                                    <div class="tenikle-middle-items" style="--justify: {{ block.settings.justify }};">
+                                        {% if block.settings.image != blank %}
+                                            <div>
+                                                <div
+                                                    class="media media--transparent media--adapt"
+                                                    style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                                                >
+                                                    {%- liquid
+                                                    assign number_of_columns = 1
+                                                    assign number_of_columns_mobile = 1
+                                                    assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                    assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                    assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                                    if section.settings.image_width == 'half'
+                                                        assign image_width = 0.5
+                                                    elsif section.settings.image_width == 'third'
+                                                        assign image_width = 0.33
+                                                    else
+                                                        assign image_width = 1
+                                                    endif
+                                                    -%}
+                                                    {% capture sizes %}
+                                                    (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                                    (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                                    (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                                    calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                                    {% endcapture %}
+                                                    {{
+                                                    block.settings.image
+                                                    | image_url: width: 400
+                                                    | image_tag:
+                                                        loading: 'lazy',
+                                                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                                        sizes: sizes
+                                                    }}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <div>
+                                            <h3>{{ block.settings.text }}</h3>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% if section.settings.middle_image != blank %}
+                        <div class="grid__item">
+                            <div class="middle-tenikle">
+                                <div class="media--wrapper">
+                                    <div
+                                        class="media media--transparent media--adapt"
+                                        style="padding-bottom: {{ 1 | divided_by: section.settings.middle_image.aspect_ratio | times: 100 }}%;"
+                                    >
+                                        {%- liquid
+                                        assign number_of_columns = 1
+                                        assign number_of_columns_mobile = 1
+                                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                        assign image_width = 1
+                                        -%}
+                                        {% capture sizes %}
+                                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                        {% endcapture %}
+                                        {{
+                                        section.settings.middle_image
+                                        | image_url: width: 1000
+                                        | image_tag:
+                                            loading: 'lazy',
+                                            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                            sizes: sizes
+                                        }}
+                                    </div>
+                                    {% if section.settings.badge != blank %}
+                                        <div class="badge-middle">
+                                            <div
+                                                class="media media--transparent media--adapt"
+                                                style="padding-bottom: {{ 1 | divided_by: section.settings.badge.aspect_ratio | times: 100 }}%;"
+                                            >
+                                                {%- liquid
+                                                assign number_of_columns = 1
+                                                assign number_of_columns_mobile = 1
+                                                assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                                assign image_width = 1
+                                                -%}
+                                                {% capture sizes %}
+                                                (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                                (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                                (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                                calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                                {% endcapture %}
+                                                {{
+                                                section.settings.badge
+                                                | image_url: width: 550
+                                                | image_tag:
+                                                    loading: 'lazy',
+                                                    widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                                    sizes: sizes
+                                                }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="medium-hide large-up-hide">
+                                    {% for block in section.blocks %}
+                                        <div class="tenikle-middle-items"  style="--justify: {{ block.settings.justify }};">
+                                            {% if block.settings.image != blank %}
+                                                <div>
+                                                    <div
+                                                        class="media media--transparent media--adapt"
+                                                        style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                                                    >
+                                                        {%- liquid
+                                                        assign number_of_columns = 1
+                                                        assign number_of_columns_mobile = 1
+                                                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                                        if section.settings.image_width == 'half'
+                                                            assign image_width = 0.5
+                                                        elsif section.settings.image_width == 'third'
+                                                            assign image_width = 0.33
+                                                        else
+                                                            assign image_width = 1
+                                                        endif
+                                                        -%}
+                                                        {% capture sizes %}
+                                                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                                        {% endcapture %}
+                                                        {{
+                                                        block.settings.image
+                                                        | image_url: width: 400
+                                                        | image_tag:
+                                                            loading: 'lazy',
+                                                            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                                            sizes: sizes
+                                                        }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            <div>
+                                                <h3>{{ block.settings.text }}</h3>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="grid__item right-items-column small-hide">
+                        <div class="items-middle-wrapper">
+                            {% for block in section.blocks %}
+                                {% if block.settings.column_position == 'right' %}
+                                    <div class="tenikle-middle-items"  style="--justify: {{ block.settings.justify }};">
+                                        {% if block.settings.image != blank %}
+                                            <div>
+                                                <div
+                                                    class="media media--transparent media--adapt"
+                                                    style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                                                >
+                                                    {%- liquid
+                                                    assign number_of_columns = 1
+                                                    assign number_of_columns_mobile = 1
+                                                    assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                    assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                                    assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                                    if section.settings.image_width == 'half'
+                                                        assign image_width = 0.5
+                                                    elsif section.settings.image_width == 'third'
+                                                        assign image_width = 0.33
+                                                    else
+                                                        assign image_width = 1
+                                                    endif
+                                                    -%}
+                                                    {% capture sizes %}
+                                                    (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                                    (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                                    (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                                    calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                                    {% endcapture %}
+                                                    {{
+                                                    block.settings.image
+                                                    | image_url: width: 400
+                                                    | image_tag:
+                                                        loading: 'lazy',
+                                                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                                        sizes: sizes
+                                                    }}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <div>
+                                            <h3>{{ block.settings.text }}</h3>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="center">
+                    {%- if section.settings.button_label != blank -%}
+                      <a
+                        class="button button--primary"
+                        {% if section.settings.button_link == blank %}
+                          role="link" aria-disabled="true"
+                        {% else %}
+                          href="{{ section.settings.button_link }}"
+                        {% endif %}
+                      >
+                        {{ section.settings.button_label | escape }}
+                      </a>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} <div class="section-{{ section.id }}-padding">
+      {{ section.settings.custom_liquid }}
+    </div> {% endcomment %}
+</div>
+
+{% schema %}
+    {
+        "name": "Middle Items",
+        "tag": "section",
+        "class": "section middle-items",
+        "disabled_on": {
+          "groups": ["header", "footer"]
+        },
+        "settings": [
+            {
+                "type": "inline_richtext",
+                "id": "title",
+                "default": "Multicolumn",
+                "label": "t:sections.multicolumn.settings.title.label"
+            },
+            {
+                "type": "image_picker",
+                "id": "middle_image",
+                "label": "Middle Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "badge",
+                "label": "Badge"
+            },
+            {
+                "type": "select",
+                "id": "heading_size",
+                "options": [
+                  {
+                    "value": "h2",
+                    "label": "t:sections.all.heading_size.options__1.label"
+                  },
+                  {
+                    "value": "h1",
+                    "label": "t:sections.all.heading_size.options__2.label"
+                  },
+                  {
+                    "value": "h0",
+                    "label": "t:sections.all.heading_size.options__3.label"
+                  }
+                ],
+                "default": "h1",
+                "label": "t:sections.all.heading_size.label"
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "default": "Button label",
+                "label": "t:sections.multicolumn.settings.button_label.label"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "t:sections.multicolumn.settings.button_link.label"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "t:sections.image-banner.settings.image.label"
+            },
+            {
+                "type": "range",
+                "id": "image_overlay_opacity",
+                "min": 0,
+                "max": 100,
+                "step": 10,
+                "unit": "%",
+                "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+                "default": 0
+            },
+            {
+                "type": "select",
+                "id": "image_height",
+                "options": [
+                    {
+                    "value": "adapt",
+                    "label": "t:sections.image-banner.settings.image_height.options__1.label"
+                    },
+                    {
+                    "value": "small",
+                    "label": "t:sections.image-banner.settings.image_height.options__2.label"
+                    },
+                    {
+                    "value": "medium",
+                    "label": "t:sections.image-banner.settings.image_height.options__3.label"
+                    },
+                    {
+                    "value": "large",
+                    "label": "t:sections.image-banner.settings.image_height.options__4.label"
+                    }
+                ],
+                "default": "medium",
+                "label": "t:sections.image-banner.settings.image_height.label",
+                "info": "t:sections.image-banner.settings.image_height.info"
+            },
+            {
+                "type": "select",
+                "id": "desktop_content_position",
+                "options": [
+                    {
+                    "value": "top-left",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__1.label"
+                    },
+                    {
+                    "value": "top-center",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__2.label"
+                    },
+                    {
+                    "value": "top-right",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__3.label"
+                    },
+                    {
+                    "value": "middle-left",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__4.label"
+                    },
+                    {
+                    "value": "middle-center",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__5.label"
+                    },
+                    {
+                    "value": "middle-right",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__6.label"
+                    },
+                    {
+                    "value": "bottom-left",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__7.label"
+                    },
+                    {
+                    "value": "bottom-center",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__8.label"
+                    },
+                    {
+                    "value": "bottom-right",
+                    "label": "t:sections.image-banner.settings.desktop_content_position.options__9.label"
+                    }
+                ],
+                "default": "middle-center",
+                "label": "t:sections.image-banner.settings.desktop_content_position.label"
+                },
+                {
+                "type": "checkbox",
+                "id": "show_text_box",
+                "default": true,
+                "label": "t:sections.image-banner.settings.show_text_box.label"
+                },
+                {
+                "type": "select",
+                "id": "desktop_content_alignment",
+                "options": [
+                    {
+                    "value": "left",
+                    "label": "t:sections.image-banner.settings.desktop_content_alignment.options__1.label"
+                    },
+                    {
+                    "value": "center",
+                    "label": "t:sections.image-banner.settings.desktop_content_alignment.options__2.label"
+                    },
+                    {
+                    "value": "right",
+                    "label": "t:sections.image-banner.settings.desktop_content_alignment.options__3.label"
+                    }
+                ],
+                "default": "center",
+                "label": "t:sections.image-banner.settings.desktop_content_alignment.label"
+            },
+            {
+                "type": "color_scheme",
+                "id": "color_scheme",
+                "label": "t:sections.all.colors.label",
+                "default": "background-1"
+            },
+            {
+                "type": "header",
+                "content": "t:sections.all.animation.content"
+            },
+            {
+            "type": "select",
+            "id": "image_behavior",
+            "options": [
+                {
+                "value": "none",
+                "label": "t:sections.all.animation.image_behavior.options__1.label"
+                },
+                {
+                "value": "ambient",
+                "label": "t:sections.all.animation.image_behavior.options__2.label"
+                },
+                {
+                "value": "fixed",
+                "label": "t:sections.all.animation.image_behavior.options__3.label"
+                },
+                {
+                "value": "zoom-in",
+                "label": "t:sections.all.animation.image_behavior.options__4.label"
+                }
+            ],
+                "default": "none",
+                "label": "t:sections.all.animation.image_behavior.label"
+            },
+            {
+                "type": "header",
+                "content": "t:sections.image-banner.settings.mobile.content"
+            },
+            {
+                "type": "select",
+                "id": "mobile_content_alignment",
+                "options": [
+                    {
+                    "value": "left",
+                    "label": "t:sections.image-banner.settings.mobile_content_alignment.options__1.label"
+                    },
+                    {
+                    "value": "center",
+                    "label": "t:sections.image-banner.settings.mobile_content_alignment.options__2.label"
+                    },
+                    {
+                    "value": "right",
+                    "label": "t:sections.image-banner.settings.mobile_content_alignment.options__3.label"
+                    }
+                ],
+                "default": "center",
+                "label": "t:sections.image-banner.settings.mobile_content_alignment.label"
+            },
+            {
+                "type": "checkbox",
+                "id": "stack_images_on_mobile",
+                "default": true,
+                "label": "t:sections.image-banner.settings.stack_images_on_mobile.label"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_text_below",
+                "default": true,
+                "label": "t:sections.image-banner.settings.show_text_below.label"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "item",
+                "name": "Item",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Text"
+                    },
+                    {
+                        "type": "select",
+                        "id": "column_position",
+                        "label": "Column Position",
+                        "options": [
+                            {
+                              "value": "left",
+                              "label": "Left"
+                            },
+                            {
+                              "value": "right",
+                              "label": "Right"
+                            }
+                        ],
+                        "default": "left"
+                    },
+                    {
+                        "type": "select",
+                        "id": "justify",
+                        "label": "Justify",
+                        "options": [
+                            {
+                              "value": "flex-start",
+                              "label": "flex start"
+                            },
+                            {
+                                "value": "center",
+                                "label": "center"
+                            },
+                            {
+                                "value": "flex-end",
+                                "label": "flex end"
+                            }
+                        ],
+                        "default": "flex-start"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Middle Items"
+            }
+        ]
+    }
+{% endschema %}

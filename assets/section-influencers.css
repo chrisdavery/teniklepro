@@ -1,0 +1,38 @@
+.influencers-section .content-container {
+    --media-radius: 2rem;
+    overflow: hidden !important;
+}
+
+.influencer-card__info {
+    position: absolute;
+    bottom: 0;
+    padding: 2rem 5rem 2rem 2rem;
+    width: 100%;
+    left: 0;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 20px;
+    line-height: 1.4em;
+    font-size: 1.4rem;
+}
+
+.influencer-card__info strong {
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.influencer-card__image-wrapper .media video {
+    object-fit: cover;
+}
+
+@media (max-width: 989px) {
+    .grid--2-col-tablet-down .influencer-card__info strong {
+        font-size: 1.3rem;
+    }
+    .grid--2-col-tablet-down .influencer-card__info {
+        line-height: 1.2em;
+        font-size: 1.2rem;
+    }
+    .grid--2-col-tablet-down .influencer-card__info {
+        padding: 1rem 3rem 1rem 1rem;
+    }
+}

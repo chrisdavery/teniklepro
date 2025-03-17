@@ -1,0 +1,165 @@
+{% if template.name == "index" %}
+    {% assign offers = product.metafields.custom.homepage_offers.value %}
+{% else %}
+    {% assign offers = page.metafields.custom.offers.value %}
+{% endif %}
+
+{% if offers == blank %}
+    {% break %}
+{% endif %}
+
+<offers-block data-section="{{ section.id }}" {% if block.settings.redirect_to != blank %}data-redirect="{{ block.settings.redirect_to }}"{% endif %}
+    {% if block.settings.clear_cart == true %}
+        data-clear
+    {% endif %}
+    data-url="{{ request.host }}"
+>
+    <div class="swatch-block-wrapper offer-block-wrapper">
+        {% assign colors_count = 0 %}
+        {% for item in offers %}
+            {% assign sale_price = item.sale_price.value %}
+            {% assign compare_price = item.compare_price.value %}
+            {% assign discount_percentage = 0 %}
+            {% assign base_product  = all_products[item.base_product] %}
+            {% 
+                liquid
+
+                if item.quantity > colors_count
+                    assign colors_count = item.quantity
+                endif
+            %}
+
+
+            {% if sale_price < compare_price %}
+                {% assign saving = compare_price | minus: sale_price | times: 100.0 | divided_by: compare_price | round %}
+                {% assign discount_percentage = saving | at_least: percentage %}
+            {% endif %}
+            
+            <div class="swatch-block-item offer-block-variants">
+                <div class="swatch-item offer-variants">
+                    <input type="radio" 
+                        id="config-1-{{ section.id }}-{{ forloop.index }}"
+                        data-area="{{ forloop.index }}"
+                        name="Config 1_{{ section.id }}" value="{{ item.title }}" 
+                        data-qty="{{ item.quantity }}"
+                        data-variants='{{ base_product.variants | json }}'
+                        {% if block.settings.active_index == forloop.index %}
+                            checked
+                        {% endif %}
+                        {% if item.dynamic_button_text != blank %}
+                            data-button-text="{{ item.dynamic_button_text }}"
+                        {% endif %}
+                        
+                        {% if item.dynamic_heading != blank %}
+                            data-dynamic-heading="{{ item.dynamic_heading }}"
+                        {% endif %}
+
+                        data-price="{{ sale_price | money_with_currency }}"
+                        {% if sale_price < compare_price %}
+                            data-compare-price="{{ compare_price | money_with_currency }}"
+                            
+                            {% assign off_total = compare_price | minus: sale_price | money %}
+                            data-badge-text="{{ 'products.product.save' | t: price: off_total  }}"
+                        {% endif %}
+
+                        {% if item.discount_code != blank %}
+                            data-discount-code="{{ item.discount_code }}"
+                        {% endif %}
+
+                        {% if item.free_gift != blank %}
+                            data-free-gift='{{ item.free_gift.value | json }}'
+                            data-gift-qty="{{item.free_gift_quantity | default: 1 }}"
+                        {% endif %}
+                    >
+                    <label for="config-1-{{ section.id }}-{{ forloop.index }}" data-index="{{ forloop.index0 }}">
+                        <span class="offer-text">{{ item.title }}</span>
+                        {% if discount_percentage > 0 %}
+                            <span class="offer-subtitle accent-color-1">{{ 'products.product.off' | t: price: saving  }}</span>
+                        {% endif %}
+                        {% if item.badge_text != blank %}
+                            <span class="badge-offer">{{ item.badge_text }}</span>
+                        {% endif %}
+                    </label>
+
+                    {% if item.texts_outside_box == true %}
+                        <div class="outside-text center">
+                            <span class="small-text offer-small-texts">{{ item.subtitle }}</span>
+                            {% if item.addon_title != blank %}
+                                <span class="small-text addon-title">{{ item.addon_title }}</span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    {% if colors_count > 0 %}
+        <div class="swatches-offer">
+            {% if block.settings.choose_label != blank %}
+                <h3 class="label-offer accent-color-1">
+                    {{ block.settings.choose_label }}
+                </h3>
+            {% endif %}
+
+            <div class="swatches-inner-offer">
+                {% for swatch_row in (1..colors_count) %}
+                    <div class="swatch-item-row d-flex align-center" data-row="{{ swatch_row }}">
+                        <div>
+                            {% assign numbers_label = '1st,2nd,3rd,4th,5th,6th,7th,8th,9th,10th' %}
+                            {% assign numbers_label = numbers_label | split: ',' %}
+
+                            <span class="label-swatch-row">{{ 'products.product.swatch_label' | t: count: numbers_label[forloop.index0] }}</span>
+                        </div>
+                        {% for option in product.options_with_values %}
+                            <div class="option-values-block d-flex align-center gap-1">
+                                {%- for value in option.values -%}
+                                    <div>
+                                        {% capture product_form_id %}offer-{{ section.id }}{% endcapture %}
+                                        {% capture input_id %}swatch-{{ section.id }}-{{ option.name }}-{{ swatch_row }}-{{ forloop.index }}{% endcapture %}
+                                        {% capture input_name %}swatch-{{ section.id }}-{{ option.name }}-{{ swatch_row }}{% endcapture %}
+
+                                        {% liquid
+                                            assign checked = false 
+                                            if forloop.first
+                                                assign checked = true 
+                                            endif
+                                        %}
+                                        {%- capture help_text -%}
+                                            <span class="swatch-caption">{{ value | escape }}</span>
+                                        {%- endcapture -%}
+
+                                        {%
+                                            render 'swatch-input',
+                                            id: input_id,
+                                            name: input_name,
+                                            value: value | escape,
+                                            swatch: value.swatch,
+                                            product_form_id: product_form_id,
+                                            checked: checked,
+                                            visually_disabled: option_disabled,
+                                            shape: block.settings.swatch_shape,
+                                            help_text: help_text,
+                                            outside: true,
+                                            additional_props: input_dataset
+                                        %}
+                                    </div> 
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="offers-block-submit">
+        <button type="button" class="button button-offer--submit button--full-width button--primary" 
+            {% if block.settings.from != blank %}data-from="{{ block.settings.from }}"{% endif %}
+        >
+            <span class="button--text">{{ block.settings.add_to_cart_label }}</span>
+            {%- render 'loading-spinner' -%}
+        </button>
+    </div>
+</offers-block>

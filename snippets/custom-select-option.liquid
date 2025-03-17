@@ -1,0 +1,161 @@
+{% comment %}
+  Parameters:
+  - id {String} - Unique ID.
+  - option_values {Array} - Option values.
+  - option_names {Array} - Option names. If not supplied, values will be used (optional).
+  - selected_value {String} - Value of the selected option (optional).
+  - default_option {String} - Name for the default option (optional, default is "Please select").
+  - label {String} - Label text. If not supplied, a label must be rendered separately with
+      an id that matches the 'id' parameter (optional).
+  - label_inside {Boolean} - Show label inside the select element (optional, default is false).
+  - hide_label {Boolean} - Visually hide the label (optional, default is false).
+  - swatches {Boolean} - Select element is a colour selector with swatches enabled (optional, default is false).
+  - country_selector {boolean} - Select element is a country selector (optional, default is false).
+  - include_native {Boolean} - Include a (hidden) native select element (optional, default is false).
+  - native_name {String} - Unique 'name' attribute for the native select element (optional).
+  - native_form_id {String} - Associated form for the native select element, if outside the form (optional).
+
+  Usage:
+  {%- assign values = 'Blue,Green,Red' | split: ',' -%}
+  {% render 'custom-select',
+    id: 'colour-selector',
+    option_values: values,
+    selected_value: 'Red',
+    label: 'Colour',
+    swatches: true
+  %}
+{% endcomment %}
+
+{%- liquid
+  assign label_id = id | append: '-label'
+
+  if option_names == blank
+    assign option_names = option_values
+  endif
+
+  for variant in product.variants
+      if variant.available
+          assign selected_id = id | append: '-opt-' | append: forloop.index0
+          assign selected_name = variant.title
+          assign default_option = variant.title
+          assign default_id = variant.id
+
+          break
+      endif
+  endfor
+
+  if selected_value != blank
+    for value in option_values
+      if value == selected_value
+        assign selected_id = id | append: '-opt-' | append: forloop.index0
+        assign selected_name = option_names[forloop.index0]
+      endif
+    endfor
+  elsif default_option != blank
+    assign selected_id = id | append: '-opt-default'
+    assign selected_name = default_option
+  else
+    assign selected_id = id | append: '-opt-default'
+    if default_option != blank
+      assign selected_name = default_option
+    else
+      assign selected_name = 'general.labels.please_select' | t
+    endif
+  endif
+
+  assign has_preorder = product.selling_plan_groups[0].selling_plans | where: 'name', 'Pre-order' 
+
+  assign selected_color = null
+
+  for option in product.options_with_values
+    for value in option.values
+
+      if value == product.selected_or_first_available_variant.option1
+        assign swatch = value.swatch
+        if swatch.image
+          assign image_url = swatch.image | image_url: width: 50
+          assign selected_color = 'url(' | append: image_url | append: ')'
+        elsif swatch.color
+          assign selected_color = 'rgb(' | append: swatch.color.rgb | append: ')'
+        endif
+      endif
+    endfor
+  endfor
+-%}
+
+<custom-select class="addon-product-select">
+  <div class="custom-select variant-select-options {% if label_inside %} custom-select--label-inside{% endif %} relative w-full no-js-hidden" id="{{ id }}">
+    {%- if label and label_inside -%}{{ label_html }}{%- endif -%}
+          <button class="custom-select__btn input d-flex align-center" type="button"
+            data-id="{{ default_id }}"
+            aria-expanded="false" aria-haspopup="listbox" aria-labelledby="{{ label_id }}"
+            {% if swatches and selected_value %} data-swatch="{{ selected_value | escape | downcase }}"{% endif %}>
+            <span class="swatch-circle" style="--color-bg:{{ selected_color }};"></span>
+            <span class="text-start">
+              {{- selected_name -}}{% if has_preorder.size > 0 %} - {{ 'products.product.pre_order_short' | t }}{% endif %}
+            </span>
+            <svg width="20" height="20" viewBox="0 0 24 24" class="icon" role="presentation" focusable="false" aria-hidden="true">
+             <path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+        </button>
+    <ul class="custom-select__listbox list-unstyled absolute invisible" role="listbox" tabindex="-1"
+        aria-hidden="true" hidden{% if forloop.first %} aria-activedescendant="{{ selected_id }}"{% endif %}>
+      {% for option in product.options_with_values %}
+        {% for value in option.values %}
+          {% liquid
+            assign variant = product.variants | where: 'option1', value | first
+            assign swatch = value.swatch
+            assign swatch_value = null
+            if swatch.image
+              assign image_url = swatch.image | image_url: width: 50
+              assign swatch_value = 'url(' | append: image_url | append: ')'
+            elsif swatch.color
+              assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
+            endif
+          %}
+          <li class="custom-select__option d-flex align-center js-option" id="{{ id }}-opt-{{ forloop.index0 }}" role="option"
+            data-value="{{ variant.title | escape }}{% if has_preorder.size > 0 %} - {{ 'products.product.pre_order_short' | t }}{% endif %}"
+            data-variant-id="{{ variant.id }}"
+            {% if swatch_value != null %}
+              data-color="{{ swatch_value }}"
+            {% endif %}
+            {% if variant.available == false %}
+              disabled
+            {% endif %}
+            {% if has_preorder.size > 0 %}
+              data-selling-plan="{{ has_preorder[0].id }}"
+            {% endif %}
+            data-image="{{ variant.featured_image | img_url: '300x' }}"
+            {% if swatches %} data-swatch="{{ value | escape | downcase }}"{% endif %}
+            {% if value == selected_value %} aria-selected="true"{% endif %}>
+            <span class="pointer-events-none swatch-circle" style="--color-bg:{{ swatch_value }};"></span>
+            <span class="pointer-events-none">{{- variant.title -}}{% if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% elsif has_preorder.size > 0 %} - {{ 'products.product.pre_order_short' | t }}{% endif %}</span>
+          </li>
+        {% endfor %}
+      {%- endfor -%}
+    </ul>
+  </div>
+</custom-select>
+
+{%- if include_native -%}
+  <noscript>
+    {%- if label -%}
+      <label for="{{ id }}-native" class="label{% if hide_label %} visually-hidden{% endif %}">{{ label }}</label>
+    {%- endif -%}
+    <div class="select inline-block relative">
+      <select class="custom-select__native" id="{{ id }}-native"{% if native_name %} name="{{ native_name }}"{% endif %}{% if native_form_id %} form="{{ native_form_id }}"{% endif %}>
+        {%- unless selected_value -%}
+          <option value="">{{ default_option }}</option>
+        {%- endunless -%}
+        {% for variant in block_colors %}
+          <option value="{{ variant.id }}"{% if forloop.first %} selected{% endif %} 
+          {% if has_preorder.size > 0 %}
+            data-selling-plan="{{ has_preorder[0].id }}"
+          {% endif %}>
+            {{- variant.title -}}
+          </option>
+        {%- endfor -%}
+      </select>
+    </div>
+  </noscript>
+{%- endif -%}

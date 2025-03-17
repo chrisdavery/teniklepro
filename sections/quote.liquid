@@ -1,0 +1,293 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+    .flex-quote {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .flex-quote .media--circle {
+        border: .2rem solid rgb(var(--color-accent-3));
+    }
+
+    .flex-quote h2 {
+        margin: 0;
+    }
+
+    .quote-wrapper {
+        max-width: 61rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .flex-quote>div:first-child {
+        flex: 0 calc(25% - 1rem / 2);
+    }
+    .flex-quote>div:last-child {
+        flex: 0 calc(75% - 1rem / 2);
+    }
+
+    .video-wrapper-media {
+        border-radius: 8px;
+        overflow: hidden;
+        outline: .5rem solid rgb(var(--color-foreground));
+        box-sizing: border-box;
+        --tw-shadow: 14px 14px 0 -4px #fff, 14px 14px 0 0 #1f1f1f;
+        --tw-shadow-colored: 14px 14px 0 -4px var(--tw-shadow-color), 14px 14px 0 0 var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+
+    .page-width-quote {
+        max-width: 107rem;
+        --grid-mobile-vertical-spacing: 40px;
+    }
+
+    .quote-section video {
+        object-fit: cover;
+    }
+
+    .title-video h3 {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+    }
+
+    @media (min-width: 990px) {
+        .quote-section .grid__item:first-child {
+            width: calc(32% - var(--grid-desktop-horizontal-spacing) / 2);
+            max-width: calc(32% - var(--grid-desktop-horizontal-spacing) / 2);
+        }
+        .quote-section .grid__item:last-child {
+            width: calc(68% - var(--grid-desktop-horizontal-spacing) / 2);
+            max-width: calc(68% - var(--grid-desktop-horizontal-spacing) / 2);
+        }
+    }
+
+    @media screen and (min-width: 750px) {
+        
+        .quot-msg {
+            font-size: 2rem;
+        }
+        .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+    }
+
+    @media (max-width: 749px) {
+        .video-wrapper-media {
+            max-width: 17rem;
+            margin: auto;
+        }
+        .flex-quote {
+            max-width: 25rem;
+        }
+    }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width page-width-quote">
+        <div class="grid align-center grid--1-col-tablet-down grid--2-col-desktop">
+            <div class="grid__item">
+                {% assign poster = section.settings.video.preview_image  %}
+
+                {% if section.settings.title_video != blank %}
+                    <div class="title-video">
+                        <h3 class="h3 center">{{ section.settings.title_video }}</h3>
+                    </div>
+                {% endif %}
+                <noscript>
+                    <div
+                    class="video-section__media video-section-raw"
+                    {% if poster != null %}
+                        style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+                    {% endif %}
+                    >
+                        {{ section.settings.video
+                        | video_tag:
+                            image_size: "1100x",
+                            loop: false,
+                            controls: true,
+                            muted: false
+                        }}
+                    </div>
+                </noscript>
+                <div class="video-wrapper-media">
+                    <deferred-media
+                        class="video-section__media  video-section-raw deferred-media no-js-hidden gradient global-media-settings global-media-settings--full-width{% if fix_ratio %} media-fit-cover{% endif %}"
+                        data-media-id="{{ video_id }}"
+                        {% if poster != null %}
+                        style="--ratio-percent: 165%;"
+                        {% endif %}
+                    >
+                        <button
+                        id="Deferred-Poster-Modal-{{ video_id }}"
+                        class="video-section__poster media deferred-media__poster media--landscape"
+                        type="button"
+                        aria-label="{{ alt }}"
+                        >
+                        {%- if poster != null -%}
+                            {{ poster
+                            | image_url: width: 3840
+                            | image_tag: loading: 'lazy', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: alt
+                            }}
+                        {%- endif -%}
+                        <span class="deferred-media__poster-button motion-reduce">
+                            {{- 'icon-play.svg' | inline_asset_content -}}
+                        </span>
+                        </button>
+                        <template>
+                            {{ section.settings.video
+                                | video_tag:
+                                image_size: "1100x",
+                                autoplay: true,
+                                controls: true,
+                                muted: false
+                            }}
+                        </template>
+                    </deferred-media>
+                </div>
+            </div>
+            <div class="grid__item">
+                <div class="quote-wrapper">
+                    {% if section.settings.content != blank %}
+                        <div class="center rte quot-msg">
+                            {{ section.settings.content }}
+                        </div>
+                    {% endif %}
+                    <div class="flex-quote">
+                        <div>
+                            {% if section.settings.image != blank %}
+                                <div
+                                    class="media media--transparent media--circle"
+                                  >
+                                    {%- liquid
+                                      assign number_of_columns = 1
+                                      assign number_of_columns_mobile = 1
+                                      assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                      assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                      assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                      assign image_width = 1
+                                    -%}
+                                    {% capture sizes %}
+                                      (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                      (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                      (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                      calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                    {% endcapture %}
+                                    {{
+                                        section.settings.image
+                                      | image_url: width: 600
+                                      | image_tag:
+                                        loading: 'lazy',
+                                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                        sizes: sizes
+                                    }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% if section.settings.name != blank %}
+                                <h2 class="h2">{{ section.settings.name  }}</h2>
+                            {% endif %}
+                            {% if section.settings.position != blank %}
+                                <div class="rte position">
+                                    {{ section.settings.position }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quote",
+  "tag": "section",
+  "class": "section quote-section",
+  "settings": [
+    {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content"
+    },
+    {
+        "type": "text",
+        "id": "name",
+        "label": "Name"
+    },
+    {
+        "type": "text",
+        "id": "position",
+        "label": "Position"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    },
+    {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+    },
+    {
+        "type": "text",
+        "id": "title_video",
+        "label": "Title Video"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,856 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "video_with_text_UNWMwj": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_NTDk7p": {
+          "type": "heading",
+          "settings": {
+            "heading": "Tired Of Struggling With Your Phone Falling?",
+            "heading_size": "h1",
+            "top_on_mobile": true
+          }
+        },
+        "heading_xEyRae": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join 200,000+ People Who Found A Better Way",
+            "heading_size": "h2",
+            "top_on_mobile": true
+          }
+        },
+        "liquid_gKNKJR": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n    .flex-sdsd img {\n        display: block;\n        max-width: 100%;\n        width: 57rem;\n    }\n    .flex-sdsd .video__buttons {\n        margin-top: 2rem;\n        width: 100%;\n    }\n    @media (max-width: 749px) {\n        .flex-fff {\n            display: flex;\n            gap: 1rem;\n        }\n        .flex-fff .tenikle-vect {\n            float: right;\n            width: 122px;\n        }\n.flex-sdsd {\nmargin-top: 0 !important;\n}\n    }\n</style>\n<div class=\"d-flex gap-1 flex-sdsd\">\n    <div>\n        <div class=\"flex-fff\">\n            <div>\n                <div class=\"image-with-text__text rte subtitle\">\n                    <p>No more balancing acts! Meet Tenikle, the octopus-inspired mount that keeps your phone and tablet exactly where you need them—whether you're cooking, FaceTiming, or getting ready.</p>\n                </div>\n            </div>\n            <div class=\"large-up-hide medium-hide\">\n                <div class=\"tenikle-vect\">\n                    <img src=\"https://cdn.shopify.com/s/files/1/0623/6264/8757/files/black-no-space.png?v=1739960169\" loading=\"lazy\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"video__buttons video__buttons--multiple\">\n            <a href=\"#sales-buy-section\" class=\"button button--full-width button--arrowed button--primary\"><span>Get Your Tenikle</span></a>\n        </div>\n    </div>\n    <div class=\"small-hide\">\n        <div class=\"tenikle-vect\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0623/6264/8757/files/black-no-space.png?v=1739960169\" loading=\"lazy\">\n        </div>\n    </div>\n\n</div>"
+          }
+        },
+        "liquid_qdP6A9": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n    .flex-hsn img {\n        display: block;\n        max-width: 100%;\n        object-fit: contain;\n        height: 3.5rem;\n        width: auto;\n    }\n    .flex-hsn {\n        max-width: 40.5rem;\n        gap: 2rem;\n        width: 100%;\njustify-content: center;\n    }\n\n    @media (max-width: 749px) {\n        .flex-hsn {\n            max-width: 100%;\n            width: 100%;\n            margin-left: auto;\n            margin-right: auto;\n            margin-top: 1rem;\n            justify-content: center;\n        }\n    }\n</style>\n\n<div class=\"flex-hsn d-flex align-center gap-1\">\n    <div>\n        <img src=\"https://cdn.shopify.com/s/files/1/0623/6264/8757/files/HSN_250x.png?v=1739960450\" loading=\"lazy\" alt=\"\">\n    </div>\n    <div>\n        <img src=\"https://cdn.shopify.com/s/files/1/0623/6264/8757/files/QVC_0d7348a9-aed2-4b75-9dfd-182f93d7055a_250x.png?v=1739960502\" loading=\"lazy\" alt=\"\">\n    </div>\n    <div>\n        <img src=\"https://cdn.shopify.com/s/files/1/0623/6264/8757/files/Shark_Tank_356ebb68-8faf-40f1-adff-3545322b8d03_250x.png?v=1739961168\" loading=\"lazy\" alt=\"\">\n    </div>\n    <div>\n        <img src=\"https://cdn.shopify.com/s/files/1/0623/6264/8757/files/GMA_04b630f9-e9f3-4aed-9edd-687b58b50d7f_250x.png?v=1739961214\" loading=\"lazy\" alt=\"\">\n    </div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NTDk7p",
+        "heading_xEyRae",
+        "liquid_gKNKJR",
+        "liquid_qdP6A9"
+      ],
+      "custom_css": [
+        "video {object-fit: cover;}",
+        ".image-with-text__heading {font-weight: bold;}",
+        ".image-with-text__content {padding-left: 0; padding-bottom: 0;}",
+        "@media (min-width: 750px) {.image-with-text__content {padding-top: 0; } .h1 {font-size: calc(var(--font-heading-scale) * 4.2rem); }}",
+        "@media (max-width: 749px) {.subtitle {margin-top: 0; font-size: 1.5rem; } .image-with-text__content {padding-top: 2rem; padding-right: 0; } .image-with-text__heading {margin-top: 0; margin-bottom: 2rem; text-align: center; }}"
+      ],
+      "settings": {
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video": "shopify://files/videos/Tenikle 16x9 v3.mp4",
+        "contain_image": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "scheme-9253f57d-6359-4c06-a0b4-2de7c07739eb",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "trust_icons_bK9378": {
+      "type": "trust-icons",
+      "blocks": {
+        "item_xbPDXp": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/shipped-truck-svgrepo-com_1.svg",
+            "text": "Fast Shipping"
+          }
+        },
+        "item_m6khEe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon-return.svg",
+            "text": "Up To 30-Day Free Returns with Redo"
+          }
+        },
+        "item_qeaKUV": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/secure_1.svg",
+            "text": "Secure Checkout"
+          }
+        },
+        "item_cGn4Yn": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/rating_1.png",
+            "text": "Over 200K Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "item_xbPDXp",
+        "item_m6khEe",
+        "item_qeaKUV",
+        "item_cGn4Yn"
+      ],
+      "custom_css": [
+        ".trust-text img {width: auto; height: 3rem; display: block;}",
+        ".rte {font-size: 1.4rem;}",
+        "@media (max-width: 749px) {.rte {font-size: 1.2rem; line-height: 1.2em; }}"
+      ],
+      "settings": {
+        "narrow_width": true,
+        "title": "",
+        "heading_size": "h1",
+        "color_scheme": "background-2",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "multicolumn_43xgyT": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_iK3dKw": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/kitchen fall 1x1.mp4",
+            "title": "Dangerously propping your device while cooking and getting your screen greasy?",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kVLHVr": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/selfie fail.mp4",
+            "title": "Do your hands get tired holding your phone during long FaceTime calls or scrolling Facebook?",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_igtdNz": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/bathroom fall 1x1.mp4",
+            "title": "Running out of counter space while getting ready?",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_iK3dKw",
+        "column_kVLHVr",
+        "column_igtdNz"
+      ],
+      "custom_css": [
+        ".title-wrapper-with-link {justify-content: center;}",
+        ".title {text-align: center;}",
+        "@media (max-width: 749px) {[class*=\"-padding\"] {padding-bottom: 20px; } .rich-text__wrapper {width: 100% !important; }}"
+      ],
+      "settings": {
+        "title": "No More Propping, Dropping, or Juggling",
+        "heading_size": "h1",
+        "description_body": "",
+        "description_style": "body",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "rich_text_LfQpUA": {
+      "type": "rich-text",
+      "blocks": {
+        "text_WFYHHc": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Hands-free, clutter-free—Tenikle holds your device securely so you can focus on what matters.</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "text_WFYHHc"
+      ],
+      "custom_css": [
+        ".rich-text__text * {font-weight: 600;}",
+        "@media (max-width: 749px) {.rich-text__wrapper {width: 100%; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_ajKHEm": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_f9PXFK": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/Kitchen 1x1.mp4",
+            "title": "<strong>In the Kitchen</strong>",
+            "text": "<p>Follow recipes, chat with family, or watch cooking videos—without worrying about spills or propping up your phone.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_777Pex": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/make up 1x1.mp4",
+            "title": "<strong>Getting Ready</strong>",
+            "text": "<p>Watch tutorials, play music, or catch up on your shows while keeping your counter clutter-free.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Ck4CjR": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/couch 1x1.mp4",
+            "title": "<strong>Stay Connected</strong>",
+            "text": "<p>FaceTime with family, read, or watch shows hands-free—no neck strain, no tired arms.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_f9PXFK",
+        "column_777Pex",
+        "column_Ck4CjR"
+      ],
+      "settings": {
+        "title": "Some Ways Tenikle Makes Life Easier",
+        "heading_size": "h1",
+        "description_body": "",
+        "description_style": "body",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "video_9b8xWU": {
+      "type": "video",
+      "settings": {
+        "heading": "As Seen on Shark Tank",
+        "heading_size": "h1",
+        "description_body": "<p>Proudly made a deal on Shark Tank, proving it’s a product worth backing</p>",
+        "description_style": "body",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/Shark Tank Edit C Part 2 Captioned (1).mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 52,
+        "padding_bottom": 0
+      }
+    },
+    "trust_icons_jNAFVn": {
+      "type": "trust-icons",
+      "blocks": {
+        "item_EUi8UX": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon1_Strong.png",
+            "text": "Securely holds devices of all sizes—tested up to 42 pounds!"
+          }
+        },
+        "item_LHDPDf": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon4_Surface.png",
+            "text": "Works on smooth surfaces like tile, glass, and mirrors."
+          }
+        },
+        "item_PJWPwU": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon2_Dishwasher.png",
+            "text": "Dishwasher safe for easy cleaning."
+          }
+        },
+        "item_jHyRCD": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon5_Angle_2.png",
+            "text": "Flexible arms adjust to the perfect angle."
+          }
+        },
+        "item_z3aFgc": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon3_Colors.png",
+            "text": "Available in colors to match your home"
+          }
+        },
+        "item_kAJn6A": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon6_Comact.png",
+            "text": "Compact design saves counter space."
+          }
+        }
+      },
+      "block_order": [
+        "item_EUi8UX",
+        "item_LHDPDf",
+        "item_PJWPwU",
+        "item_jHyRCD",
+        "item_z3aFgc",
+        "item_kAJn6A"
+      ],
+      "custom_css": [
+        "@media (min-width: 750px) {.trust-text img {width: 5.5rem; }}",
+        "@media (max-width: 749px) {.trust-text img {width: 4rem; } .rte {font-size: 1.4rem; line-height: 1.2em; }}"
+      ],
+      "settings": {
+        "narrow_width": false,
+        "title": "Thoughtfully Designed for Your Home",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "columns_desktop": 2,
+        "columns_mobile": "1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "multicolumn_wFDcmG": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_cCcHpn": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/phone clip.mp4",
+            "title": "<strong>Securely Clip</strong>",
+            "text": "<p>Our updated clip now expands to fit all known smartphone sizes, even with cases on.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_fQdUVV": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/suction example.mp4",
+            "title": "<strong>Suction To Smooth Device</strong>",
+            "text": "<p>Now features an open-faced suction, eliminating overlaps and ensuring a firmer grip with less fuss.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_k3paXf": {
+          "type": "column",
+          "settings": {
+            "video": "shopify://files/videos/cradle.mp4",
+            "title": "<strong>Conveniently Cradled Like An Octopus</strong>",
+            "text": "<p>Bend the legs to accommodate the shape of your device, just like an octopus.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_cCcHpn",
+        "column_fQdUVV",
+        "column_k3paXf"
+      ],
+      "custom_css": [
+        "@media (min-width: 750px) {.collection__description {font-size: calc(var(--font-heading-scale) * 2.4rem); font-weight: 600; }}"
+      ],
+      "settings": {
+        "title": "The Octopus Inspired Mount",
+        "heading_size": "h1",
+        "description_body": "<p>Designed To Hold Devices In Three Main Ways:</p>",
+        "description_style": "body",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-9253f57d-6359-4c06-a0b4-2de7c07739eb",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "customer_reviews_bxd7n7": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review_dDk9wM": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/pexels-kampus-7799610.jpg",
+            "title": "",
+            "customer_name": "Sarah M.",
+            "content": "<p>Finally, I can follow recipes without getting my iPad messy or taking up counter space. It's become my must-have kitchen helper!</p>"
+          }
+        },
+        "review_kX4mHz": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/pexels-anya-juarez-tenorio-227888521-16823150.jpg",
+            "title": "",
+            "customer_name": "Linda K.",
+            "content": "<p>I love using this for FaceTime with my grandkids. No more tired arms, and I can move around the kitchen while we chat. Game changer!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "review_dDk9wM",
+        "review_kX4mHz"
+      ],
+      "custom_css": [
+        ".review-item {display: flex; gap: 1.5rem; align-items: center; height: 100%;}",
+        ".jdgm-prev-badge__stars,.customer-name {text-align: left;}",
+        ".media {border-radius: 50%;}",
+        ".review-media {width: calc(25% - 1.5rem / 2); padding-left: 2rem;}",
+        ".content-review {text-align: left !important; width: calc(75% - 1.5rem / 2); padding: 2rem 2rem 2rem 0;}"
+      ],
+      "settings": {
+        "heading": "Customer Stories",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "3d36368e-2809-4e2d-af7a-530c96d55ec2": {
+      "type": "collapsible-content",
+      "blocks": {
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will Tenikle® PRO stick to my phone case?",
+            "icon": "none",
+            "row_content": "",
+            "liq_content": "<ul class=\"check\"><li>Phone cases free of stickers, seams, any textures will work fine. </li></ul>\n<div class=\"note\">\n  For other cases such as the ones below, you might want to purchase our Dot Adapters to make it compatible with your phone case. Or you can use the phone clip included with each Tenikle® PRO.</div>\n<div class=\"cross\">\n<ul>\n  <li> Otterbox</li>\n  <li> Leather</li>\n  <li> Fabric</li>\n  <li> Has perforations or grooves</li>\n</ul>\n  </div>",
+            "page": ""
+          }
+        },
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What does Tenikle® PRO stick to?",
+            "icon": "none",
+            "row_content": "<p>Tenikle® PRO can suction to any smooth, non-porous, and non-textured surfaces.</p><ul><li>Glass</li><li>Porcelain</li><li>Fiberglass</li><li>Smooth, gloss-painted wood or drywall</li><li>Metal surfaces</li><li>Plastic surfaces</li></ul><p></p><ul><li>Tenikle® PRO cannot stick to uneven, rough, or textured surfaces such as:<br/><br/>D̶a̶s̶h̶b̶o̶a̶r̶d̶s̶</li><li>L̶e̶a̶t̶h̶e̶r̶</li><li>C̶o̶n̶c̶r̶e̶t̶e̶</li><li>T̶e̶x̶t̶u̶r̶e̶d̶ w̶a̶l̶l̶s̶</li></ul>",
+            "liq_content": "",
+            "page": ""
+          }
+        },
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does Tenikle® PRO include a phone clip?",
+            "icon": "none",
+            "row_content": "<p>Yes.</p>",
+            "liq_content": "",
+            "page": ""
+          }
+        },
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your return policy?",
+            "icon": "none",
+            "row_content": "<p>Please refer to our return policy <a href=\"/policies/refund-policy\" target=\"_blank\" title=\"Refund Policy\">here</a></p>",
+            "liq_content": "",
+            "page": ""
+          }
+        },
+        "561d232d-d8f1-408c-85d1-82cbf40c42bf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your warranty?",
+            "icon": "none",
+            "row_content": "<p>Tenikle® PRO  is virtually indestructible, but we offer a free 1-year warranty. If something happens to your Tenikle® PRO  after 3 years, don't hesitate to reach out. We'd love to help.</p>",
+            "liq_content": "",
+            "page": ""
+          }
+        },
+        "aca4652a-414b-4a88-a824-acd5e9ee5158": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are your payment options?",
+            "icon": "none",
+            "row_content": "<p>We accept all major credit cards and major digital payment platforms.</p>",
+            "liq_content": "<img loading=\"lazy\" src=\"https://cdn.shopify.com/s/files/1/0573/6752/7468/files/ezgif.com-gif-maker_-_2022-04-26T195423.542.png?v=1650974190\">",
+            "page": ""
+          }
+        },
+        "352dc8ea-a555-49bb-be00-d6513146423a": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I still buy Tenikle 360?",
+            "icon": "none",
+            "row_content": "<p>No, Tenikle 360 has been discontinued and replaced with PRO, a better product in every way.</p>",
+            "liq_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-1",
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-3",
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-2",
+        "template--20911146500404__3d36368e-2809-4e2d-af7a-530c96d55ec2-collapsible_row-4",
+        "561d232d-d8f1-408c-85d1-82cbf40c42bf",
+        "aca4652a-414b-4a88-a824-acd5e9ee5158",
+        "352dc8ea-a555-49bb-be00-d6513146423a"
+      ],
+      "custom_css": [
+        "ul.check {list-style: none; padding: 10px;}",
+        ".note {padding: 16px; border: 1px solid #d7dfdd; box-sizing: border-box; border-radius: 10px; margin-bottom: 16px;}",
+        "ul {list-style: none; padding: 10px;}"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "FAQ's",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "background-2",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "rich_text_cPPLJn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mVbYfE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Transform Your Daily Routine with Tenikle",
+            "heading_size": "h1"
+          }
+        },
+        "heading_xWBeWe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join thousands of happy customers who've simplified their home life",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mVbYfE",
+        "heading_xWBeWe"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {max-width: 100%; width: 100%;}",
+        "@media (max-width: 749px) {.rich-text__wrapper {width: 100%; } .rich-text__heading.h2 {font-size: 1.6rem; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 16
+      }
+    },
+    "trust_icons_DtVMpX": {
+      "type": "trust-icons",
+      "blocks": {
+        "item_peLR4k": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/shipped-truck-svgrepo-com_1.svg",
+            "text": "Fast Shipping"
+          }
+        },
+        "item_6DganG": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/icon-return.svg",
+            "text": "Up To 30-Day Free Returns with Redo"
+          }
+        },
+        "item_XnQDD7": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/secure_1.svg",
+            "text": "Secure Checkout"
+          }
+        },
+        "item_JGMygA": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/rating_1.png",
+            "text": "Over 200K Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "item_peLR4k",
+        "item_6DganG",
+        "item_XnQDD7",
+        "item_JGMygA"
+      ],
+      "custom_css": [
+        "{--grid-desktop-horizontal-spacing: 24px;}",
+        ".narrow-width {max-width: 101rem;}",
+        ".rte {font-size: 1.4rem; line-height: 1.2em;}"
+      ],
+      "settings": {
+        "narrow_width": true,
+        "title": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "rich_text_hnDQD8": {
+      "type": "rich-text",
+      "blocks": {
+        "button_QAXBQt": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get Your Tenikle Now",
+            "button_link": "#sales-buy-section",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_QAXBQt"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.rich-text__wrapper {width: 100%; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 72
+      }
+    },
+    "sales_featured_product_JGCM6c": {
+      "type": "sales-featured-product",
+      "blocks": {
+        "title_8ckCya": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1",
+            "custom_title": "Tenikle PRO",
+            "center": true
+          }
+        },
+        "subtitle_4HcN3x": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "The Most Versatile Phone Holder That Mounts To Anything",
+            "center": true
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_74eLT6": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "{{ section.settings.product }}"
+          }
+        },
+        "price_bQt7bw": {
+          "type": "price",
+          "settings": {
+            "center": true
+          }
+        },
+        "offers_aEJYME": {
+          "type": "offers",
+          "settings": {
+            "clear_cart": true,
+            "choose_label": "Choose Your Colors",
+            "active_index": 1,
+            "add_to_cart_label": "BUY NOW",
+            "swatch_shape": "circle",
+            "from": "Homepage",
+            "redirect_to": "shopify://pages/addons"
+          }
+        },
+        "variant_picker_pDLtrk": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_tmmHm8": {
+          "type": "buy_buttons",
+          "disabled": true,
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "testimonial_RhpKtX": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p><strong>\"I wanted a phone mount to get different angles but couldn’t find one that worked well. Saw Tenikle on Instagram & it’s the best! Amazing flexibility, durability, and design. Love it, 10/10!\"</strong></p>",
+            "customer_name": "Rachel P.",
+            "quote_label": "Verified Customer Review",
+            "icon": "shopify://shop_images/icon-verified.png"
+          }
+        },
+        "textbox_w3Q7aB": {
+          "type": "textbox",
+          "settings": {
+            "heading": "",
+            "text": "<p>Tenikle PRO is the flexible, octopus-inspired mount perfect for holding your phone, tablets, and cameras at any angle.</p><p>With patented suction cups, you can attach it to almost any surface. Its bendable legs let you stand, hang, or wrap it anywhere.</p><p>Featured on Shark Tank, Good Morning America, CBS, and more, Tenikle PRO makes mounting your devices easy and versatile.</p>",
+            "text_style": "body"
+          }
+        },
+        "usp_YLGPcP": {
+          "type": "usp",
+          "settings": {
+            "usp_image_1": "shopify://shop_images/shipped-truck-svgrepo-com_1.svg",
+            "usp_text_1": "<p>Fast Shipping</p>",
+            "usp_image_2": "shopify://shop_images/icon-return.svg",
+            "usp_text_2": "<p>Up To 90 -Day Free Returns with Redo</p>",
+            "usp_image_3": "shopify://shop_images/secure_1.svg",
+            "usp_text_3": "<p>Secure Checkout</p>",
+            "usp_image_4": "shopify://shop_images/rating_1.png",
+            "usp_text_4": "<p>Over 200K Happy Customers</p>",
+            "usp_text_5": "<p>Column</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_8ckCya",
+        "subtitle_4HcN3x",
+        "judge_me_reviews_preview_badge_homepage_74eLT6",
+        "price_bQt7bw",
+        "offers_aEJYME",
+        "variant_picker_pDLtrk",
+        "buy_buttons_tmmHm8",
+        "testimonial_RhpKtX",
+        "textbox_w3Q7aB",
+        "usp_YLGPcP"
+      ],
+      "settings": {
+        "featured_video": "shopify://files/videos/no shutterbug rotating Tenikle video (1).mp4",
+        "enable_sticky_info": true,
+        "product": "tenikle-pro",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "media_position": "left",
+        "gallery_layout": "thumbnail",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 76
+      }
+    }
+  },
+  "order": [
+    "featured_collection",
+    "video_with_text_UNWMwj",
+    "trust_icons_bK9378",
+    "multicolumn_43xgyT",
+    "rich_text_LfQpUA",
+    "multicolumn_ajKHEm",
+    "video_9b8xWU",
+    "trust_icons_jNAFVn",
+    "multicolumn_wFDcmG",
+    "customer_reviews_bxd7n7",
+    "3d36368e-2809-4e2d-af7a-530c96d55ec2",
+    "rich_text_cPPLJn",
+    "trust_icons_DtVMpX",
+    "rich_text_hnDQD8",
+    "sales_featured_product_JGCM6c"
+  ]
+}

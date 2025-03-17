@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_BpMrTe": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n/* .rte a {\n  color: rgb(22, 122, 198);\n} */\n.costco-logo {\n    max-width: 20rem;\n    margin: auto;\n}\ndiv#reamazejs-container {\n    display: none !important;\n}\n.page-width--narrow {\n    max-width: 110rem!important;\n}\n.main-page-title {\n    display: none!important;\n}\n.video-wrapper video {\n    max-width: 100%;\n    height: auto;\n}\n.l-color {\n    color: #7e7e7e;\n}\n@media screen and (min-width: 750px) {\n    .editorial .grid__item:not(.editorial .image-grid--item):not(.editorial .list-item):first-child {\n        width: calc(66.666% - var(--grid-desktop-horizontal-spacing) / 2)!important;\n        max-width: calc(66.666% - var(--grid-desktop-horizontal-spacing) / 2)!important;\n    }\n    .editorial .grid__item:not(.editorial .image-grid--item):not(.editorial .list-item):last-child {\n        width: calc(33.333% - var(--grid-desktop-horizontal-spacing) / 2)!important;\n        max-width: calc(33.333% - var(--grid-desktop-horizontal-spacing) / 2)!important;\n    }\n}\n\n@media (max-width: 749px) {\n    p.first-heading {\n        font-size: 23px!important;\n    }\n    .author-adv {\n        flex-wrap: wrap;\n        line-height: 1em;\n    }\n.cta-coupon {\n    font-size: 1.6rem !important;\n    padding: 2rem 1rem !important;\n}\n.coupon-box {\n    padding: 1rem 2rem !important;\n}\n.coupon-box h2 {\n    margin-bottom: 2rem !important;\n}\n.limited-msg {\n    font-size: 18px !important;\n}\n.editorial h2 {\n    font-size: calc(var(--font-heading-scale) * 3rem) !important;\n    line-height: 1.2em !important;\n}\n.logos-article {\n    padding: 1rem 0 !important;\n}\n.logos-article img {\n    max-width: 48% !important;\n    width: 48% !important;\n} \n.yellow-box {\n    padding: 1.5rem 1rem !important;\n}\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_BpMrTe",
+    "main"
+  ]
+}
