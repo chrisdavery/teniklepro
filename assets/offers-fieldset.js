@@ -427,8 +427,18 @@ class offersDropdown extends HTMLElement {
 
       activeColors.forEach(select=> {
         formData.items.push({
-          id: Number(select.querySelector('.custom-select__btn').getAttribute('data-variant-id')), // or modify based on the actual structure
-          quantity: Number(this.querySelector('.offer-item input[type="radio"]').dataset.qty)
+          id: Number(select.querySelector('.custom-select__btn').getAttribute('data-variant-id')),
+          quantity: Number(this.querySelector('.offer-item input[type="radio"]').dataset.qty),
+          properties: {
+            _tier: activeColors.length,
+            _offer: activeRadio.value,
+            ...(activeRadio.dataset.freeGift !== undefined
+              ? {
+                  _addon: JSON.parse(activeRadio.dataset.freeGift)[0].id,
+                  _addon_qty: Number(JSON.parse(activeRadio.dataset.giftQty))
+                }
+              : {})
+          },
         });
       })
 
@@ -441,8 +451,9 @@ class offersDropdown extends HTMLElement {
                     'id': Number(gift.id),
                     'quantity': Number(jsonGiftQty),
                     'properties': {
-                        '_parent_product': Number(activeColors[0].querySelector('.custom-select__btn').getAttribute('data-variant-id')),
-                        '_tier': activeColors.length
+                        '_tier': activeColors.length,
+                        '_offer': activeRadio.value,
+                        '_freegift': true
                     }, 
                 };
 
