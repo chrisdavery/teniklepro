@@ -53,7 +53,7 @@
         "@media (max-width: 749px) {.h1 {font-size: calc(var(--font-heading-scale) * 3rem); } .image-with-text__text {margin-top: 1rem; }}"
       ],
       "settings": {
-        "image": "shopify://shop_images/factr.jpg",
+        "image": "shopify://shop_images/factr_7e7eaca4-9e19-4a1d-bc1d-fed69bd39391.jpg",
         "height": "adapt",
         "desktop_image_width": "small",
         "layout": "text_first",
