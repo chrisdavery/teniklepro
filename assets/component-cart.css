@@ -41,6 +41,10 @@ cart-items.is-empty .title-wrapper-with-link,
   font-size: inherit;
 }
 
+quantity-popover[hidden] {
+  display: none !important;
+}
+
 @media screen and (min-width: 990px) {
   .cart__warnings {
     padding: 7rem 0 1rem;

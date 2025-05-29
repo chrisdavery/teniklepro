@@ -439,7 +439,11 @@ class offersDropdown extends HTMLElement {
             jsonGifts.forEach((gift) => {
                 let item = {
                     'id': Number(gift.id),
-                    'quantity': Number(jsonGiftQty)
+                    'quantity': Number(jsonGiftQty),
+                    'properties': {
+                        '_parent_product': Number(activeColors[0].querySelector('.custom-select__btn').getAttribute('data-variant-id')),
+                        '_tier': activeColors.length
+                    }, 
                 };
 
                 formData.items.push(item);
