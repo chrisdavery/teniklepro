@@ -1,0 +1,808 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_Wr6i9j": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_jYN7Bd": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Bring Manufacturing Back to America Deal</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_8djtqn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Today, you can be a part of the US Manufacturing Revolution.</p><p>We're building one of the only silicone factories in the USA. Creating American jobs, reducing costs, and delivering superior quality products.</p><p></p><p>Your purchase helps us get rid of the remaining Chinese inventory, and gets us the funds we need to open up our factory in the next couple months which is to be located in Riverside County.</p><p></p><p>Thank you!</p><p>-Hans Dose, Founder</p>",
+            "text_style": "body"
+          }
+        },
+        "heading_nyh9zL": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Bringing Manufacturing Back to America",
+            "heading_size": "h1"
+          }
+        },
+        "button_U4G6mR": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read My Article Here",
+            "button_link": "https://fortune.com/article/trump-tariffs-small-business-opening-factory/?abc123",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jYN7Bd",
+        "text_8djtqn",
+        "heading_nyh9zL",
+        "button_U4G6mR"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.h1 {font-size: calc(var(--font-heading-scale) * 3rem); } .image-with-text__text {margin-top: 1rem; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/factr.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "custom_title": "",
+            "center": true
+          }
+        },
+        "subtitle_rwVK3G": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "Save $75 On Tenikle Today, Be A Part Of America's Future Tomorrow!",
+            "center": true
+          }
+        },
+        "judge_me_reviews_preview_badge_QHBYzd": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
+        },
+        "text_cUr7dg": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<em>We're building one of the only silicone factories in the USA. Creating American jobs, reducing costs, and delivering superior quality products.</em>",
+            "text_style": "body"
+          }
+        },
+        "custom_liquid_kcgaDf": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<hr class=\"product-break\"/>"
+          }
+        },
+        "text_jWFdHy": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<strong>Save $15 - $75 Today, </strong><em>Help us build a better future tomorrow.</em>",
+            "text_style": "uppercase"
+          }
+        },
+        "product_offers_B36e7W": {
+          "type": "product_offers",
+          "settings": {
+            "label": "SELECT YOUR BUNDLE: ",
+            "preview_image": "shopify://shop_images/black-no-space_00587eee-6313-4b0c-ba63-5907e89f2142.png",
+            "active_index": 3,
+            "redirect_to": ""
+          }
+        },
+        "inventory_pLrw7Q": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "custom_liquid_W3MamL": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}\n<style>\n.cta__payment .list-payment {\n    justify-content: center;\n}\n.cta__payment .list-payment .icon {\n    width: 2.8rem;\n}\n.cta__payment {\n    max-width: 50rem;\n    margin-top: -1rem !important;\n}\n.usp-texts p {\n    margin: 0;\n}\n.usp-texts > div:not(:last-child):after {\n    content: '|';\n    position: absolute;\n    top: 0;\n    right: -1.5rem;\n    font-weight: 300;\n    color: rgba(var(--color-foreground), .5);\n}\n.usp-texts > div {\n    position: relative;\n}\n.usp-texts {\n    max-width: 50rem;\n    font-size: 1.2rem;\n}\n\n@media (max-width: 749px) {\n    .cta__payment {\n        max-width: 100%;\n        margin-left: auto;\n        margin-right: auto;\n    }\n    .usp-texts {\n        gap: 1rem !important;\n    }\n    .usp-texts > div:not(:last-child):after {\n        right: -.8rem;\n    }\n    .cta__payment .list-payment__item {\n        padding: 0.3rem;\n    }\n}\n\n@media (max-width: 360px) {\n    .usp-texts {\n        font-size: 1.1rem;\n    }\n}\n</style>\n<div class=\"cta__payment\">\n    <span class=\"visually-hidden\">{{ 'sections.footer.payment' | t }}</span>\n    <ul class=\"list list-payment\" role=\"list\">\n        {%- for type in shop.enabled_payment_types -%}\n        <li class=\"list-payment__item\">\n            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}\n        </li>\n        {%- endfor -%}\n    </ul>\n</div>\n\n<div class=\"rte usp-texts d-flex gap-2 justify-center align-center\">\n    <div>\n        <p>Fast Shipping</p>\n    </div>\n    <div>\n        <p>90-Day Returns</p>\n    </div>\n    <div>\n        <p>Secure Checkout</p>\n    </div>\n</div>"
+          }
+        },
+        "collapsible_tab_6BMb7U": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "collapsible_tab_RLftY6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Returns & Shipping",
+            "content": "<p>Please refer to our shipping policy <a href=\"/policies/shipping-policy\" target=\"_blank\" title=\"Shipping Policy\">here</a>.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_HF4fq9": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "FAQs",
+            "content": "<p><strong>What surfaces can Tenikle stick to?</strong></p><p>Tenikle works best on smooth, non-porous surfaces like glass, mirrors, glossy finishes, metal, and plastic. It may not stick as well to textured, porous, or dirty surfaces.</p><p><strong>Will it work with my phone case?</strong></p><p>Yes! Our universal phone clip is designed to work with all phone sizes and most cases. Only extremely thick or textured cases might present challenges.</p><p><strong>How much weight can Tenikle hold?</strong></p><p>Tenikle can support devices up to 42 lbs when properly attached to suitable surfaces.</p><p><strong>How do I clean the suction cups?</strong></p><p>Simply rinse with warm water, then allow to air dry. For best results, clean the suction cups before each use.</p><p><strong>How long does the suction last?</strong></p><p>On ideal surfaces, Tenikle can stay attached for days or weeks. However, extreme temperatures and direct sunlight may affect suction longevity.</p><p><strong>How long does the suction last?</strong></p><p>On ideal surfaces, Tenikle can stay attached for days or weeks. However, extreme temperatures and direct sunlight may affect suction longevity.</p><p><strong>Is Tenikle waterproof?</strong></p><p>Tenikle is water-resistant and can be used in humid environments, but it's not designed for underwater use.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "subtitle_rwVK3G",
+        "judge_me_reviews_preview_badge_QHBYzd",
+        "text_cUr7dg",
+        "custom_liquid_kcgaDf",
+        "text_jWFdHy",
+        "product_offers_B36e7W",
+        "inventory_pLrw7Q",
+        "custom_liquid_W3MamL",
+        "collapsible_tab_6BMb7U",
+        "collapsible_tab_RLftY6",
+        "collapsible_tab_HF4fq9"
+      ],
+      "settings": {
+        "featured_video": "shopify://files/videos/New Batch PPC1 march 2024 w caption.mp4",
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": false,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "testimonials_DydyyY": {
+      "type": "testimonials",
+      "blocks": {
+        "item_BkjbgW": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "content": "<p>I use it everywhere I go - at work, in the car, chilling in bed. No matter what I'm doing or where I am, I'm probably using my Tenikle.</p>",
+            "name": "— T.L."
+          }
+        },
+        "item_3MW4PN": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "content": "<p>I love the versatility! I've used it for more things than I originally planned. No need to hold and watch videos. Will definitely be giving them as gifts!</p>",
+            "name": "— P.W."
+          }
+        },
+        "item_cJf3h3": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "content": "<p>The Tenikle PRO is a simple product with so many possibilities! I use it as a car mount for navigation and in bed to hold my phone higher. It's impossible to destroy and a great conversation piece too!</p>",
+            "name": "— Ben C."
+          }
+        }
+      },
+      "block_order": [
+        "item_BkjbgW",
+        "item_3MW4PN",
+        "item_cJf3h3"
+      ],
+      "custom_css": [
+        "{--spacing-sections-mobile: -1px;}",
+        "@media (max-width: 749px) {[class*=\"-padding\"] {padding-top: 0; }}"
+      ],
+      "settings": {
+        "marquee_duration_rate": 1,
+        "title": "<strong>TENIKLE: THE HYPE IS REAL</strong>",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "one_product_jU98e6": {
+      "type": "one-product",
+      "blocks": {
+        "item_38ij9V": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Vector_18.png",
+            "title": "HOLD ANY DEVICE",
+            "content": "<p>Phones (even with cases!), tablets, cameras & more</p>"
+          }
+        },
+        "item_RhdfVN": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Vector_19.png",
+            "title": "STICK ANYWHERE",
+            "content": "<p>Glass, mirrors & other smooth surfaces</p>"
+          }
+        },
+        "item_fXTxxL": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/fdfdf.png",
+            "title": "POSITION PERFECTLY",
+            "content": "<p>Bendable arms adjust to any angle</p>"
+          }
+        },
+        "item_hwx37a": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Vector_24.png",
+            "title": "GO ANYWHERE",
+            "content": "<p>Compact design fits in your pocket <br/>or bag</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_38ij9V",
+        "item_RhdfVN",
+        "item_fXTxxL",
+        "item_hwx37a"
+      ],
+      "settings": {
+        "title": "ONE",
+        "heading_size": "hxxl",
+        "subheading": "PRODUCT",
+        "subtitle": "Endless Mounting Possibilities",
+        "content": "<p>Tenikle PRO combines powerful suction technology with flexible, octopus-inspired arms to create the ultimate mounting solution:</p>",
+        "image_left_1": "shopify://shop_images/897a6c3c825ea919e6619bffffa95695.png",
+        "image_left_2": "shopify://shop_images/f9227614656b08d0a87e8baf4e60a0a0.png",
+        "image_left_3": "shopify://shop_images/23aeb51f37731b9744b8b3f9e118c629_2.png",
+        "image_right_1": "shopify://shop_images/247eebfe9a0bc3fcec88ebd7a17dae0e.png",
+        "image_right_2": "shopify://shop_images/ce45b7bc574ad5a11048b473c28eef36.png",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_testimonial_RfDXRA": {
+      "type": "image-testimonial",
+      "settings": {
+        "image": "shopify://shop_images/39e6287b93644f0dd0627ee6528fd366_1.png",
+        "content": "<p>I LOVE my Tenikle so much, I bought a second one. I use it for everything – filming my kids, as a dashcam, watching Netflix while cooking dinner, filming content for social media... it's the best phone holder I've used.</p>",
+        "name": "—  M.G.",
+        "content_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "section_divider_JQBKyb": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "left",
+        "top_color_desktop": "#ffffff",
+        "top_color_mobile": "#ffffff",
+        "bottom_color": "#dbfc03",
+        "offset_top": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "numbered_cards_Aj3V3J": {
+      "type": "numbered-cards",
+      "blocks": {
+        "column_9Up7Xx": {
+          "type": "column",
+          "settings": {
+            "number_color": "#ff3e4b",
+            "title": "<p>UNIVERSAL PHONE <br/>COMPATIBILITY</p>",
+            "text": "<p>Our updated clip now fits ALL smartphones with cases on</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_CeDnrE": {
+          "type": "column",
+          "settings": {
+            "number_color": "#00c6bc",
+            "title": "<p>ENHANCED SUCTION <br/>TECHNOLOGY</p>",
+            "text": "<p>Open-faced design provides stronger, more reliable grip</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kndrWL": {
+          "type": "column",
+          "settings": {
+            "number_color": "#685bc7",
+            "title": "<p>LONGER-LASTING <br/>ADHESION</p>",
+            "text": "<p>Advanced technology expels more air for secure attachment</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hW36pp": {
+          "type": "column",
+          "settings": {
+            "number_color": "#dbfc03",
+            "title": "<p>STURDIER <br/>LEGS</p>",
+            "text": "<p>Optimized stiffness reduces bouncing – perfect for action shots</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4J7KBU": {
+          "type": "column",
+          "settings": {
+            "number_color": "#000000",
+            "title": "<p>GRIP-LOCK <br/>ROTATION</p>",
+            "text": "<p>Added 4th arm with notch-style design secures your angle</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_bVYTmP": {
+          "type": "column",
+          "settings": {
+            "number_color": "#ff3e4b",
+            "title": "<p>REDESIGNED <br/>PHONE CLIP</p>",
+            "text": "<p>More durable construction in a compact form factor</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_KiLLpU": {
+          "type": "column",
+          "settings": {
+            "number_color": "#00c6bc",
+            "title": "<p>SILENT SPRING <br/>MECHANISM</p>",
+            "text": "<p>Enjoy smooth operation without distracting noise</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_9Up7Xx",
+        "column_CeDnrE",
+        "column_kndrWL",
+        "column_hW36pp",
+        "column_4J7KBU",
+        "column_bVYTmP",
+        "column_KiLLpU"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {[class*=\"-padding\"] {padding-top: 2.5rem; padding-bottom: 2.5rem; }}"
+      ],
+      "settings": {
+        "title": "<strong>THE 7 TENIKLE PRO UPGRADES</strong>",
+        "heading_size": "h1",
+        "subtitle": "",
+        "description_body": "",
+        "description_style": "body",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-9f2a4824-7cbe-48c3-ac6f-e0e450371741",
+        "columns_mobile": "1",
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 48
+      }
+    },
+    "section_divider_q4b6qx": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "left",
+        "top_color_desktop": "#dbfc03",
+        "top_color_mobile": "#dbfc03",
+        "bottom_color": "#00c6bc",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "investor_quote_mdymKX": {
+      "type": "investor-quote",
+      "custom_css": [],
+      "settings": {
+        "top_text": "<strong>A WORD FROM OUR</strong>",
+        "title_image": "shopify://shop_images/Vector_25.png",
+        "subheading": "<strong> INVESTOR:</strong>",
+        "quote_content": "<p><em>There's something I cannot resist investing in – things like this. Innovative. Small. Compact. Holds on to anything moving or still.</em></p>",
+        "quote_name": " — Daymond John, Shark Tank Investor",
+        "image": "shopify://shop_images/Group_1484581703.png",
+        "color_scheme": "scheme-76e1c3ae-4b8b-4e8e-b1a2-854edc58b518",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "section_divider_tU4RY8": {
+      "type": "section-divider",
+      "custom_css": [],
+      "settings": {
+        "direction": "left",
+        "top_color_desktop": "#00c6bc",
+        "top_color_mobile": "#00c6bc",
+        "bottom_color": "#ffffff",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_CqnCgJ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_hnFqW4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Tenikle_PRO_Lifestyle-06_1.png",
+            "title": "IN THE CAR",
+            "text": "<p>Navigate safely with your phone at eye level. No more looking down at your lap or fumbling with unstable dashboard mounts.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kiLWmK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/tenikle_xmas_baking-10.jpg",
+            "title": "IN THE KITCHEN",
+            "text": "<p>Follow recipes hands-free while cooking, or video chat with family without balancing your phone against something that could fall.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ybz33H": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/IMG_9710_1.png",
+            "title": "FOR CONTENT CREATION",
+            "text": "<p>Capture perfect photos and videos without a dedicated photographer. Set up timelapses, get creative angles, and film hands-free.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_wnbAQW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/IMG_9502.jpg",
+            "title": "AT WORK & HOME",
+            "text": "<p>Keep multiple screens in view for maximum productivity, join video calls while multitasking, or enjoy entertainment anywhere.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_hnFqW4",
+        "column_kiLWmK",
+        "column_ybz33H",
+        "column_wnbAQW"
+      ],
+      "custom_css": [
+        "{--spacing-sections-mobile: -1px;}",
+        "@media (min-width: 750px) {.isolate {max-width: 160rem; }}"
+      ],
+      "settings": {
+        "title": "<strong>HOW WILL YOU USE YOUR TENIKLE?</strong>",
+        "heading_size": "h1",
+        "description_body": "",
+        "description_style": "body",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "section_divider_XwgDpb": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "right",
+        "top_color_desktop": "#ffffff",
+        "top_color_mobile": "#ffffff",
+        "bottom_color": "#ff3e4b",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "table_choose_TVBtcM": {
+      "type": "table-choose",
+      "blocks": {
+        "first_column_TbVPJD": {
+          "type": "first_column",
+          "settings": {
+            "title": "<p><strong>Us vs<br/>Them</strong></p>",
+            "item_1": "Portability:",
+            "item_2": "Surfaces:",
+            "item_3": "Positioning:",
+            "item_4": "Functionality:",
+            "item_5": ""
+          }
+        },
+        "second_column_AwEJnX": {
+          "type": "second_column",
+          "settings": {
+            "image": "shopify://shop_images/red-ten.png",
+            "logo": "shopify://shop_images/tenikle-logo_1_3cdabf71-1f96-4eb6-a815-9ee5babe93e1_1.png",
+            "item_1": "Ultra-portable design",
+            "item_2": "Works on most smooth surfaces.",
+            "item_3": "Infinite positioning options",
+            "item_4": "Multi-purpose functionality",
+            "item_5": ""
+          }
+        },
+        "item_column_NygMTf": {
+          "type": "item_column",
+          "settings": {
+            "image": "shopify://shop_images/cb63c22c506cddd8e2f8ef38507e413c.png",
+            "title": "<p><strong>TRADITIONAL<br/>TRIPODS</strong></p>",
+            "item_1": "Bulky and hard to travel with",
+            "item_2": "Only work on flat surfaces",
+            "item_3": "Limited positioning options",
+            "item_4": "Single-purpose design",
+            "item_5": ""
+          }
+        },
+        "item_column_X34RXD": {
+          "type": "item_column",
+          "settings": {
+            "image": "shopify://shop_images/93a6969ff76d6fb26a7faaaeb3ce0c6d.png",
+            "title": "<p><strong>CAR <br/>MOUNTS</strong></p>",
+            "item_1": "Only work in one location",
+            "item_2": "Often unstable on bumpy roads",
+            "item_3": "Limited to one viewing angle",
+            "item_4": "Can damage air vents",
+            "item_5": ""
+          }
+        },
+        "item_column_twNjeh": {
+          "type": "item_column",
+          "settings": {
+            "image": "shopify://shop_images/9a6c14c3ca92aa093372252bd49a21d5.png",
+            "title": "<p><strong>PHONE<br/>STANDS</strong></p>",
+            "item_1": "Easily knocked over",
+            "item_2": "Limited to desk or table use",
+            "item_3": "Few positioning options",
+            "item_4": "Only work with phones",
+            "item_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "first_column_TbVPJD",
+        "second_column_AwEJnX",
+        "item_column_NygMTf",
+        "item_column_X34RXD",
+        "item_column_twNjeh"
+      ],
+      "custom_css": [
+        ".hxxl {color: rgb(var(--color-button));}"
+      ],
+      "settings": {
+        "title": "WHY",
+        "heading_size": "hxxl",
+        "subtitle": "CHOOSE TENIKLE OVER OTHER MOUNTS?",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "color_scheme": "scheme-87e0f469-df94-4266-ad5f-8003743d391e",
+        "table_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 72
+      }
+    },
+    "section_divider_mXTYWY": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "left",
+        "top_color_desktop": "#ff3e4b",
+        "top_color_mobile": "#ff3e4b",
+        "bottom_color": "#ffffff",
+        "offset_top": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "featured_logos_FGK6ej": {
+      "type": "featured-logos",
+      "blocks": {
+        "item_EV8bQw": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Vector_39.png"
+          }
+        },
+        "item_gbGpYe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Vector_37.png"
+          }
+        },
+        "item_kcVHgA": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Vector_38.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_EV8bQw",
+        "item_gbGpYe",
+        "item_kcVHgA"
+      ],
+      "settings": {
+        "title": "<em>AS FEATURED IN</em>",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_divider_tLy3zt": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "right",
+        "top_color_desktop": "#ffffff",
+        "top_color_mobile": "#ffffff",
+        "bottom_color": "#00c6bc",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "home_cta_QGBBXG": {
+      "type": "home-cta",
+      "custom_css": [
+        "{--spacing-sections-mobile: -1px;}",
+        "@media (max-width: 749px) {.hxxl {font-size: clamp( calc(var(--font-heading-scale) * 7.6rem), 14vw, calc(var(--font-heading-scale) * 9.2rem) ); }}"
+      ],
+      "settings": {
+        "top_text": "<strong>GET YOUR</strong>",
+        "title": "TENIKLE",
+        "heading_size": "hxxl",
+        "title_color": "#000000",
+        "subheading": "PRO",
+        "subheading_color": "#ff3e4b",
+        "bottom_heading": "TODAY",
+        "product": "tenikle-pro",
+        "section_title": "PLUS - Buy two Tenikle PRO, get one FREE!",
+        "content_label": "<p>Choose from 5 vibrant colors:</p>",
+        "content_label_color_1": "#000000",
+        "content_label_color_2": "#ff3e4b",
+        "content_label_color_3": "#00c6bc",
+        "content_label_color_4": "#685bc7",
+        "content_label_color_5": "#dbfc03",
+        "button_label": "GET YOURS NOW",
+        "button_link": "#",
+        "button_bottom_text": "<em>Over 200,000 happy customers can't be wrong! </em>",
+        "image_1": "shopify://shop_images/23aeb51f37731b9744b8b3f9e118c629.png",
+        "image_2": "shopify://shop_images/image_23522.png",
+        "image_3": "shopify://shop_images/image_23513.png",
+        "color_scheme": "scheme-76e1c3ae-4b8b-4e8e-b1a2-854edc58b518",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "section_divider_nNBxD4": {
+      "type": "section-divider",
+      "custom_css": [
+        "{--spacing-sections-mobile: -1px;}"
+      ],
+      "settings": {
+        "direction": "left",
+        "top_color_desktop": "#00c6bc",
+        "top_color_mobile": "#00c6bc",
+        "bottom_color": "#ffffff",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "17399750788dd6fcfe": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_aVHwRP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_aVHwRP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "image_with_text_Wr6i9j",
+    "main",
+    "testimonials_DydyyY",
+    "one_product_jU98e6",
+    "image_testimonial_RfDXRA",
+    "section_divider_JQBKyb",
+    "numbered_cards_Aj3V3J",
+    "section_divider_q4b6qx",
+    "investor_quote_mdymKX",
+    "section_divider_tU4RY8",
+    "multicolumn_CqnCgJ",
+    "section_divider_XwgDpb",
+    "table_choose_TVBtcM",
+    "section_divider_mXTYWY",
+    "featured_logos_FGK6ej",
+    "section_divider_tLy3zt",
+    "home_cta_QGBBXG",
+    "section_divider_nNBxD4",
+    "17399750788dd6fcfe",
+    "related-products"
+  ]
+}
