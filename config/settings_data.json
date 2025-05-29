@@ -12,20 +12,22 @@
     "logo": "shopify://shop_images/tenikle-logo_1_3cdabf71-1f96-4eb6-a815-9ee5babe93e1_1.png",
     "logo_width": 140,
     "favicon": "shopify://shop_images/ezgif.com-gif-maker_853f07e1-7fe8-4e1b-8146-6a35dc673193.png",
-    "type_header_font": "poppins_n7",
-    "type_secondary_header_font": "poppins_n6",
+    "type_header_font": "poppins_n6",
+    "type_secondary_header_font": "poppins_n7",
     "heading_scale": 100,
     "type_body_font": "poppins_n4",
+    "type_secondary_body_font": "poppins_n5",
+    "type_third_body_font": "poppins_n3",
     "body_scale": 100,
     "page_width": 1400,
     "spacing_sections": 0,
-    "spacing_grid_horizontal": 12,
+    "spacing_grid_horizontal": 16,
     "spacing_grid_vertical": 16,
     "animations_reveal_on_scroll": true,
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 6,
+    "buttons_radius": 26,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
@@ -44,13 +46,13 @@
     "inputs_shadow_horizontal_offset": 0,
     "inputs_shadow_vertical_offset": 4,
     "inputs_shadow_blur": 5,
-    "card_style": "standard",
+    "card_style": "card",
     "card_image_padding": 0,
     "card_text_alignment": "left",
     "card_color_scheme": "background-2",
-    "card_border_thickness": 0,
+    "card_border_thickness": 1,
     "card_border_opacity": 10,
-    "card_corner_radius": 0,
+    "card_corner_radius": 18,
     "card_shadow_opacity": 0,
     "card_shadow_horizontal_offset": 0,
     "card_shadow_vertical_offset": 4,
@@ -79,14 +81,14 @@
     "blog_card_shadow_blur": 5,
     "text_boxes_border_thickness": 0,
     "text_boxes_border_opacity": 10,
-    "text_boxes_radius": 0,
+    "text_boxes_radius": 20,
     "text_boxes_shadow_opacity": 0,
     "text_boxes_shadow_horizontal_offset": 0,
     "text_boxes_shadow_vertical_offset": 4,
     "text_boxes_shadow_blur": 5,
     "media_border_thickness": 0,
     "media_border_opacity": 5,
-    "media_radius": 0,
+    "media_radius": 20,
     "media_shadow_opacity": 0,
     "media_shadow_horizontal_offset": 0,
     "media_shadow_vertical_offset": 4,
@@ -109,13 +111,14 @@
     "sale_badge_color_scheme": "scheme-87e0f469-df94-4266-ad5f-8003743d391e",
     "sold_out_badge_color_scheme": "inverse",
     "brand_headline": "",
-    "brand_description": "<p></p>",
-    "brand_image_width": 100,
-    "social_facebook_link": "",
-    "social_instagram_link": "",
-    "social_youtube_link": "",
-    "social_tiktok_link": "",
-    "social_twitter_link": "",
+    "brand_description": "<p><strong>Patent #US9182077 B2</strong></p>",
+    "brand_image": "shopify://shop_images/tenikle-logo_1_3cdabf71-1f96-4eb6-a815-9ee5babe93e1_1.png",
+    "brand_image_width": 190,
+    "social_facebook_link": "https://www.facebook.com/Tenikle/",
+    "social_instagram_link": "https://www.instagram.com/tenikle/",
+    "social_youtube_link": "https://www.youtube.com/@Tenikle",
+    "social_tiktok_link": "https://www.tiktok.com/@tenikle",
+    "social_twitter_link": "https://x.com/tenikle",
     "social_snapchat_link": "",
     "social_pinterest_link": "",
     "social_tumblr_link": "",
@@ -127,7 +130,18 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
+    "enable_cart_upsell": true,
+    "upsell_heading": "Essential Addons",
+    "upsell_cart": [
+      "bluetooth-shutter-remote-addon",
+      "gopro-mount-addon",
+      "squammies-addon",
+      "ipad-tablet-clip-add-on"
+    ],
+    "upsell_color_scheme": "scheme-1df33239-d8c5-4fc3-9cf5-647ee3b394d0",
+    "upsell_card_color_scheme": "background-1",
     "cart_drawer_collection": "",
+    "make_collapsible_row_upsell": false,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -165,22 +179,30 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#121212",
+          "text": "#000000",
           "button": "#ff3e4b",
           "button_label": "#ffffff",
           "secondary_button_label": "#ff3e4b",
-          "shadow": "#121212"
+          "shadow": "#000000",
+          "accent_color_1": "#00c6bc",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "background-2": {
         "settings": {
-          "background": "#f3f3f3",
+          "background": "#f6f6f6",
           "background_gradient": "",
-          "text": "#121212",
+          "text": "#000000",
           "button": "#ff3e4b",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "secondary_button_label": "#000000",
+          "shadow": "#000000",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "inverse": {
@@ -191,18 +213,26 @@
           "button": "#ffffff",
           "button_label": "#000000",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "accent-1": {
         "settings": {
-          "background": "#121212",
+          "background": "#000000",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "accent-2": {
@@ -213,18 +243,26 @@
           "button": "#ffffff",
           "button_label": "#685bc7",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "scheme-9253f57d-6359-4c06-a0b4-2de7c07739eb": {
         "settings": {
           "background": "#efffff",
           "background_gradient": "",
-          "text": "#121212",
+          "text": "#000000",
           "button": "#ff3e4b",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "secondary_button_label": "#000000",
+          "shadow": "#000000",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "scheme-87e0f469-df94-4266-ad5f-8003743d391e": {
@@ -232,21 +270,89 @@
           "background": "#ff3e4b",
           "background_gradient": "",
           "text": "#ffffff",
-          "button": "#ff3e4b",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "button": "#dbfc03",
+          "button_label": "#ff3e4b",
+          "secondary_button_label": "#000000",
+          "shadow": "#000000",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       },
       "scheme-9f2a4824-7cbe-48c3-ac6f-e0e450371741": {
         "settings": {
           "background": "#dbfc03",
           "background_gradient": "",
-          "text": "#121212",
+          "text": "#000000",
           "button": "#ff3e4b",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "secondary_button_label": "#000000",
+          "shadow": "#000000",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
+        }
+      },
+      "scheme-df4a3db9-c7fb-4b24-9611-bc30bff5634d": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#000000",
+          "button": "#dbfc03",
+          "button_label": "#000000",
+          "secondary_button_label": "#dbfc03",
+          "shadow": "#000000",
+          "accent_color_1": "#ff3e4b",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
+        }
+      },
+      "scheme-b2a92ebe-2576-4910-b099-6dfc6d92e8de": {
+        "settings": {
+          "background": "#ff3e4b",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#00c6bc",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ff3e4b",
+          "shadow": "#000000",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
+        }
+      },
+      "scheme-76e1c3ae-4b8b-4e8e-b1a2-854edc58b518": {
+        "settings": {
+          "background": "#00c6bc",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ff3e4b",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ff3e4b",
+          "shadow": "#000000",
+          "accent_color_1": "#00aeaf",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
+        }
+      },
+      "scheme-1df33239-d8c5-4fc3-9cf5-647ee3b394d0": {
+        "settings": {
+          "background": "#ffebed",
+          "background_gradient": "",
+          "text": "#000000",
+          "button": "#ff3e4b",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ff3e4b",
+          "shadow": "#000000",
+          "accent_color_1": "#00c6bc",
+          "accent_color_2": "#dbfc03",
+          "accent_color_3": "#685bc7",
+          "accent_color_4": "#ffc129"
         }
       }
     }

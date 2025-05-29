@@ -46,7 +46,7 @@
                   >
                     {%- liquid
                       assign number_of_columns = 1
-                      assign number_of_columns_mobile = 1
+                      assign number_of_columns_mobile = 2
                       assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                       assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                       assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
@@ -60,7 +60,7 @@
                     {% endcapture %}
                     {{
                         section.settings.title_image
-                      | image_url: width: 3200
+                      | image_url: width: 1500
                       | image_tag:
                         loading: 'lazy',
                         widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
@@ -77,7 +77,7 @@
             <div class="table-wrapper">
                 {%- liquid
                     assign number_of_columns = 1
-                    assign number_of_columns_mobile = 1
+                    assign number_of_columns_mobile = 2
                     assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                     assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                     assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'

@@ -7,19 +7,32 @@
     /* padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; */
     padding-bottom: 15px;
   }
-  /* .image-with-text__grid {
-    align-items: center;
-  } */
   .video__buttons--multiple {
     display: inline-flex;
     flex-wrap: wrap;
     gap: 1rem;
     word-break: break-word;
   }
-  #shopify-section-{{ section.id }} .image-with-text__media .media {
-    --media-radius: 12px;
+  .testimonal-video__item {
+    position: relative;
   }
 
+  .testimonal-video__item p {
+    margin: 0;
+  }
+
+  .testimonial-video-name {
+    margin: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .icon-quote-testimonial svg {
+    width: 3.5rem;
+  }
+  .testimonal-video__item {
+    font-size: 1.4rem;
+    max-width: 50rem;
+  }
+  
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -27,6 +40,15 @@
     }
     #shopify-section-{{ section.id }} .image-with-text__heading.h2 {
       max-width: 44rem;
+    }
+    .testimonal-video__item {
+      margin-top: 4rem !important;
+    }
+    #shopify-section-{{ section.id }} .image-with-text__text-item {
+      width: calc(55% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+    #shopify-section-{{ section.id }} .image-with-text__media-item {
+      width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2);
     }
   }
 
@@ -39,6 +61,16 @@
       margin-left: auto;
       margin-right: auto;
       font-size: calc(var(--font-heading-scale) * 1.8rem);
+    }
+    .testimonal-video__item {
+      font-size: 1.2rem;
+      max-width: 100%;
+      text-align: left !important;
+    }
+    .testimonial-video-name {
+      font-size: 1.4rem;
+      text-align: left !important;
+      width: 100%;
     }
   }
 {%- endstyle -%}
@@ -61,7 +93,7 @@
 
 <div class="gradient color-{{ section.settings.color_scheme }}">
   <div class="image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == scheme1 and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <div class="image-with-text__grid grid align-center grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
+    <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
       <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
         {%- for block in section.blocks -%}
           {% case block.type %}
@@ -79,16 +111,48 @@
         <div
           class="image-with-text__media {% if section.settings.contain_image %}contain-image{% endif %} image-with-text__media--{{ section.settings.height }} gradient color-{{ section.settings.color_scheme }} global-media-settings {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
         >
-          <div class="media global-media-settings"
-            {% if poster != null %}
+          {% assign poster = section.settings.video.preview_image %}
+          <video-media
+              class="media global-media-settings"
               style="padding-bottom: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
-            {% endif %}
+              data-video-src="{{ block.settings.video.sources[0].url }}"
           >
-            {{
-              section.settings.video
-              | video_tag: image_size: '1100x', loop: true, controls: false, muted: true, playsinline: 'playsinline', preload: 'none', autoplay: true
-            }}
-          </div>
+              {%- liquid
+                assign number_of_columns = 1
+                assign number_of_columns_mobile = 1
+                assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                assign image_width = 1
+              -%}
+              {% capture sizes %}
+              (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+              (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+              (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+              calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+              {% endcapture %}
+              {{
+                poster
+                  | image_url: width: 800
+                  | image_tag:
+                      widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                      sizes: sizes,
+                      loading: 'lazy'
+              }}
+              <noscript>
+                {{
+                  section.settings.video
+                  | video_tag:
+                    image_size: '800x',
+                    autoplay: true,
+                    loop: true,
+                    controls: false,
+                    muted: true,
+                    preload: 'none',
+                    playsinline: 'playsinline'
+                }}
+              </noscript>
+          </video-media>
         </div>
       </div>
       <div class="image-with-text__text-item grid__item">
@@ -128,12 +192,9 @@
                       {% else %}
                         href="{{ block.settings.button_link_1 }}"
                       {% endif %}
-                      class="button button--arrowed {% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
+                      class="button {% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
                     >
                       <span>{{- block.settings.button_label_1 | escape -}}</span>
-                      <span class="arrowed-icon">
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                      </span>
                     </a>
                   {%- endif -%}
                   {%- if block.settings.button_label_2 != blank -%}
@@ -155,6 +216,22 @@
                 {% endif %}
               {% when 'liquid' %}
                 {{ block.settings.liquid }}
+              {% when 'testimonial' %}
+                {% if block.settings.content != blank %}
+                  <div class="testimonal-video__item rte">
+                    {{ block.settings.content }}
+
+                    <div class="left-quote-testimonial icon-quote-testimonial">
+                      {{ 'icon-quote.svg' | inline_asset_content }}
+                    </div>
+                    <div class="right-quote-testimonial icon-quote-testimonial">
+                      {{ 'icon-quote.svg' | inline_asset_content }}
+                    </div>
+                  </div>
+                  {% if block.settings.name != blank %}
+                    <span class="testimonial--name testimonial-video-name">{{ block.settings.name }}</span>
+                  {% endif %}
+                {% endif %}
             {%- endcase -%}
           {%- endfor -%}
         </div>
@@ -237,8 +314,7 @@
         }
       ],
       "default": "medium",
-      "label": "t:sections.image-with-text.settings.desktop_image_width.label",
-      "info": "t:sections.image-with-text.settings.desktop_image_width.info"
+      "label": "t:sections.image-with-text.settings.desktop_image_width.label"
     },
     {
       "type": "select",
@@ -254,8 +330,7 @@
         }
       ],
       "default": "image_first",
-      "label": "t:sections.image-with-text.settings.layout.label",
-      "info": "t:sections.image-with-text.settings.layout.info"
+      "label": "t:sections.image-with-text.settings.layout.label"
     },
     {
       "type": "select",
@@ -418,6 +493,14 @@
             {
               "value": "h0",
               "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
             }
           ],
           "default": "h1",
@@ -571,6 +654,22 @@
           "type": "liquid",
           "id": "liquid",
           "label": "Liquid"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
         }
       ]
     }

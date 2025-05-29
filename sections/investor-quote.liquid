@@ -1,0 +1,257 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+  .inv-image {
+    max-width: 53rem;
+  }
+  .title-image {
+    max-width: 23rem;
+    margin: 2.5rem 0;
+  }
+  #shopify-section-{{ section.id }} .left-quote-testimonial {
+    top: -4rem;
+  }
+  #shopify-section-{{ section.id }} .icon-quote-testimonial svg {
+    width: 4.5rem;
+  }
+  #shopify-section-{{ section.id }} .testimonal-quote__item {
+    margin-top: 6rem !important;
+    max-width: 41rem;
+    text-align: left;
+  }
+  .testimonal-quote__item {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .icon-quote-testimonial svg path {
+    fill: rgba(255, 255, 255,.36);
+    opacity: 1;
+  }
+  .testimonial-inv-name {
+    font-weight: 600;
+    margin-top: 1.5rem;
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .left-col-inv {
+      max-width: 45rem;
+      margin: auto;
+    }
+    .h1.subtext-inv {
+      font-size: calc(var(--font-heading-scale)* 3rem);
+    }
+  }
+
+  @media (max-width: 749px) {
+    .left-col-inv {
+      text-align: center;
+    }
+    .title-image {
+      max-width: 18rem;
+      margin: 2rem auto;
+    }
+    #shopify-section-{{ section.id }} .testimonal-quote__item {
+      margin-top: 4rem !important;
+      font-size: 1.4rem;
+    }
+    .testimonial-inv-name {
+      font-size: 1.4rem;
+      text-align: left;
+      margin-top: .2rem;
+    }
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width">
+      <div class="grid grid--1-col-tablet-down grid--2-col-desktop">
+        <div class="grid__item">
+          <div class="left-col-inv">
+            {% if section.settings.top_text != blank %}
+              <span class="h1 subtext-inv">
+                {{ section.settings.top_text }}
+              </span>
+            {% endif %}
+            {% if section.settings.title_image != blank %}
+              <div class="title-image {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: 1;"
+                {% endif %}
+              >
+                  <div
+                      class="media media--transparent"
+                      style="padding-bottom: {{ 1 | divided_by: section.settings.title_image.aspect_ratio | times: 100 }}%;"
+                  >
+                      {%- if section.settings.title_image != blank -%}
+                          {%- liquid
+                          assign number_of_columns = 1
+                          assign number_of_columns_mobile = 1
+                          assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                          assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                          assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                          assign image_width = 1
+                        -%}
+                        {% capture sizes %}
+                          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                          (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                          (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                          calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                        {% endcapture %}
+                        {{
+                            section.settings.title_image
+                            | image_url: width: 300
+                            | image_tag: sizes: sizes,
+                            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                            loading: 'lazy'
+                        }}
+                      {%- endif -%}
+                  </div>
+              </div>
+            {% endif %}
+            {% if section.settings.subheading != blank %}
+              <span class="h1 subtext-inv {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: 2;"
+                {% endif %}
+              >
+                {{ section.settings.subheading }}
+              </span>
+            {% endif %}
+            {% if section.settings.quote_content != blank %}
+              <div class="testimonal-quote__item rte">
+                {{ section.settings.quote_content }}
+
+                <div class="left-quote-testimonial icon-quote-testimonial">
+                  {{ 'icon-quote.svg' | inline_asset_content }}
+                </div>
+              </div>
+              {% if section.settings.quote_name != blank %}
+                <span class="testimonial--name testimonial-inv-name">{{ section.settings.quote_name }}</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="grid__item">
+          {% if section.settings.image != blank %}
+            <div class="inv-image">
+                <div
+                    class="media media--transparent"
+                    style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+                >
+                    {%- if section.settings.image != blank -%}
+                      {%- assign widths = '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200' -%}
+                      {%- liquid
+                        assign number_of_columns = 2
+                        assign number_of_columns_mobile = 2
+                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                        assign image_width = 1
+                      -%}
+                      {%- assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio -%}
+                      {% capture sizes %}
+                          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                          (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                          (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                          calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                      {% endcapture %}
+                      {{
+                          section.settings.image
+                          | image_url: width: 1000
+                          | image_tag: sizes: sizes, widths: widths, height: image_height, loading: 'lazy'
+                      }}
+                    {%- else -%}
+                        {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Investor's Quote",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "top_text",
+        "label": "Top Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "title_image",
+      "label": "Title Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "quote_content",
+      "label": "Quote Content"
+    },
+    {
+      "type": "text",
+      "id": "quote_name",
+      "label": "Quote Name"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Investor's Quote"
+    }
+  ]
+}
+{% endschema %}

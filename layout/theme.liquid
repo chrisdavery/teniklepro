@@ -52,6 +52,8 @@
 
     {% style %}
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ settings.type_secondary_body_font | font_face: font_display: 'swap' }}
+      {{ settings.type_third_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
@@ -254,7 +256,7 @@
         margin: 0;
         font-size: 1.5rem;
         letter-spacing: 0.06rem;
-        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        line-height: calc(1 + 0.6 / var(--font-body-scale));
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
@@ -266,6 +268,8 @@
         }
       }
     {% endstyle %}
+
+    {% render 'font-variables' %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
@@ -317,6 +321,9 @@
     {% if product.type == 'exclude_seo' or product.type == 'Addon' %}
       <meta name="robots" content="noindex, nofollow">
     {% endif %}
+
+<script async src="https://sdk.postscript.io/sdk.bundle.js?shopId=507459"></script>
+
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -388,7 +395,7 @@
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
     </script>
-    
+
     {% unless page.metafields.custom.disable_footer == true %}
       {%- if settings.predictive_search_enabled -%}
         <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

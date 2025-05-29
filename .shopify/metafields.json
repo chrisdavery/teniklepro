@@ -1,8 +1,18 @@
 {
   "article": [],
   "blog": [],
-  "brand": [],
-  "collection": [],
+  "collection": [
+    {
+      "key": "credit_cash",
+      "namespace": "custom",
+      "name": "Credit Cash",
+      "description": "",
+      "type": {
+        "name": "money",
+        "category": "MONEY"
+      }
+    }
+  ],
   "company": [],
   "company_location": [],
   "location": [],
@@ -159,6 +169,46 @@
       "type": {
         "name": "boolean",
         "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "operating-system",
+      "namespace": "shopify",
+      "name": "Operating system",
+      "description": "Defines the system software a device uses, such as iOS or ChromeOS",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "file-format-type",
+      "namespace": "shopify",
+      "name": "File format type",
+      "description": "Specifies the format of digital files, e.g. GIF, PDF",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "software-features",
+      "namespace": "shopify",
+      "name": "Software features",
+      "description": "Identifies the key functionalities of a software product, such as privacy protection or auto backup",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "hidden",
+      "namespace": "seo",
+      "name": "Hide SEO",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
       }
     }
   ],

@@ -1,0 +1,158 @@
+.review_box .rte {
+    margin-bottom: .5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.review-scrollings-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.review-item {
+    width: 100%;
+    min-width: 35rem;
+    margin: 0 2rem;
+}
+
+.name-review {
+    font-style: italic;
+    margin-top: 2.5rem;
+    display: block;
+}
+
+.review_box {
+    padding: 2.5rem 1.5rem;
+    background: rgba(0, 0, 0, 0.035);
+    border-radius: var(--media-radius);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-icon {
+    position: absolute;
+    width: 4rem;
+}
+
+.testimonial-icon svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.review-top {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.review-top ,.rte {
+    position: relative;
+}
+
+.testimonial-icon-left {
+    top: -1rem;
+    left: 0;
+}
+
+.testimonial-icon-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(-180deg);
+}
+
+.review-bottom {
+    margin-top: auto;
+}
+
+.title-review {
+    margin: .5rem 0 1rem;
+}
+
+.review_box .jdgm-star {
+    color: #ffc211;
+    padding: 0 !important;
+}
+
+.review-scrollings {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Allow scrolling */
+    /* animation: marquee var(--speed) linear infinite; */
+    flex: none;
+    cursor: grab; /* Add a visual cue */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.review-scrollings::-webkit-scrollbar {
+    display: none;
+}
+
+.review_box .rating-wrapper {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.rating-wrapper svg {
+    display: block;
+    max-width: 100%;
+    width: 2.5rem;
+    height: auto;
+}
+
+/* .review-scrollings:hover {
+    animation-play-state: paused;
+} */
+
+@-moz-keyframes marquee {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translate(-50%)
+    }
+}
+
+@-webkit-keyframes marquee {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translate(-50%)
+    }
+}
+
+@-o-keyframes marquee {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translate(-50%)
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translate(-50%)
+    }
+}
+
+@media (max-width: 749px) {
+    .review-item {
+        min-width: calc(100vw - 3rem);
+    }
+}

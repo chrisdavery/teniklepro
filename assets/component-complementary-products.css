@@ -140,11 +140,6 @@ product-recommendations.is-accordion + .accordion {
   transform: rotate(90deg);
 }
 
-.complementary-products__container .quick-add__submit:after,
-.complementary-products__container .quick-add__submit:hover:after {
-  box-shadow: none;
-}
-
 .complementary-products__container .card--horizontal .quick-add,
 .complementary-products__container .card__badge {
   justify-self: var(--text-alignment);

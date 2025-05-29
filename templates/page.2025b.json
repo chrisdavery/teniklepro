@@ -20,7 +20,7 @@
     "custom_liquid_Y3YPgj": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.offer-subtitle {\n  display: none !important;\n}\n</style>",
+        "custom_liquid": "<style>\n.offer-subtitle {\n  display: none !important;\n}\n:root {\n    --font-heading-family: Poppins, sans-serif;\n    --font-heading-style: normal;\n    --font-heading-weight: 700;\n    --font-sec-heading-family: Poppins, sans-serif;\n    --font-sec-heading-style: normal;\n    --font-sec-heading-weight: 600;\n--buttons-radius: 6px;\n--buttons-radius-outset: 6px;\n}\n.button {\ntext-transform: unset;\nfont-weight: bold;\n}\n\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
@@ -97,21 +97,21 @@
         "custom_liquid_H3ETXj": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"video pre media\" style=\"padding-bottom: 100%;\">\n  <video \n    src=\"https://cdn.shopify.com/videos/c/o/v/3722414592ed4625ba936adad2a69ee7.mp4\" \n    preload=\"none\" \n    playsinline \n    muted \n    autoplay \n    loop \n    width=\"100%\" \n    height=\"100%\">\n  </video>\n</div>"
+            "custom_liquid": "<video-media style=\"padding-bottom: 100%;\" class=\"media media--transparent\" data-video-src=\"https://cdn.shopify.com/videos/c/o/v/3722414592ed4625ba936adad2a69ee7.mp4\">\n  <noscript>\n    <video preload=\"none\" muted=\"muted\" loop=\"loop\" autoplay=\"autoplay\" playsinline=\"playsinline\">\n      <source type=\"video/mp4\" src=\"https://cdn.shopify.com/videos/c/o/v/3722414592ed4625ba936adad2a69ee7.mp4\"></video>\n  </noscript>\n</video-media>"
           }
         },
         "textbox_w3Q7aB": {
           "type": "textbox",
           "settings": {
             "heading": "",
-            "text": "<p>Tenikle PRO is the flexible, octopus-inspired mount perfect for holding your phone, tablets, and cameras at any angle.</p><p>With patented suction cups, you can attach it to almost any surface. Its bendable legs let you stand, hang, or wrap it anywhere.</p><p>Featured on Shark Tank, Good Morning America, CBS, and more, Tenikle PRO makes mounting your devices easy and versatile.</p>",
+            "text": "<p>Tenikle PRO is the flexible, octopus-inspired mount perfect for holding your phone, tablets, and cameras at any angle.</p><p>With patented suction cups, you can attach it to almost any surface. Its bendable legs let you stand, hang, or wrap it anywhere.</p>",
             "text_style": "body"
           }
         },
         "custom_liquid_R3qJy7": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"video pre media\" style=\"padding-bottom: 100%;\">\n  <video \n    src=\"https://cdn.shopify.com/videos/c/o/v/6c917fe1d68b487792ee67f21b5d2491.mp4\" \n    preload=\"none\" \n    playsinline \n    muted \n    autoplay \n    loop \n    width=\"100%\" \n    height=\"100%\">\n  </video>\n</div>"
+            "custom_liquid": "<video-media style=\"padding-bottom: 100%;\" class=\"media media--transparent\" data-video-src=\"https://cdn.shopify.com/videos/c/o/v/6c917fe1d68b487792ee67f21b5d2491.mp4\">\n  <noscript>\n    <video preload=\"none\" muted=\"muted\" loop=\"loop\" autoplay=\"autoplay\" playsinline=\"playsinline\">\n      <source type=\"video/mp4\" src=\"https://cdn.shopify.com/videos/c/o/v/6c917fe1d68b487792ee67f21b5d2491.mp4\"></video>\n  </noscript>\n</video-media>"
           }
         },
         "textbox_Ywpifk": {
@@ -367,11 +367,11 @@
         "description_style": "body",
         "image_width": "full",
         "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
-        "button_label": "",
-        "button_link": "",
         "color_scheme": "scheme-9253f57d-6359-4c06-a0b4-2de7c07739eb",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -554,11 +554,11 @@
         "description_style": "body",
         "image_width": "full",
         "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
         "columns_desktop": 4,
         "column_alignment": "center",
         "background_style": "none",
-        "button_label": "",
-        "button_link": "",
         "color_scheme": "",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -636,7 +636,7 @@
         "custom_liquid_tVLhmh": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"video pre media\" style=\"padding-bottom: 100%;\">\n  <video \n    src=\"https://cdn.shopify.com/videos/c/o/v/3722414592ed4625ba936adad2a69ee7.mp4\" \n    preload=\"none\" \n    playsinline \n    muted \n    autoplay \n    loop \n    width=\"100%\" \n    height=\"100%\">\n  </video>\n</div>"
+            "custom_liquid": "<video-media style=\"padding-bottom: 100%;\" class=\"media media--transparent\" data-video-src=\"https://cdn.shopify.com/videos/c/o/v/3722414592ed4625ba936adad2a69ee7.mp4\">\n  <noscript>\n    <video preload=\"none\" muted=\"muted\" loop=\"loop\" autoplay=\"autoplay\" playsinline=\"playsinline\">\n      <source type=\"video/mp4\" src=\"https://cdn.shopify.com/videos/c/o/v/3722414592ed4625ba936adad2a69ee7.mp4\"></video>\n  </noscript>\n</video-media>"
           }
         },
         "textbox_7qYnDe": {
@@ -650,7 +650,7 @@
         "custom_liquid_XVzeTD": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"video pre media\" style=\"padding-bottom: 100%;\">\n  <video \n    src=\"https://cdn.shopify.com/videos/c/o/v/6c917fe1d68b487792ee67f21b5d2491.mp4\" \n    preload=\"none\" \n    playsinline \n    muted \n    autoplay \n    loop \n    width=\"100%\" \n    height=\"100%\">\n  </video>\n</div>"
+            "custom_liquid": "<video-media style=\"padding-bottom: 100%;\" class=\"media media--transparent\" data-video-src=\"https://cdn.shopify.com/videos/c/o/v/6c917fe1d68b487792ee67f21b5d2491.mp4\">\n  <noscript>\n    <video preload=\"none\" muted=\"muted\" loop=\"loop\" autoplay=\"autoplay\" playsinline=\"playsinline\">\n      <source type=\"video/mp4\" src=\"https://cdn.shopify.com/videos/c/o/v/6c917fe1d68b487792ee67f21b5d2491.mp4\"></video>\n  </noscript>\n</video-media>"
           }
         },
         "textbox_MzAaTb": {

@@ -1,1 +1,11 @@
-<svg class="icon icon-caret" viewBox="0 0 10 6"><path fill="currentColor" fill-rule="evenodd" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708" clip-rule="evenodd"/></svg>
+<svg class="icon icon-caret" xmlns="http://www.w3.org/2000/svg" width="25" height="16" viewBox="0 0 25 16" fill="none">
+    <g clip-path="url(#clip0_27_1482)">
+    <path d="M8.54887 15.3243L1.50781 8.38526L8.54887 1.24219" stroke="currentColor" stroke-width="1.51064"/>
+    <path d="M1.64062 8.41016H24.172" stroke="currentColor" stroke-width="1.51064"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_27_1482">
+    <rect width="24.1702" height="15.8617" fill="white"/>
+    </clipPath>
+    </defs>
+</svg>

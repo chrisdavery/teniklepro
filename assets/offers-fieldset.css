@@ -1,0 +1,319 @@
+offers-dropdown {
+    display: block;
+    position: relative;
+    max-width: 50rem;
+}
+
+.offers--fieldset {
+    border: none;
+    padding: 0;
+    position: relative;
+    margin: 0;
+}
+
+
+.offers--fieldset legend {
+    display: block;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.offer-item [type="radio"] {
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+}
+
+.offers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.offer-has-badge {
+    margin-top: 2.84rem;
+}
+
+.offers-list li {
+    position: relative;
+}
+
+.offer-item label {
+    display: block;
+    background-color: rgba(var(--color-button),.02);
+    border-radius: var(--media-radius);
+    border: .1rem solid rgba(var(--color-foreground),.1);
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.offer-preview {
+    width: 7.5rem;
+}
+
+.offer-item [type="radio"]:checked + label {
+    box-shadow: 0 4px 20px rgba(var(--color-button),.66);
+    background-color: rgba(var(--color-button),.1);
+    border: .2rem solid rgba(var(--color-button), 1);
+}
+
+.offer--inner {
+    position: relative;
+    padding: 2rem 2rem 1.5rem;
+}
+
+.offer--inner s.price-item--regular {
+    opacity: .34;
+}
+
+.offer--inner .image-wrap {
+    position: relative;
+}
+
+.offer-title {
+    --font-body-weight: 1000 !important;
+    --font-body-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .5rem;
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: var(--font-body-weight);
+    font-size: 1.8rem;
+}
+
+.badge-offer-fieldset {
+    --media-radius: 20px !important;
+    --font-body-weight: 1000 !important;
+    --font-body-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: block;
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: var(--font-body-weight);
+    text-align: center;
+    max-width: 14rem;
+    width: 100%;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: .3rem 0;
+    border-top-left-radius: var(--media-radius);
+    border-top-right-radius: var(--media-radius);
+    margin-top: -2.84rem;
+    z-index: 0;
+    position: absolute;
+    right: 1rem;
+}
+
+.quantity-label {
+    border-radius: 50%;
+    line-height: 1em;
+    background: rgb(var(--color-accent-2));
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: -0.5rem;
+    right: 0;
+}
+
+.choose-color-offer {
+    border-top: .1rem solid rgba(var(--color-foreground), .1);
+    border-bottom-left-radius: var(--media-radius);
+    border-bottom-right-radius: var(--media-radius);
+    background-color: rgb(255,255,255);
+}
+
+.choose-color-offer .accordion-type {
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.offer-detail {
+    display: block;
+    position: relative;
+    background: transparent;
+    width: 100%;
+    --swatch-input--size: 2rem;
+}
+
+.offer-detail summary {
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+.offer-detail .toggle-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    opacity: 1;
+    transform: translateY(-50%) rotate(0);
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.offer-detail .toggle-icon svg {
+    height: 1.3rem;
+    width: 1.3rem;
+    fill: rgb(var(--color-foreground));
+    display: block;
+}
+
+.offer-detail[open] .toggle-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.detail-container {
+    padding: 1rem 2rem;
+    border-bottom-left-radius: var(--media-radius);
+    border-bottom-right-radius: var(--media-radius);
+}
+
+.offer-item [type="radio"]:not(:checked) + label .choose-color-offer .offer-detail {
+    pointer-events: none;
+}
+
+.subtitle-offer {
+    font-size: 1.4rem;
+}
+
+.flex-selects > div {
+    width: calc(50% - 1rem / 2);
+}
+
+.custom-select__btn {
+    display: flex;
+    min-width: 100%;
+    max-width: 100%;
+    background-color: rgba(var(--color-foreground),.03);
+    border-radius: var(--media-radius);
+    border: 0;
+    cursor: pointer;
+}
+.custom-select__btn.is-loading {
+    color: rgba(var(--input-text-color)/0.2);
+}
+.custom-select__btn > .icon {
+    flex-shrink: 0;
+    width: auto;
+    height: .6rem;
+    margin-inline-start: auto;
+    margin-inline-end: -5px;
+    padding-inline-start: 10px;
+}
+
+offer-select {
+    display: block;
+}
+  
+.custom-select__listbox {
+    padding: 0 !important;
+    z-index: 100;
+    top: 5px;
+    left: 0;
+    min-width: 100%;
+    max-height: 20em;
+    overflow-y: auto;
+    border: .1rem solid rgba(var(--color-foreground)/0.2);
+    outline: 0;
+    background-color: rgb(255,255,255);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    color: rgb(var(--color-foreground));
+}
+.custom-select__listbox[aria-hidden=false] {
+    visibility: visible;
+}
+  
+.custom-select__option {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.custom-select__option > em {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    padding-inline-start: 1em;
+    font-style: normal;
+}
+.custom-select__option.is-focused {
+    outline: 0;
+    background-color: rgb(255,255,255);
+    color: rgb(var(--color-foreground));
+}
+
+.select--item>div {
+    flex: 1 auto;
+}
+
+.select--item>div:first-child {
+    width: auto;
+    max-width: fit-content;
+}
+
+.select--item {
+    gap: 1rem;
+}
+
+.select-number {
+    font-size: 1.3rem;
+}
+
+.offer-item .toggle-container {
+    overflow: unset;
+}
+
+@media (max-width: 749px) {
+    .badge-offer-fieldset {
+        max-width: 14rem;
+        font-size: 1.3rem;
+        margin-top: -2.55rem;
+    }
+    .offer-detail {
+        --swatch-input--size: 1.5rem;
+    }
+
+    .offer-detail .custom-select__btn > .icon {
+        margin-inline-end: -4px;
+        padding-inline-start: 5px;
+    }
+
+    offer-select * {
+        font-size: 1.3rem;
+    }
+
+    .custom-select__option {
+        padding: 1rem;
+    }
+
+    .offer--inner {
+        position: relative;
+        padding: 1rem 1.5rem 1rem;
+    }
+    .offer-detail summary {
+        padding: 1rem;
+    }
+    .detail-container {
+        padding: 1rem;
+    }
+    .select--item {
+        gap: .5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .select-number {
+        font-size: 1.2rem;
+    }
+
+}

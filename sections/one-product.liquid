@@ -1,0 +1,532 @@
+{%- style -%}
+    .section-{{ section.id }}-padding {
+        padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+        padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+    }
+
+    #shopify-section-{{ section.id }} {
+        --grid-desktop-horizontal-spacing: 55px;
+    }
+    #shopify-section-{{ section.id }} .hxxl {
+        font-size: clamp(calc(var(--font-heading-scale)* 12rem), 14vw, calc(var(--font-heading-scale)* 9.2rem));
+    }
+    .icon-one-item .image-wrap {
+        width: 5rem;
+        margin: 0 auto 2rem;
+    }
+
+    .icon-one-inner {
+        font-size: 1.4rem;
+    }
+
+    .icon-one-inner h3 {
+        margin: 0 0 2rem;
+        font-weight: 1000;
+        font-size: 1.7rem;
+        --font-heading-weight: 1000;
+        --font-heading-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0;
+    }
+
+    .icon-one-inner .rte {
+        font-weight: 300;
+    }
+
+    .icon-one-item .image-wrap img {
+        height: auto;
+        width: 100%;
+    }
+
+    .icon-one-item {
+        position: relative;
+        padding: 2.5rem 1.5rem;
+        background: rgba(var(--color-button),.1);
+        border-radius: var(--media-radius);
+        height: 100%;
+        border: .21rem solid rgb(var(--color-button));
+    }
+
+    .icon--wrap-one {
+        background: rgb(var(--color-background));
+        height: 100%;
+    }
+
+    .one-icons > div {
+        width: calc(50% - 1.5rem / 2);
+    }
+
+    .subtext-one {
+        margin: 0;
+        color: rgb(var(--color-button));
+    }
+
+    .left-one-col {
+        position: relative;
+        max-width: 49rem;
+        margin: auto;
+        z-index: 0;
+    }
+
+    .right-one-col {
+        position: relative;
+        max-width: 48rem;
+        z-index: 0;
+    }
+
+    .subtitle-one {
+        margin-top: 2.5rem;
+        margin-bottom: 0;
+        font-size: calc(var(--font-heading-scale)* 2.5rem);
+        font-weight: normal;
+        max-width: 35rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .left-one-col .rte {
+        max-width: 58rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 300;
+    }
+
+    #shopify-section-{{ section.id }} .top__title {
+        margin-bottom: 0;
+    }
+    #shopify-section-{{ section.id }} .subtext-one {
+        text-shadow: none;
+    }
+    .one-product-line {
+        margin: 2.5rem auto;
+        max-width: 34rem;
+        background: rgb(var(--color-button));
+    }
+
+    .vector-one-image {
+        position: absolute;
+    }
+    .vector-one-image-1 {
+        max-width: 11rem;
+    }
+    @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+        .one-icons > div {
+            width: calc(50% - 2rem / 2);
+        }
+        .bottom--makes {
+            margin-top: 4rem;
+        }
+
+        #shopify-section-{{ section.id }} .hxxl {
+            font-size: clamp(calc(var(--font-heading-scale)* 5.6rem), 14vw, calc(var(--font-heading-scale)* 15.2rem));
+        }
+        #shopify-section-{{ section.id }} .subtext-one {
+            font-size: calc(var(--font-heading-scale)* 6.5rem);
+            z-index: 1;
+            position: relative;
+        }
+        .vector-one-image-1 {
+            max-width: 6rem;
+            top: 0;
+            left: 11rem;
+            transform: rotate(45deg);
+        }
+        .vector-one-image-3 {
+            width: 10rem;
+            top: 8rem;
+            right: 1rem;
+            transform: rotate(22deg);
+        }
+        .vector-one-image-2 {
+            left: 5rem;
+            max-width: 8rem;
+            bottom: 17rem;
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+        .vector-r-image-2 {
+            max-width: 20rem;
+            top: 11rem;
+            right: -13rem;
+            transform: rotate(30deg);
+        }
+        .vector-r-image-1 {
+            max-width: 10rem;
+            transform: rotate(60deg);
+            z-index: -1;
+            bottom: 0;
+            left: -8rem;
+        }
+    }
+
+    @media (max-width: 749px) {
+        .one-icons {
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .icon-one-inner {
+            font-size: 1.2rem;
+        }
+        .icon-one-item {
+            padding: 1.5rem;
+        }
+
+        .icon-one-item .image-wrap img {
+            height: 4rem;
+            object-fit: contain;
+        }
+        .icon-one-inner h3 {
+            margin: 0 0 1rem;
+        }
+        .icon-one-item {
+            align-items: flex-start;
+        }
+        .icon-one-inner h3 {
+            font-size: 1.4rem;
+        }
+        #shopify-section-{{ section.id }} .hxxl {
+            position: relative;
+            z-index: 1;
+        }
+        .vector-one-image-2 {
+            top: -3rem;
+            right: 2rem;
+            transform: rotate(20deg);
+            z-index: 0;
+        }
+        .vector-one-image-3 {
+            max-width: 7rem;
+            top: 0;
+            transform: rotate(14deg);
+        }
+
+        .vector-one-image-1 {
+            max-width: 5rem;
+            top: 14rem;
+            left: 2rem;
+            transform: rotate(43deg);
+            z-index: 0;
+        }
+
+        .subtext-one {
+            z-index: 1;
+            position: relative;
+        }
+    }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width">
+        <div class="grid grid--1-col-tablet-down grid--2-col-desktop">
+            <div class="grid__item">
+                <div class="left-one-col center">
+                    {% if section.settings.title != blank %}
+                        <div class="top__title center title-wrapper-with-link justify-center title-wrapper title-wrapper--no-top-margin">
+                            <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                                {{ section.settings.title }}
+                            </h2>
+                        </div>
+                    {% endif %}
+                    {% if section.settings.subheading != blank %}
+                        <h2 class="hxl subtext-one">
+                          {{ section.settings.subheading }}
+                        </h2>
+                    {% endif %}
+                    {% if section.settings.subtitle != blank %}
+                        <h3 class="h3 subtitle-one">
+                          {{ section.settings.subtitle }}
+                        </h3>
+                    {% endif %}
+                    <hr class="one-product-line">
+                    {% if section.settings.content != blank %}
+                        <div class="rte">
+                        {{ section.settings.content }}
+                        </div>
+                    {% endif %}
+
+                    {% for i in (1..3) %}
+                        {% assign image_name = 'image_left_' | append: i %}
+                        {% assign image = section.settings[image_name] %}
+                        {% if image != blank %}
+                            <div class="vector-one-image vector-one-image-{{ i }}">
+                                <div class="image-wrap">
+                                    {%- liquid
+                                        assign number_of_columns = 2
+                                        assign number_of_columns_mobile = 3
+                                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                        assign image_width = 1
+                                    -%}
+                                    {%- assign image_height = image.width | divided_by: image.aspect_ratio -%}
+                                    {% capture sizes %}
+                                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                    {% endcapture %}
+                                    {{
+                                    image
+                                    | image_url: width: 300
+                                    | image_tag:
+                                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                        height: image_height,
+                                        alt: image.alt,
+                                        sizes: sizes,
+                                        loading: 'lazy',
+                                        class: 'radius-0'
+                                    }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="grid__item">
+                {% if section.blocks.size > 0 %}
+                    <div class="right-one-col">
+
+                        <div class="d-flex one-icons gap-2 flex-wrap">
+                            {% for block in section.blocks %}
+                                <div {% if settings.animations_reveal_on_scroll %} class="scroll-trigger animate--slide-in"{% endif %}
+                                    {% if settings.animations_reveal_on_scroll %}
+                                        data-cascade
+                                        style="--animation-order: {{ forloop.index }};"
+                                    {% endif %}
+                                >
+                                    <div class="icon--wrap-one">
+                                        <div class="icon-one-item center">
+                                            {% if block.settings.image != blank %}
+                                                <div class="image-wrap">
+                                                    {%- assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio -%}
+                                                    {% capture sizes %}(max-width: {{ block.settings.image.width | times: 2 }}px) 50vw, {{ block.settings.image.width }}px{% endcapture %}
+                                                    {% capture widths %}{{ block.settings.image.width }}, {{ block.settings.image.width | times: 1.5 | round }}, {{ block.settings.image.width | times: 2 }}{% endcapture %}
+                                                    {{
+                                                    block.settings.image
+                                                    | image_url: width: 400
+                                                    | image_tag:
+                                                        widths: widths,
+                                                        height: image_height,
+                                                        alt: block.settings.image.alt,
+                                                        sizes: sizes,
+                                                        loading: 'lazy',
+                                                        class: 'radius-0'
+                                                    }}
+                                                </div>
+                                            {% endif %}
+                                            {% if block.settings.title != blank %}
+                                                <div class="icon-one-inner">
+                                                    <h3>{{ block.settings.title }}</h3>
+                                                    {% if block.settings.content != blank %}
+                                                    <div class="rte">
+                                                        {{ block.settings.content }}
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        {% for i in (1..2) %}
+                            {% assign image_name = 'image_right_' | append: i %}
+                            {% assign image = section.settings[image_name] %}
+                            {% if image != blank %}
+                                <div class="vector-one-image small-hide vector-r-image-{{ i }}">
+                                    <div class="image-wrap">
+                                        {%- liquid
+                                            assign number_of_columns = 2
+                                            assign number_of_columns_mobile = 6
+                                            assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                            assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                            assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                            assign image_width = 1
+                                        -%}
+                                        {%- assign image_height = image.width | divided_by: image.aspect_ratio -%}
+                                        {% capture sizes %}
+                                            (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                            (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                            (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                            calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                        {% endcapture %}
+                                        {{
+                                        image
+                                        | image_url: width: 300
+                                        | image_tag:
+                                            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                            height: image_height,
+                                            alt: image.alt,
+                                            sizes: sizes,
+                                            loading: 'lazy',
+                                            class: 'radius-0'
+                                        }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "One Product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "header",
+        "content": "t:sections.featured-collection.settings.header_text.content"
+    },
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.featured-collection.settings.title.default",
+        "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+        "type": "inline_richtext",
+        "id": "subheading",
+        "label": "Subheading"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+    },
+    {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content"
+    },
+    {
+        "type": "header",
+        "content": "Left column Vector Images"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_left_1",
+        "label": "Image 1"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_left_2",
+        "label": "Image 2"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_left_3",
+        "label": "Image 3"
+    },
+    {
+        "type": "header",
+        "content": "Right column Vector Images"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_right_1",
+        "label": "Image 1"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_right_2",
+        "label": "Image 2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "One Product"
+    }
+  ]
+}
+{% endschema %}

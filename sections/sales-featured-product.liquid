@@ -196,7 +196,7 @@
                         <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                       </div>
                     {%- endif -%}
-                    {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                    {% comment %} {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
                       <div class="product__tax caption rte">
                         {%- if cart.duties_included and cart.taxes_included -%}
                           {{ 'products.product.duties_and_taxes_included' | t }}
@@ -209,7 +209,7 @@
                           {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                         {%- endif -%}
                       </div>
-                    {%- endif -%}
+                    {%- endif -%} {% endcomment %}
                     {% comment %} {%- unless placeholder -%}
                       <div {{ block.shopify_attributes }}>
                         {%- form 'product', product -%}
@@ -1656,8 +1656,7 @@
           }
         ],
         "default": "medium",
-        "label": "t:sections.main-product.settings.media_size.label",
-        "info": "t:sections.main-product.settings.media_size.info"
+        "label": "t:sections.main-product.settings.media_size.label"
       },
       {
         "type": "checkbox",
@@ -1740,8 +1739,7 @@
           }
         ],
         "default": "lightbox",
-        "label": "t:sections.main-product.settings.image_zoom.label",
-        "info": "t:sections.main-product.settings.image_zoom.info"
+        "label": "t:sections.main-product.settings.image_zoom.label"
       },
       {
         "type": "select",

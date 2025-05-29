@@ -309,6 +309,10 @@
   margin-bottom: 0;
 }
 
+.card--card .price-item--last {
+  font-weight: bold;
+}
+
 .card--horizontal .card__heading,
 .card--horizontal .price__container .price-item,
 .card--horizontal__quick-add {

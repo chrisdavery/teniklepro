@@ -1,0 +1,215 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  #shopify-section-{{section.id }} {
+    --grid-mobile-vertical-spacing: 0px;
+  }
+  #shopify-section-{{section.id }} .media-testimonial {
+    max-width: 40rem;
+    margin: auto;
+  }
+  .testimonal--sec-image, .testimonal--sec-name {
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  
+  .testimonal--sec-name {
+    display: block;
+    margin-top: 2rem;
+  }
+
+  .testimonal--sec-image {
+    position: relative;
+    max-width: 47rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rating-wrapper {
+    margin-bottom: 1.5rem;
+    display: flex;
+  }
+
+  .rating-wrapper svg {
+    display: block;
+    width: 2.6rem;
+    height: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .rating-wrapper svg {
+        width: 3rem;
+    }
+    .testimonal--sec-image, .testimonal--sec-name {
+        font-size: 1.8rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width">
+        <div class="grid grid--1-col-tablet-down align-center grid--2-col-desktop">
+            <div class="grid__item">
+                <div class="rating-wrapper justify-center">
+                    {% for i in (1..5) %}
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                <path d="M12.3436 0.882812L15.9441 8.58324L24.3803 9.62797L18.1694 15.4318L19.7827 23.7779L12.3436 19.6645L4.90453 23.7779L6.51786 15.4318L0.306934 9.62797L8.7431 8.58324L12.3436 0.882812Z" fill="rgb(var(--color-accent-4))"/>
+                            </svg>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if section.settings.content != blank %}
+                  <div class="testimonal--sec-image center rte">
+                    {{ section.settings.content }}
+
+                    <div class="left-quote-testimonial icon-quote-testimonial">
+                      {{ 'icon-quote.svg' | inline_asset_content }}
+                    </div>
+                    <div class="right-quote-testimonial icon-quote-testimonial">
+                      {{ 'icon-quote.svg' | inline_asset_content }}
+                    </div>
+                  </div>
+
+                    <span class="verified-badge d-flex justify-center align-center">
+                        <div>
+                            <img src="https://cdn.shopify.com/s/files/1/0623/6264/8757/files/icon-verified_png.png?v=1742549224">
+                        </div>
+                        <div>
+                            {{ 'accessibility.verified_customer' | t }}
+                        </div>
+                    </span>
+
+                  {% if section.settings.name != blank %}
+                    <span class="testimonial--name testimonal--sec-name">{{ section.settings.name }}</span>
+                  {% endif %}
+                {% endif %}
+            </div>
+            <div class="grid__item">
+                {% if section.settings.image != blank %}
+                    <div class="small-hide media-testimonial">
+                        <div
+                            class="media media--transparent"
+                            style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+                        >
+                            {%- if section.settings.image != blank -%}
+                                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                                {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 6)
+                                {%- endcapture -%}
+                            {{
+                                section.settings.image
+                                | image_url: width: 1000
+                                | image_tag: sizes: sizes, widths: widths
+                            }}
+                            {%- else -%}
+                                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {%- endif -%}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image Testimonial",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    },
+    {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content"
+    },
+    {
+        "type": "text",
+        "id": "name",
+        "label": "Name"
+    },  
+    {
+        "type": "color_scheme",
+        "id": "content_color_scheme",
+        "label": "Content color scheme",
+        "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Testimonial"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,257 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "congratulations_LawyQT": {
+      "type": "congratulations",
+      "custom_css": [
+        "@media (max-width: 749px) {[class*=\"-padding\"] {padding-top: 2.5rem; } .h0 {font-size: calc(var(--font-heading-scale) * 2.8rem); }}"
+      ],
+      "settings": {
+        "title": "CONGRATULATIONS!",
+        "heading_size": "h0",
+        "subtitle": "YOU'VE EARNED $5 CREDIT",
+        "description_body": "<h2>ENHANCE YOUR TENIKLE PRO WITH THESE EXCLUSIVE ADD-ONS</h2><p>Use your $5 credit toward any item below – Limited Time Only!<br/></p>",
+        "description_style": "body",
+        "title_color_scheme": "scheme-87e0f469-df94-4266-ad5f-8003743d391e",
+        "color_scheme": "",
+        "image_1": "shopify://shop_images/red-ten.png",
+        "image_2": "shopify://shop_images/f9227614656b08d0a87e8baf4e60a0a0.png",
+        "padding_top": 72,
+        "padding_bottom": 100
+      }
+    },
+    "section_divider_YFHM6h": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "right",
+        "top_color_desktop": "#ffffff",
+        "top_color_mobile": "#ffffff",
+        "bottom_color": "#00c6bc",
+        "offset_top": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_TWFxGk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_NgdzjQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "UNLOCK THE FULL POTENTIAL OF YOUR TENIKLE PRO",
+            "heading_size": "h1"
+          }
+        },
+        "text_crJKrU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You've made a great choice with Tenikle PRO. Now take your experience to the next level with these specially designed accessories that expand your mounting possibilities even further!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NgdzjQ",
+        "text_crJKrU"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {max-width: 104rem;}",
+        ".rich-text__text {max-width: 80rem; margin-left: auto; margin-right: auto;}",
+        "@media (max-width: 749px) {.rich-text__wrapper {width: 100%; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-76e1c3ae-4b8b-4e8e-b1a2-854edc58b518",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 32
+      }
+    },
+    "custom_liquid_pYahac": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "@media (max-width: 749px) {{position: sticky; top: 0; width: 100%; z-index: 1; }}"
+      ],
+      "settings": {
+        "custom_liquid": "{% style %}\n.timer-white {\n    background: rgba(var(--color-background),.563);\n    border-radius: 40px;\n    padding: 1.5rem;\n}\n.sticky--timer .page-width--narrow {\n    max-width: 55.6rem;\n}\n.timer-white h3 {\n    margin: 0;\n}\n\n.timer-white * {\n    font-weight: bold;\n}\n.pill-timer {\n    padding: .5rem;\n    background: rgb(255, 255, 255);\n    display: block;\n    line-height: 1em;\n    border-radius: .3rem;\n    width: 2.2rem;\n    text-align: center;\n}\n.minutes-wrap:after {\n    content: ':';\n    position: absolute;\n    right: -.8rem;\n    top: 50%;\n    transform: translateY(-50%);\n}\n\n.minutes-wrap {\n    position: relative;\n}\n@media (max-width: 749px) {\n    .timer-white * {\n        font-size: 1.3rem;\n    }\n\n    .sticky--timer .page-width--narrow {\n        padding: 0;\n    }\n\n    .timer-white {\n        padding: 1.5rem;\n        border-radius: 0;\n    }\n}\n@media (max-width: 360px) {\n    .timer-white * {\n        font-size: 1.3rem;\n    }\n}\n{% endstyle %}\n\n<div class=\"sticky--timer\">\n    <div class=\"page-width page-width--narrow\">\n        <div class=\"color-background-1 gradient timer-white\">\n            <div class=\"d-flex align-center justify-center gap-1\">\n                <div>\n                    <h3>🎁 YOUR $5 CREDIT EXPIRES IN:</h3>\n                </div>\n                <div>\n                    <div class=\"d-flex align-center gap-1\">\n                        <div class=\"minutes-wrap\">\n                            <div class=\"d-flex gap-third-1 justify-center\">\n                                <div>\n                                    <span class=\"pill-timer h3 minute-first-num\"></span>\n                                </div>\n                                <div>\n                                    <span class=\"pill-timer h3 minute-second-num\"></span>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"seconds-wrap\">\n                            <div class=\"d-flex gap-third-1 justify-center\">\n                                <div>\n                                    <span class=\"pill-timer h3 seconds-first-num\"></span>\n                                </div>\n                                <div>\n                                    <span class=\"pill-timer h3 seconds-second-num\"></span>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<script>\n    // Set the countdown duration in seconds (15 minutes)\n    const countdownDuration = 15 * 60;\n\n    // Get references to the timer elements\n    const minuteFirstNum = document.querySelector('.minute-first-num');\n    const minuteSecondNum = document.querySelector('.minute-second-num');\n    const secondsFirstNum = document.querySelector('.seconds-first-num');\n    const secondsSecondNum = document.querySelector('.seconds-second-num');\n\n    // Function to update the timer display\n    function updateTimerDisplay(minutes, seconds) {\n        const minuteString = String(minutes).padStart(2, '0');\n        const secondString = String(seconds).padStart(2, '0');\n\n        minuteFirstNum.textContent = minuteString[0];\n        minuteSecondNum.textContent = minuteString[1];\n        secondsFirstNum.textContent = secondString[0];\n        secondsSecondNum.textContent = secondString[1];\n    }\n\n    // Initialize the countdown\n    let remainingTime = countdownDuration;\n\n    // Update the timer every second\n    const timerInterval = setInterval(() => {\n        const minutes = Math.floor(remainingTime / 60);\n        const seconds = remainingTime % 60;\n\n        updateTimerDisplay(minutes, seconds);\n\n        if (remainingTime <= 0) {\n            clearInterval(timerInterval);\n        } else {\n            remainingTime--;\n        }\n    }, 1000);\n\n    // Initialize the display\n    updateTimerDisplay(Math.floor(countdownDuration / 60), countdownDuration % 60);\n</script>",
+        "color_scheme": "scheme-76e1c3ae-4b8b-4e8e-b1a2-854edc58b518",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_divider_GpfQjx": {
+      "type": "section-divider",
+      "settings": {
+        "direction": "left",
+        "top_color_desktop": "#00c6bc",
+        "top_color_mobile": "#00c6bc",
+        "bottom_color": "#ffffff",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "upsell_2025_eTT4Vy": {
+      "type": "upsell-2025",
+      "blocks": {
+        "item_WMiTzL": {
+          "type": "item",
+          "settings": {
+            "image": "{{ block.settings.product.featured_image }}",
+            "title": "SHUTTERBUG KIT",
+            "content": "<p>Snap pictures & start/stop videos from up to 30 feet away!</p>",
+            "product": "shutterbug-kit",
+            "items": "Universal Bluetooth remote for hands-free shooting\nGoPro adapter for action camera mounting\nSmartphone clip for perfect positioning\nCarrying pouch for easy transport",
+            "bottom_content": "<p><em><strong>Perfect for:</strong></em><em> Content creators, travelers, and anyone who loves capturing life's moments</em></p>"
+          }
+        },
+        "item_Y44TL9": {
+          "type": "item",
+          "settings": {
+            "image": "{{ block.settings.product.featured_image }}",
+            "title": "POWER PACK",
+            "content": "<p>Turn your Tenikle into the ultimate photography assistant</p>",
+            "product": "power-pack",
+            "items": "5,000mAh portable power bank\nShort USB cable for tangle-free charging\nCompatible with all smartphones\nCompact size fits perfectly with your Tenikle",
+            "bottom_content": "<p><em><strong>Perfect for:</strong></em><em> Travelers, busy professionals, and everyday adventures</em></p>"
+          }
+        },
+        "item_hhyJLQ": {
+          "type": "item",
+          "settings": {
+            "image": "{{ block.settings.product.featured_image }}",
+            "title": "TENIKLE TRAVEL CASE",
+            "content": "<p>Protect your Tenikle wherever you go</p>",
+            "product": "tenikle-travel-case",
+            "items": "Custom-designed hardshell protection\nInterior pocket for accessories\nWeatherproof exterior\nCarabiner clip for easy attachment to bags",
+            "bottom_content": "<p><em><strong>Perfect for:</strong></em><em> Travelers, outdoor enthusiasts, and anyone on the move</em></p>"
+          }
+        },
+        "item_FFeciw": {
+          "type": "item",
+          "settings": {
+            "image": "{{ block.settings.product.featured_image }}",
+            "title": "UNIVERSAL MOUNT ADAPTER KIT",
+            "content": "<p>Connect Tenikle to virtually any device</p>",
+            "product": "universal-mount-adapter-kit",
+            "items": "Standard camera thread adapter\nAction camera mount\nTablet extension clip\nAdditional suction reinforcement pads",
+            "bottom_content": "<p><em><strong>Perfect for:</strong></em><em> Tech enthusiasts who want maximum versatility</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_WMiTzL",
+        "item_Y44TL9",
+        "item_hhyJLQ",
+        "item_FFeciw"
+      ],
+      "settings": {
+        "columns_desktop": 4,
+        "columns_mobile": "1",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "section_divider_iPiTiG": {
+      "type": "section-divider",
+      "custom_css": [],
+      "settings": {
+        "direction": "right",
+        "top_color_desktop": "#ffffff",
+        "top_color_mobile": "#ffffff",
+        "bottom_color": "#dbfc03",
+        "offset_top": false,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_DUQ8Ef": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9MkrwB": {
+          "type": "heading",
+          "settings": {
+            "heading": "REMEMBER, YOUR $5 CREDIT EXPIRES",
+            "heading_size": "h1"
+          }
+        },
+        "heading_3Rrp9h": {
+          "type": "heading",
+          "settings": {
+            "heading": "SOON",
+            "heading_size": "hxxl"
+          }
+        },
+        "text_gkdUmn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Don't miss this chance to enhance your Tenikle PRO experience at a special discount. These accessories have been specially designed to work perfectly with your new Tenikle PRO!</p>"
+          }
+        },
+        "button_9TfUpe": {
+          "type": "button",
+          "settings": {
+            "button_label": "NO THANKS, CONTINUE TO CHECKOUT",
+            "button_link": "/checkout",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "caption_yhkRLd": {
+          "type": "caption",
+          "settings": {
+            "caption": "Your $5 credit can only be used on this page and expires when you leave this page.",
+            "text_style": "subtitle",
+            "text_size": "x-small"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9MkrwB",
+        "heading_3Rrp9h",
+        "text_gkdUmn",
+        "button_9TfUpe",
+        "caption_yhkRLd"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {max-width: 80rem;}",
+        ".rich-text__wrapper {width: 100%;}",
+        ".rich-text__caption.subtitle.subtitle--x-small {font-style: italic; max-width: 39rem; margin-left: auto; margin-right: auto; margin-top: 1rem;}",
+        ".rich-text__heading.hxxl {color: rgb(var(--color-button)); margin: 0;}",
+        "@media (max-width: 749px) {.button--primary {font-weight: 500; font-size: 1.2rem; width: 100%; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-9f2a4824-7cbe-48c3-ac6f-e0e450371741",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "congratulations_LawyQT",
+    "section_divider_YFHM6h",
+    "rich_text_TWFxGk",
+    "custom_liquid_pYahac",
+    "section_divider_GpfQjx",
+    "upsell_2025_eTT4Vy",
+    "section_divider_iPiTiG",
+    "rich_text_DUQ8Ef"
+  ]
+}

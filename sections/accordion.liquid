@@ -1,0 +1,280 @@
+{{ 'section-accordion.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .vector-faq-image {
+    position: absolute;
+    z-index: 0;
+  }
+
+  .vector-faq-image img {
+    width: 100%;
+    height: auto;
+  }
+  #faq-section {
+    position: relative;
+  }
+  .accordion-faq-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  .vector-faq-image-1 {
+    top: 3vw;
+    left: 0;
+    width: 52rem;
+  }
+  .vector-faq-image-2 {
+    top: 0;
+    right: 0;
+    width: 23vw;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  @media (max-width: 749px) {
+    .vector-faq-image-1 {
+      top: 22vw;
+      width: 61vw;
+    }
+    .vector-faq-image-2 {
+        top: unset;
+        right: 0;
+        width: 34vw;
+        bottom: 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient" id="faq-section">
+    <div class="accordion-faq-wrapper">
+      <div class="page-width section-{{ section.id }}-padding">
+        {%- unless section.settings.title == blank -%}
+          <div class="title-wrapper-with-link justify-center center title-wrapper--no-top-margin">
+            <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+              {{ section.settings.title }}
+            </h2>
+          </div>
+        {%- endunless -%}
+        
+        {% liquid
+          assign divided_blocks = section.blocks.size | divided_by: 2
+          assign divided_block_total = section.blocks.size | minus: divided_blocks
+        %}
+
+        <div class="grid grid grid--1-col-tablet-down grid--2-col-desktop">
+          <div class="grid__item">
+            {% for block in section.blocks %}
+              {% if forloop.index <= divided_block_total %}
+                <div class="accordion-item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  {% if settings.animations_reveal_on_scroll %}
+                    data-cascade
+                    style="--animation-order: {{ forloop.index }};"
+                  {% endif %}
+                >
+                  <button class="js-toggle text-body accordion-type" data-container="faq-{{ section.id }}-{{ block.id }}">
+                      <span>{{ block.settings.heading }}</span>
+                      <div class="toggle-icon toggle-icon--plus">{{- 'icon-plus.svg' | inline_asset_content -}}</div> <div class="toggle-icon">{{- 'icon-minus.svg' | inline_asset_content -}}</div></button> 
+                  <div class="toggle-container rte accordion-container" id="faq-{{ section.id }}-{{ block.id }}">
+                    {{ block.settings.content }}
+                    {{ block.settings.liquid }}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="grid__item">
+            {% for block in section.blocks %}
+              {% if forloop.index > divided_block_total %}
+                <div class="accordion-item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  {% if settings.animations_reveal_on_scroll %}
+                    data-cascade
+                    style="--animation-order: {{ forloop.index }};"
+                  {% endif %}
+                >
+                  <button class="js-toggle text-body accordion-type" data-container="faq-{{ section.id }}-{{ block.id }}">
+                      <span>{{ block.settings.heading }}</span>
+                      <div class="toggle-icon toggle-icon--plus">{{- 'icon-plus.svg' | inline_asset_content -}}</div> <div class="toggle-icon">{{- 'icon-minus.svg' | inline_asset_content -}}</div></button> 
+                  <div class="toggle-container rte accordion-container" id="faq-{{ section.id }}-{{ block.id }}">
+                    {{ block.settings.content }}
+                    {{ block.settings.liquid }}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {%- if section.settings.button_label != blank and section.settings.button_label != 'Button Label' -%}
+          <div class="center faq-button">
+              <a class="button button--primary no-radius-button {% if section.settings.enlarge_button == true %}button--large{% endif %}"{% if section.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.button_link }}"{% endif %}>
+                {{ section.settings.button_label | escape }}
+              </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {% for i in (1..2) %}
+      {% assign image_name = 'image_' | append: i %}
+      {% assign image = section.settings[image_name] %}
+      {% if image != blank %}
+          <div class="vector-faq-image vector-faq-image-{{ i }}">
+              <div class="image-wrap">
+                  {%- assign image_height = image.width | divided_by: image.aspect_ratio -%}
+                  {% capture sizes %}(max-width: {{ image.width | times: 2 }}px) 50vw, {{ image.width }}px{% endcapture %}
+                  {% capture widths %}{{ image.width }}, {{ image.width | times: 1.5 | round }}, {{ image.width | times: 2 }}{% endcapture %}
+                  {{
+                  image
+                  | image_url: width: 800
+                  | image_tag:
+                      widths: widths,
+                      height: image_height,
+                      alt: image.alt,
+                      sizes: sizes,
+                      loading: 'lazy',
+                      class: 'radius-0'
+                  }}
+              </div>
+          </div>
+      {% endif %}
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+    "name": "Accordion",
+    "class": "accordion-sec",
+    "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "default": "t:sections.multicolumn.settings.title.default",
+          "label": "t:sections.multicolumn.settings.title.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.multicolumn.settings.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.multicolumn.settings.button_link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "enlarge_button",
+          "label": "Enlarge Button",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Vector Images"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "background-1"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ],
+    "blocks": [
+        {
+            "type": "faq",
+            "name": "FAQ",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Description"
+                },
+                {
+                  "type": "liquid",
+                  "id": "liquid",
+                  "label": "Liquid"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Accordion"
+        }
+    ]
+}
+{% endschema %}

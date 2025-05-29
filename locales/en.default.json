@@ -77,6 +77,7 @@
     "close": "Close",
     "unit_price_separator": "per",
     "vendor": "Vendor:",
+    "verified_customer": "Verified Customer",
     "error": "Error",
     "refresh_page": "Choosing a selection results in a full page refresh.",
     "link_messages": {
@@ -116,15 +117,18 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "choose_a_color": "Choose a Color:",
+      "choose_colors": "Choose Colors:",
+      "credit_text_html": "<strong>{{ price }}</strong> with your {{ credit }} credit!",
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
-      "inventory_in_stock": "In stock",
-      "inventory_in_stock_show_count": "{{ quantity }} in stock",
+      "inventory_in_stock_html": "Order today and get it by {{ deliver }}",
+      "inventory_in_stock_show_count_html": "{{ quantity }} in stock",
       "inventory_low_stock": "Low stock",
       "inventory_low_stock_show_count": "Low stock: {{ quantity }} left",
       "inventory_out_of_stock": "Out of stock",
-      "inventory_out_of_stock_continue_selling": "In stock",
+      "inventory_out_of_stock_continue_selling_html": "Order today and get it by {{ deliver }}",
       "sku": "SKU",
       "on_sale": "Sale",
       "product_variants": "Product variants",
@@ -191,6 +195,7 @@
       "add": "ADD",
       "clear": "CLEAR",
       "save": "Save {{ price }}",
+      "select_your_bundle": "Select your bundle",
       "swatch_label": "{{ count }} Tenikle:",
       "costco_label_html": "<p>Costco Member? Get an even better deal on <a href=\"{{ link }}\" target=\"_blank\">Coscto.com</a></p>",
       "costco_button": "SHOP COSTCO"

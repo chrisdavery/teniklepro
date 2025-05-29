@@ -1,0 +1,221 @@
+{{ 'reviews-scrolling.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'reviews-scrolling.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  #shopify-section-{{ section.id }} .title-wrapper-with-link .title {
+    width: 100%;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% 
+  liquid
+  assign marquee_duration_rate = section.settings.marquee_duration_rate
+  assign marquee_duration = section.blocks.size | times: marquee_duration_rate
+%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%}
+      <div class="page-width">
+        <div class="title-wrapper-with-link justify-center flex-d-column title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+          <h2 class="title inline-richtext center {{ section.settings.heading_size }}">
+            {{ section.settings.title }}
+          </h2>
+        </div>
+      </div>
+    {%- endunless -%}
+    <div class="review-scrollings-wrapper">
+      <div class="review-scrollings-pre-wrapper">
+        {% capture marquee_items %}
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'item' %}
+                <div class="review-item">
+                  <div class="review_box center">
+                    <div class="review-top">
+                        <div class="rating-wrapper justify-center">
+                            {% for i in (1..5) %}
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                        <path d="M12.3436 0.882812L15.9441 8.58324L24.3803 9.62797L18.1694 15.4318L19.7827 23.7779L12.3436 19.6645L4.90453 23.7779L6.51786 15.4318L0.306934 9.62797L8.7431 8.58324L12.3436 0.882812Z" fill="rgb(var(--color-accent-4))"/>
+                                    </svg>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        {% if block.settings.title != blank %}
+                            <h4 class="title-review h3">{{ block.settings.title }}</h4>
+                        {% endif %}
+
+                        <div class="rte">
+                            {{ block.settings.content }}
+                            <div class="testimonial-icon testimonial-icon-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="29" viewBox="0 0 44 29" fill="none">
+                                    <path opacity="0.07" d="M0.532689 17.5191C0.532689 7.0823 10.4604 0.124411 20.7275 1.90631V8.94906C15.3818 8.01568 11.3089 9.54302 9.9513 13.6159C10.6301 13.4462 11.3089 13.3614 11.9029 13.3614C16.1455 13.3614 19.2851 16.5858 19.2851 20.5738C19.2851 25.1559 15.8061 28.3802 10.3756 28.3802C4.6056 28.3802 0.532689 24.477 0.532689 17.5191ZM23.2731 17.5191C23.2731 7.0823 33.2008 0.124411 43.468 1.90631V8.94906C38.1223 8.01568 34.0494 9.54302 32.6917 13.6159C33.3705 13.4462 34.0494 13.3614 34.6433 13.3614C38.8859 13.3614 42.0255 16.5858 42.0255 20.5738C42.0255 25.1559 38.5465 28.3802 33.116 28.3802C27.346 28.3802 23.2731 24.477 23.2731 17.5191Z" fill="black"/>
+                                </svg>
+                            </div>
+                            <div class="testimonial-icon testimonial-icon-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="29" viewBox="0 0 44 29" fill="none">
+                                    <path opacity="0.07" d="M0.532689 17.5191C0.532689 7.0823 10.4604 0.124411 20.7275 1.90631V8.94906C15.3818 8.01568 11.3089 9.54302 9.9513 13.6159C10.6301 13.4462 11.3089 13.3614 11.9029 13.3614C16.1455 13.3614 19.2851 16.5858 19.2851 20.5738C19.2851 25.1559 15.8061 28.3802 10.3756 28.3802C4.6056 28.3802 0.532689 24.477 0.532689 17.5191ZM23.2731 17.5191C23.2731 7.0823 33.2008 0.124411 43.468 1.90631V8.94906C38.1223 8.01568 34.0494 9.54302 32.6917 13.6159C33.3705 13.4462 34.0494 13.3614 34.6433 13.3614C38.8859 13.3614 42.0255 16.5858 42.0255 20.5738C42.0255 25.1559 38.5465 28.3802 33.116 28.3802C27.346 28.3802 23.2731 24.477 23.2731 17.5191Z" fill="black"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% if block.settings.name != blank %}
+                        <div class="review-bottom">
+                            <span class="verified-badge d-flex justify-center align-center">
+                                <div>
+                                    <img src="https://cdn.shopify.com/s/files/1/0623/6264/8757/files/icon-verified_png.png?v=1742549224">
+                                </div>
+                                <div>
+                                    {{ 'accessibility.verified_customer' | t }}
+                                </div>
+                            </span>
+                            <span class="name-review h4">{{ block.settings.name }}</span>
+                        </div>
+                    {% endif %}
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        {% endcapture %}
+
+        {% liquid
+          assign marquee_items_size = section.blocks.size | times: 1.0
+          assign marquee_items_size_shoud_be = 70
+          assign lower_limit = 1
+          assign upper_limit = marquee_items_size_shoud_be | divided_by: marquee_items_size | ceil
+        %}
+
+        <div class="review-scrollings"  data-speed="{{ marquee_duration_rate }}">
+          {% for i in (lower_limit..upper_limit) -%}
+            {{ marquee_items }}
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "marquee_duration_rate",
+      "label": "Marquee duration",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.featured-collection.settings.title.default",
+        "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

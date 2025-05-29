@@ -1,0 +1,14 @@
+.faq-button {
+  margin-top: 3rem;
+}
+
+@media (min-width: 750px) {
+  .inner-sub .accordion-type {
+    padding: 28px 24px 28px 50px;
+  }
+}
+@media (max-width: 749px) {
+  .inner-sub .accordion-type {
+    padding: 18px 24px 18px 18px;
+  }
+}

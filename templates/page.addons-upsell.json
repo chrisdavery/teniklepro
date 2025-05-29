@@ -17,6 +17,15 @@
         "padding_bottom": 28
       }
     },
+    "custom_liquid_aewnTF": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.offer-subtitle {\n  display: none !important;\n}\n:root {\n    --font-heading-family: Poppins, sans-serif;\n    --font-heading-style: normal;\n    --font-heading-weight: 700;\n    --font-sec-heading-family: Poppins, sans-serif;\n    --font-sec-heading-style: normal;\n    --font-sec-heading-weight: 600;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "shipping_message_eeqRyp": {
       "type": "shipping-message",
       "settings": {
@@ -143,6 +152,7 @@
   },
   "order": [
     "main",
+    "custom_liquid_aewnTF",
     "shipping_message_eeqRyp",
     "upsell_addons_hans_JBfthi"
   ]

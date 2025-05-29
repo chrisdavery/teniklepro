@@ -1,0 +1,637 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  .subtitle-table {
+    font-weight: normal;
+    text-shadow: 0px 4px 4px rgba(var(--color-secondary-button-text),.2);
+  }
+  .table-card__info.table-2-column {
+    background: rgb(var(--color-accent-2));
+    border-radius: var(--media-radius);
+    font-weight: 500;
+  }
+
+  .page-width--table {
+    max-width: 120rem;
+  }
+  .table-cell {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .table-1-column .table--heading h3 {
+    --font-heading-weight: 1000;
+    --font-heading-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: calc(1 + .1 / max(1, var(--font-heading-scale)));
+  }
+  .table-card__info {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(5rem, 12rem) repeat(auto-fit, minmax(0, 8rem));
+  }
+  
+  .table--heading h3 {
+    margin: 0;
+  }
+
+  .table--heading h3 >* {
+    margin: 0;
+  }
+
+  .table-card__image-wrapper {
+    position: absolute;
+    top: -6rem;
+    width: 100%;
+    max-width: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .table--heading:not(.table-1-column .table--heading) {
+    padding-top: 5rem;
+  }
+
+  .table-card__logo-wrapper {
+    max-width: 13rem;
+    margin: auto;
+    width: 100%;
+  }
+  
+  #shopify-section-{{ section.id }} {
+    --grid-desktop-horizontal-spacing: 0px;
+    --grid-mobile-horizontal-spacing: 0px;
+  }
+  
+  .table-cell:not(.table-2-column .table-cell) {
+    border-top: .1rem solid rgba(var(--color-foreground),.2);
+  }
+  .table-cell:not(.table-1-column .table-cell):not(.table-2-column .table-cell) {
+    border-right: .1rem solid rgba(var(--color-foreground),.2);
+  }
+
+  .table-1-column .table-cell {
+    justify-content: flex-start;
+  }
+
+  .table-list__item:first-child .table-card {
+    border-top-left-radius: var(--media-radius);
+    border-bottom-left-radius: var(--media-radius);
+  }
+
+  .table-list__item:last-child .table-card {
+    border-top-right-radius: var(--media-radius);
+    border-bottom-right-radius: var(--media-radius);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .table-wrapping {
+      border-radius: 2.7rem;
+    }
+    #shopify-section-{{ section.id }} .page-width--table {
+      margin-top: 8rem;
+    }
+    .table-cell {
+      padding: 1rem 2rem;
+    }
+    .table-1-column .table--heading h3 {
+      font-size: calc(var(--font-heading-scale)* 4rem);
+    }
+    .table-card.content-container,.table-card,.table-card__info {
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .page-width {
+      padding: 0;
+    }
+  }
+  @media (max-width: 749px) {
+    .subtitle-table {
+      font-size: calc(var(--font-heading-scale) * 2.4rem);
+    }
+    #shopify-section-{{ section.id }} .grid--peek.slider .grid__item:first-of-type {
+      width: calc(40% - var(--grid-mobile-horizontal-spacing) - 3rem);
+    }
+    #shopify-section-{{ section.id }} .grid--peek.slider .grid__item:not(:first-of-type) {
+      width: calc(30% - var(--grid-mobile-horizontal-spacing) - 3rem);
+    }
+    .table-cell {
+      font-size: 1.4rem;
+    }
+    .table-card__info {
+      margin-top: 3rem;
+    }
+    .table-card__image-wrapper {
+      top: -3rem;
+      max-width: 7rem;
+    }
+    .table--heading h3:not(.h1) {
+      font-size: calc(var(--font-heading-scale)* 1.4rem);
+    }
+
+    .table-card__logo-wrapper {
+      max-width: 8rem;
+    }
+    .table-cell:not(.table-1-column .table-cell) {
+      font-size: 1.2rem;
+    }
+    .table--heading:not(.table-1-column .table--heading) {
+      padding-top: 3rem;
+    }
+    .table-card__info {
+      grid-template-rows: minmax(5rem, 12rem);
+      grid-auto-rows: 7rem;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%}
+        <div class="title-wrapper-with-link flex-d-column justify-center center title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+            {{ section.settings.title }}
+          </h2>
+          {% if section.settings.subtitle != blank %}
+              <h3 class="title inline-richtext h1 subtitle-table">
+                  {{ section.settings.subtitle }}
+              </h3>
+          {% endif %}
+          {% if section.settings.description_body != blank %}
+            <div class="collection__description {{ section.settings.description_style }} center rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {{ section.settings.description_body -}}
+            </div>
+          {% endif %}
+        </div>
+    {%- endunless -%}
+
+      <div class="page-width page-width--table">
+          <slider-component class="slider-mobile-gutter">
+            <ul
+              class="table-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--5-col-desktop{% if show_mobile_slider %} slider slider--tablet grid--peek{% endif %}"
+              id="Slider-{{ section.id }}"
+              role="list"
+            >
+              {%- for block in section.blocks -%}
+                <li
+                  id="Slide-{{ section.id }}-{{ forloop.index }}"
+                  class="table-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="table-card color-{{ section.settings.table_color_scheme }} gradient">
+                    {% case block.type %}
+                    {% when 'first_column' %}
+                        <div class="table-card__info table-{{ forloop.index }}-column">
+                          {%- if block.settings.title != blank -%}
+                            <div class="table--heading table-cell">
+                              <h3 class="inline-richtext h1">{{ block.settings.title }}</h3>
+                            </div>
+                          {%- endif -%}
+
+                          {% for i in (1..5) %}
+                            {% assign text_name = 'item_' | append: i %}
+                            {% assign text = block.settings[text_name] %}
+
+                            {% if text != blank %}
+                              <div class="table-cell rte">
+                                  <p>{{ text }}</p>
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% when 'second_column' %}
+                        <div class="table-card__info table-{{ forloop.index }}-column center">
+                          <div class="table--heading table-cell">
+                              {%- if block.settings.image != blank -%}
+                                <div class="table-card__image-wrapper">
+                                  <div
+                                    class="media media--transparent media--adapt"
+                                    style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                                  >
+                                    {%- liquid
+                                      assign number_of_columns = 5
+                                      assign number_of_columns_mobile = 4
+                                      assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                      assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                      assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                      assign image_width = 1
+                                    -%}
+                                    {% capture sizes %}
+                                      (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                      (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                      (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                      calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                    {% endcapture %}
+                                    {{
+                                      block.settings.image
+                                      | image_url: width: 300
+                                      | image_tag:
+                                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                        sizes: sizes,
+                                        class: 'table-card__image'
+                                    }}
+                                  </div>
+                                </div>
+                              {% endif %}
+                              {%- if block.settings.logo != blank -%}
+                                <div class="table-card__logo-wrapper">
+                                  <div
+                                    class="media media--transparent media--adapt"
+                                    style="padding-bottom: {{ 1 | divided_by: block.settings.logo.aspect_ratio | times: 100 }}%;"
+                                  >
+                                    {%- liquid
+                                      assign number_of_columns = 5
+                                      assign number_of_columns_mobile = 4
+                                      assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                      assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                      assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                      assign image_width = 1
+                                    -%}
+                                    {% capture sizes %}
+                                      (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                      (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                      (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                      calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                    {% endcapture %}
+                                    {{
+                                      block.settings.logo
+                                      | image_url: width: 300
+                                      | image_tag:
+                                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                        sizes: sizes,
+                                        class: 'table-card__image'
+                                    }}
+                                  </div>
+                                </div>
+                              {% endif %}
+                          </div>
+
+                          {% for i in (1..5) %}
+                            {% assign text_name = 'item_' | append: i %}
+                            {% assign text = block.settings[text_name] %}
+
+                            {% if text != blank %}
+                              <div class="table-cell rte">
+                                  <p>{{ text }}</p>
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% when 'item_column' %}
+                        <div class="table-card__info table-{{ forloop.index }}-column center">
+                          {%- if block.settings.title != blank -%}
+                            <div class="table--heading table-cell">
+                                {%- if block.settings.image != blank -%}
+                                  <div class="table-card__image-wrapper">
+                                    <div
+                                      class="media media--transparent media--adapt"
+                                      style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                                    >
+                                      {%- liquid
+                                        assign number_of_columns = 5
+                                        assign number_of_columns_mobile = 4
+                                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                                        assign image_width = 1
+                                      -%}
+                                      {% capture sizes %}
+                                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                                      {% endcapture %}
+                                      {{
+                                        block.settings.image
+                                        | image_url: width: 300
+                                        | image_tag:
+                                          widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                          sizes: sizes,
+                                          class: 'table-card__image'
+                                      }}
+                                    </div>
+                                  </div>
+                                {% endif %}
+                                {%- if block.settings.title != blank -%}
+                                  <div class="table-top-heading">
+                                    <h3 class="inline-richtext h3">{{ block.settings.title }}</h3>
+                                  </div>
+                                {%- endif -%}
+                            </div>
+                          {%- endif -%}
+
+                          {% for i in (1..5) %}
+                            {% assign text_name = 'item_' | append: i %}
+                            {% assign text = block.settings[text_name] %}
+
+                            {% if text != blank %}
+                              <div class="table-cell rte">
+                                  <p>{{ text }}</p>
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                    {% endcase %}
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+
+            {%- if show_mobile_slider -%}
+              <div class="slideshow__controls slider-buttons large-up-hide">
+                <button
+                  type="button"
+                  class="slider-button slider-button--prev"
+                  name="previous"
+                  aria-label="{{ 'general.slider.previous_slide' | t }}"
+                  aria-controls="Slider-{{ section.id }}"
+                >
+                  <span class="svg-wrapper">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+                <div class="slider-counter slider-counter--dots">
+                  <div class="slideshow__control-wrapper">
+                    {%- for block in section.blocks -%}
+                      <button
+                        class="slider-counter__link slider-counter__link--dots link"
+                        aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                        aria-controls="Slider-{{ section.id }}"
+                      >
+                        <span class="dot"></span>
+                      </button>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="slider-button slider-button--next"
+                  name="next"
+                  aria-label="{{ 'general.slider.next_slide' | t }}"
+                  aria-controls="Slider-{{ section.id }}"
+                >
+                  <span class="svg-wrapper">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+              </div>
+            {%- endif -%}
+          </slider-component>
+      </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Table - Choose",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.multicolumn.settings.title.default",
+        "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+          {
+            "value": "hxxl",
+            "label": "t:sections.all.heading_size.options__5.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+    },
+    {
+          "type": "inline_richtext",
+          "id": "subtitle",
+          "default": "Subtitle",
+          "label": "Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.multicolumn.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.multicolumn.settings.columns_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": false,
+      "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "table_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "first_column",
+        "name": "First Column",
+        "limit": 1,
+        "settings": [
+            {
+                "type": "richtext",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "item_1",
+                "label": "Item 1"
+            },
+            {
+                "type": "text",
+                "id": "item_2",
+                "label": "Item 2"
+            },
+            {
+                "type": "text",
+                "id": "item_3",
+                "label": "Item 3"
+            },
+            {
+                "type": "text",
+                "id": "item_4",
+                "label": "Item 4"
+            },
+            {
+                "type": "text",
+                "id": "item_5",
+                "label": "Item 5"
+            }
+        ]
+    },
+    {
+      "type": "second_column",
+      "name": "Second Column",
+      "limit": 1,
+      "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+          },
+          {
+              "type": "text",
+              "id": "item_1",
+              "label": "Item 1"
+          },
+          {
+              "type": "text",
+              "id": "item_2",
+              "label": "Item 2"
+          },
+          {
+              "type": "text",
+              "id": "item_3",
+              "label": "Item 3"
+          },
+          {
+              "type": "text",
+              "id": "item_4",
+              "label": "Item 4"
+          },
+          {
+              "type": "text",
+              "id": "item_5",
+              "label": "Item 5"
+          }
+      ]
+    },
+    {
+      "type": "item_column",
+      "name": "Item Column",
+      "limit": 3,
+      "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+              "type": "richtext",
+              "id": "title",
+              "label": "Title"
+          },
+          {
+              "type": "text",
+              "id": "item_1",
+              "label": "Item 1"
+          },
+          {
+              "type": "text",
+              "id": "item_2",
+              "label": "Item 2"
+          },
+          {
+              "type": "text",
+              "id": "item_3",
+              "label": "Item 3"
+          },
+          {
+              "type": "text",
+              "id": "item_4",
+              "label": "Item 4"
+          },
+          {
+              "type": "text",
+              "id": "item_5",
+              "label": "Item 5"
+          }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Table - Choose"
+    }
+  ]
+}
+{% endschema %}

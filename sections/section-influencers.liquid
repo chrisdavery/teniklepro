@@ -53,13 +53,18 @@
           role="list"
         >
           {%- liquid
+            assign highest_video_ratio = 0
             assign highest_ratio = 0
             for block in section.blocks
               if block.settings.image.aspect_ratio > highest_ratio
                 assign highest_ratio = block.settings.image.aspect_ratio
               endif
+              if block.settings.video.preview_image.height > highest_video_ratio
+                assign highest_video_ratio = block.settings.video.preview_image.aspect_ratio
+              endif
             endfor
           -%}
+
           {%- for block in section.blocks -%}
             <li
               id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -73,43 +78,79 @@
               <div class="content-container  global-media-settings ">
                 {%- if block.settings.image != blank or block.settings.video != blank -%}
                   <div class="influencer-card__image-wrapper">
-                    <div
+                    {% if block.settings.video != blank %}
+                    {% assign poster = block.settings.video.preview_image %}
+                    <video-media
                       class="media media--transparent media--adapt"
-                      style="padding-bottom: 123%;"
+                      style="padding-bottom: {{ 1 | divided_by: highest_video_ratio | times: 100 }}%;"
+                      data-video-src="{{ block.settings.video.sources[0].url }}"
                     >
-                      {% unless block.settings.video %}
                         {%- liquid
-                          assign number_of_columns = section.settings.columns_desktop
-                          assign number_of_columns_mobile = section.settings.columns_mobile
+                          assign number_of_columns = 1
+                          assign number_of_columns_mobile = 1
                           assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                           assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                           assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
                           assign image_width = 1
                         -%}
                         {% capture sizes %}
-                          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
-                          (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
-                          (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
-                          calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
                         {% endcapture %}
                         {{
-                          block.settings.image
-                          | image_url: width: 3200
-                          | image_tag:
-                            loading: 'lazy',
-                            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
-                            sizes: sizes,
-                            class: 'multicolumn-card__image'
+                          poster
+                            | image_url: width: 800
+                            | image_tag:
+                                widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                                sizes: sizes,
+                                loading: 'lazy'
                         }}
-                      {% endunless %}
-
-                      {% if block.settings.video != blank %}
-                        {{
-                          block.settings.video
-                          | video_tag: image_size: '1100x', loop: true, controls: false, muted: true, autoplay: true, playsinline: 'playsinline', preload: 'none'
-                        }}
-                      {% endif %}
-                    </div>
+                        <noscript>
+                          {{
+                            block.settings.video
+                            | video_tag:
+                              image_size: '800x',
+                              autoplay: true,
+                              loop: true,
+                              controls: false,
+                              muted: true,
+                              preload: 'none',
+                              playsinline: 'playsinline'
+                          }}
+                        </noscript>
+                    </video-media>
+                    {% else %}
+                      <div
+                        class="media media--transparent media--adapt"
+                        style="padding-bottom: 123%;"
+                      >
+                          {%- liquid
+                            assign number_of_columns = section.settings.columns_desktop
+                            assign number_of_columns_mobile = section.settings.columns_mobile
+                            assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                            assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                            assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                            assign image_width = 1
+                          -%}
+                          {% capture sizes %}
+                            (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                            (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                            (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                            calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                          {% endcapture %}
+                          {{
+                            block.settings.image
+                            | image_url: width: 3200
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                              sizes: sizes,
+                              class: 'multicolumn-card__image'
+                          }}
+                      </div>
+                    {% endif %}
                   </div>
                 {%- endif -%}
                 <div class="influencer-card__info color-{{ section.settings.color_scheme_card }} gradient">

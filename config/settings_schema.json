@@ -136,15 +136,13 @@
         "type": "font_picker",
         "id": "type_header_font",
         "default": "assistant_n4",
-        "label": "t:settings_schema.typography.settings.type_header_font.label",
-        "info": "t:settings_schema.typography.settings.type_header_font.info"
+        "label": "t:settings_schema.typography.settings.type_header_font.label"
       },
       {
         "type": "font_picker",
         "id": "type_secondary_header_font",
         "default": "assistant_n4",
-        "label": "Secondary Heading Font",
-        "info": "t:settings_schema.typography.settings.type_header_font.info"
+        "label": "Secondary Heading Font"
       },
       {
         "type": "range",
@@ -165,6 +163,18 @@
         "id": "type_body_font",
         "default": "assistant_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_secondary_body_font",
+        "default": "assistant_n4",
+        "label": "Secondary Font"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_third_body_font",
+        "default": "assistant_n4",
+        "label": "Third Font"
       },
       {
         "type": "range",
@@ -1465,6 +1475,38 @@
         "id": "show_cart_note",
         "label": "t:settings_schema.cart.settings.show_cart_note.label",
         "default": false
+      },
+      {
+        "type": "header",
+        "content": "Cart Upsell"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_upsell",
+        "label": "Enable Cart Upsell",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "upsell_heading",
+        "label": "Upsell Heading"
+      },
+      {
+        "type": "product_list",
+        "id": "upsell_cart",
+        "label": "Upsell Products"
+      },
+      {
+        "type": "color_scheme",
+        "id": "upsell_color_scheme",
+        "label": "Upsell Color",
+        "default": "scheme-1"
+      },
+      {
+        "type": "color_scheme",
+        "id": "upsell_card_color_scheme",
+        "label": "Card Color",
+        "default": "scheme-1"
       },
       {
         "type": "header",

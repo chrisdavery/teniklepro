@@ -1,0 +1,239 @@
+{{ 'offers-fieldset.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'offers-fieldset.js' | asset_url }}" defer></script>
+    
+{% assign product_objects = product.metafields.custom.homepage_offers.value %}
+
+{% liquid
+    assign objects_size = 0
+
+    for i in product_objects
+        assign objects_size = objects_size | plus: 1
+    endfor
+%}
+
+<offers-dropdown data-section="{{ section.id }}" {% if block.settings.redirect_to != blank %}data-redirect="{{ block.settings.redirect_to }}"{% endif %}>
+    <fieldset class="offers--fieldset">
+        {% if block.settings.label != blank %}
+            <legend>{{ block.settings.label | escape }}</legend>
+        {% endif %}
+
+        <ul class="offers-list list-unstyled">
+            {% for object in product_objects %}
+                {% assign sale_price = object.sale_price.value %}
+                {% assign compare_price = object.compare_price.value %}
+                {% assign discount_percentage = 0 %}
+                {% assign base_product  = all_products[object.base_product] | default: product %}
+
+                <li>
+                    <div class="offer-item {% if object.badge_text != blank %}offer-has-badge{% endif %}">
+                        {% if object.badge_text != blank %}
+                            <span class="badge-offer-fieldset color-{{ settings.sale_badge_color_scheme }}">{{ object.badge_text }}</span>
+                        {% endif %}
+                        <input type="radio" id="config-{{ forloop.index }}-{{ section.id }}-{{ block.id }}" data-area="{{ forloop.index }}" 
+                            data-qty="{{ object.quantity }}"
+                            data-variants='{{ base_product.variants | json }}'
+                            value="{{ object.title }}"
+                            name="Config-{{ section.id }}"
+                            {% if block.settings.active_index == forloop.index %}
+                                checked
+                            {% endif %}
+                            {% if object.dynamic_button_text != blank %}
+                                data-button-text="{{ object.dynamic_button_text }}"
+                            {% endif %}
+                            
+                            {% if object.dynamic_heading != blank %}
+                                data-dynamic-heading="{{ object.dynamic_heading }}"
+                            {% endif %}
+    
+                            data-price="{{ sale_price | money_with_currency }}"
+    
+                            {% if object.discount_code != blank %}
+                                data-discount-code="{{ object.discount_code }}"
+                            {% endif %}
+    
+                            {% if object.free_gift != blank %}
+                                data-free-gift='{{ object.free_gift.value | json }}'
+                                data-gift-qty="{{object.free_gift_quantity | default: 1 }}"
+                            {% endif %}
+                    >
+                        <label for="config-{{ forloop.index }}-{{ section.id }}-{{ block.id }}" data-index="{{ forloop.index }}">
+                            {% capture labels %}
+                                <span class="offer-title">
+                                    {{ object.title }}
+                                </span>
+                                {% assign off_total = compare_price | minus: sale_price | money %}
+                                {% render 'price-offer', block: block, object: object, off_total: off_total, price_class: 'price--large', show_badges: true %}
+                                {% if object.subtitle != blank %}
+                                    <div class="rte subtitle-offer">
+                                        {{ object.subtitle }}
+                                    </div>
+                                {% endif %}
+                            {% endcapture %}
+
+                            <div class="offer--inner">
+                                {% if block.settings.preview_image != blank %}
+                                    <div class="d-flex gap-2 align-center">
+                                        <div>
+                                            <div class="image-wrap">
+                                                {%- assign preview_alt = block.settings.preview_image.alt | default: shop.name | escape -%}
+                                                {%- assign preview_height = block.settings.preview_image.width | divided_by: block.settings.preview_image.aspect_ratio -%}
+                                                {% capture sizes %}(max-width: {{ block.settings.preview_image.width | times: 2 }}px) 50vw, {{ block.settings.preview_image.width }}px{% endcapture %}
+                                                {% capture widths %}{{ block.settings.preview_image.width }}, {{ block.settings.preview_image.width | times: 1.5 | round }}, {{ block.settings.preview_image.width | times: 2 }}{% endcapture %}
+                                                {{
+                                                    block.settings.preview_image
+                                                | image_url: width: 250
+                                                | image_tag:
+                                                    class: 'offer-preview motion-reduce',
+                                                    widths: widths,
+                                                    height: preview_height,
+                                                    width: settings.preview_width,
+                                                    alt: preview_alt,
+                                                    sizes: sizes,
+                                                    loading: 'lazy'
+                                                }}
+                                                <span class="quantity-label">{{ object.quantity }}x</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            {{ labels }}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    {{ labels }}
+                                {% endif %}
+                            </div>
+                            {% if base_product.variants.size > 0 %}
+                                <div class="choose-color-offer">
+                                    <details class="offer-detail" id="Detail-{{ forloop.index }}-{{ section.id }}-{{ block.id }}">
+                                        <summary  id="Summary-{{ forloop.index }}-{{ section.id }}-{{ block.id }}">
+                                            {% if object.quantity == 1 %}
+                                                <span>{{ 'products.product.choose_a_color' | t }}</span>
+                                            {% else %}
+                                                <span>{{ 'products.product.choose_colors' | t }}</span>
+                                            {% endif %}
+                                            <div class="toggle-icon">{{- 'icon-chevron.svg' | inline_asset_content -}}</div>
+                                        </summary>
+                                        <div class="detail-container rte">
+                                            <div class="d-flex gap-1 flex-wrap flex-selects">
+                                                {% for i in (1..object.quantity) %}
+                                                    {% capture offer_id %}select-{{ block.id }}-{{ forloop.index }}{% endcapture %}
+                                                    <div>
+                                                        <div class="d-flex align-center select--item">
+                                                            <div>
+                                                                <span class="select-number">#{{ i }}</span>
+                                                            </div>
+                                                            <div>
+                                                                {% for option in base_product.options_with_values %}
+                                                                    {%- capture option_id %}{{ section.id }}-{{ block.id }}-{{ object.title | handleize }}-{{ option.name | handle }}{% endcapture -%}
+                                    
+                                                                    {%- liquid
+                                                                        assign swatch_count = option.values | map: 'swatch' | compact | size
+                                                                    -%}
+                                    
+                                                                    {% if swatch_count > 0 %}
+                                                                        <div>
+                                                                            {% render 'offer-select', 
+                                                                                id: option_id,
+                                                                                base_product: base_product,
+                                                                                option_values: option.values,
+                                                                                selected_value: option.selected_value,
+                                                                                swatches: true
+                                                                            %}
+                                                                        </div>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+                            {% endif %}
+                        </label>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </fieldset>
+    <p
+        class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+        {{ block.shopify_attributes }}
+        id="Inventory-{{ section.id }}"
+        role="status"
+      >
+        {% capture date_display %}
+          {% assign date_now = 'now' | date: "%A, %B %e" %}
+          {% assign date_plus_3_days = date_now | date: "%A, %B %e" %}
+          <strong>{{ date_plus_3_days }}</strong>
+        {% endcapture %}
+        {% assign date_display = date_display | strip %}
+
+        {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+          {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+            {%- if product.selected_or_first_available_variant.inventory_quantity
+                <= 10
+            -%}
+              <span class="svg-wrapper" style="color: rgb(238, 148, 65)">
+                {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+              </span>
+                {{- 'products.product.inventory_low_stock' | t -}}
+            {%- else -%}
+              <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+              </span>
+                {{- 'products.product.inventory_in_stock' | t -}}
+            {%- endif -%}
+          {%- else -%}
+            {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
+              <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+              </span>
+              {{- 'products.product.inventory_out_of_stock_continue_selling_html' | t: deliver: date_display -}}
+            {%- else -%}
+              <span class="svg-wrapper" style="color: rgb(200, 200, 200)">
+                {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+              </span>
+              {{- 'products.product.inventory_out_of_stock' | t -}}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+    </p>
+    
+    <div class="product-form__buttons">
+        {%- liquid
+          assign check_against_inventory = true
+          if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+            assign check_against_inventory = false
+          endif
+          if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+            assign quantity_rule_soldout = true
+          endif
+        -%}
+        <button
+          id="ProductSubmitButton-{{ section.id }}"
+          type="submit"
+          name="add"
+          class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+          {% if product.selected_or_first_available_variant.available == false
+            or quantity_rule_soldout
+            or product.selected_or_first_available_variant == null
+          %}
+            disabled
+          {% endif %}
+        >
+          <span class="button--text">
+            {%- if product.selected_or_first_available_variant == null -%}
+              {{ 'products.product.unavailable' | t }}
+            {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- else -%}
+              {{ 'products.product.add_to_cart' | t }} - {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
+            {%- endif -%}
+          </span>
+          {%- render 'loading-spinner' -%}
+        </button>
+    </div>
+</offers-dropdown>

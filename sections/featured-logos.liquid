@@ -1,0 +1,148 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+  .featured-logo .image-wrap {
+    max-width: fit-content;
+    margin: auto;
+  }
+
+  .featured-logo .image-wrap img {
+        height: 5rem;
+        object-fit: contain;
+    }
+
+  .featured-logo {
+    border: .2rem solid rgb(var(--color-button));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} {
+    --page-width: 63rem;
+    --grid-desktop-horizontal-spacing: 42px;
+  }
+  #shopify-section-{{ section.id }} .title-wrapper-with-link {
+    margin-bottom: 2rem;
+  }
+  
+  #shopify-section-{{ section.id }} .top__title .title {
+    text-shadow: 0px 3.82px 3.82px #00000040;
+    color: rgb(var(--color-button));
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    <div class="page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {% if settings.animations_reveal_on_scroll %}data-cascade{% endif %}>
+        {%- unless section.settings.title == blank -%}
+            <div class="title-wrapper-with-link flex-d-column justify-center center title-wrapper--no-top-margin top__title">
+              <span class="title inline-richtext center subtitle">
+                {{ section.settings.title }}
+              </span>
+            </div>
+        {%- endunless -%}
+
+        <div class="grid grid grid--3-col-tablet-down grid--3-col-desktop">
+            {% for block in section.blocks %}
+                <div class="grid__item">
+                    {% if block.settings.image != blank %}
+                        <div class="featured-logo">
+                            <div class="image-wrap">
+                                {%- assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio -%}
+                                {% capture sizes %}(max-width: {{ block.settings.image.width | times: 2 }}px) 50vw, {{ block.settings.image.width }}px{% endcapture %}
+                                {% capture widths %}{{ block.settings.image.width }}, {{ block.settings.image.width | times: 1.5 | round }}, {{ block.settings.image.width | times: 2 }}{% endcapture %}
+                                {{
+                                block.settings.image
+                                | image_url: width: 400
+                                | image_tag:
+                                    widths: widths,
+                                    height: image_height,
+                                    alt: block.settings.image.alt,
+                                    sizes: sizes,
+                                    loading: 'lazy',
+                                    class: 'radius-0'
+                                }}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Logos",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "t:sections.multicolumn.settings.title.default",
+        "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Logos"
+    }
+  ]
+}
+{% endschema %}

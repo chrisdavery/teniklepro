@@ -11,6 +11,39 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "announcement_bar_UGUCCk": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_YwfjxR": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Free USA shipping on all orders $80+",
+            "link": ""
+          }
+        },
+        "announcement_MH3eRe": {
+          "type": "announcement",
+          "settings": {
+            "text": "Every Purchase Helps Open Our New U.S.A. Silicone Factory: Stuff MFG Corp.",
+            "link": "https://www.stuffmfg.com/"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_YwfjxR",
+        "announcement_MH3eRe"
+      ],
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-9f2a4824-7cbe-48c3-ac6f-e0e450371741",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
     "header": {
       "type": "header",
       "disabled": true,
@@ -23,8 +56,8 @@
         "show_line_separator": true,
         "color_scheme": "background-1",
         "menu_color_scheme": "background-1",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "enable_customer_avatar": true,
         "margin_bottom": 0,
         "padding_top": 20,
@@ -33,6 +66,7 @@
     }
   },
   "order": [
+    "announcement_bar_UGUCCk",
     "header"
   ]
 }

@@ -322,8 +322,8 @@
                                         style="padding-bottom: {{ 1 | divided_by: section.settings.middle_image.aspect_ratio | times: 100 }}%;"
                                     >
                                         {%- liquid
-                                        assign number_of_columns = 1
-                                        assign number_of_columns_mobile = 1
+                                        assign number_of_columns = 2
+                                        assign number_of_columns_mobile = 2
                                         assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                                         assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
                                         assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'

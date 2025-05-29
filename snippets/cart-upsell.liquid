@@ -1,0 +1,143 @@
+{% liquid 
+    assign number_of_slides = 0
+    for i in settings.upsell_cart
+        assign in_cart = cart.items | where: 'product_id', i.id
+
+        unless in_cart.size > 0 or i.available == false
+            assign number_of_slides = number_of_slides | plus: 1
+        endunless
+    endfor
+%}
+
+{% if number_of_slides == 0 %}
+    {% break %}
+{% endif %}
+
+<div class="cart-upsell color-{{ settings.upsell_color_scheme }} gradient">
+    <div class="cart-upsell-slider">
+            <aside
+              aria-label="{{ 'accessibility.complementary_products' | t }}"
+            >
+              <div class="complementary-products__container">
+                <div class="summary__title">
+                    <div class="d-flex align-center justify-between">
+                        <div class="flex-1-auto">
+                            <h2 class="h3 cart-upsell__title">{{ settings.upsell_heading }}</h2>
+                        </div>
+                    {%- if number_of_slides > 1 -%}
+                        <div>
+                            <div class="d-flex align-center">
+                                <button
+                                    type="button"
+                                    class="slider-button inline-slide-prev slider-button--prev"
+                                    name="previous"
+                                    data-id="Slider-{{ section.id }}"
+                                    aria-label="{{ 'general.slider.previous_slide' | t }}"
+                                >
+                                    <span class="svg-wrapper">
+                                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                                    </span>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="slider-button inline-slide-next slider-button--next"
+                                    name="next"
+                                    data-id="Slider-{{ section.id }}"
+                                    aria-label="{{ 'general.slider.next_slide' | t }}"
+                                >
+                                    <span class="svg-wrapper">
+                                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    {%- endif -%}
+                    </div>
+                </div>
+                <slideshow-component class="slider-mobile-gutter">
+                  <div
+                    id="Slider-{{ section.id }}"
+                    class="contains-card contains-card--product complementary-slider grid grid--1-col slider slider--everywhere"
+                    role="list"
+                    {% if number_of_slides > 1 %}
+                      aria-label="{{ 'general.slider.name' | t }}"
+                    {% endif %}
+                  >
+                    {% assign skip_card_product_styles = false %}
+
+                    {%- for product in settings.upsell_cart -%}
+                        {% assign in_cart = cart.items | where: 'product_id', product.id %}
+
+                        {% unless in_cart.size > 0 or product.available == false %}
+                            <div
+                                id="Slide-{{ block.id }}-{{ forloop.index }}"
+                                class="complementary-slide complementary-slide--{{ settings.card_style }} grid__item slider__slide slideshow__slide"
+                                tabindex="-1"
+                                role="group"
+                                {% if number_of_slides > 1 %}
+                                aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+                                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                                {% endif %}
+                            >
+                                {% assign skip_card_product_styles = false %}
+                                    {% render 'card-product-upsell',
+                                        card_product: product,
+                                        media_aspect_ratio: 'square',
+                                        show_secondary_image: false,
+                                        lazy_load: true,
+                                        skip_styles: skip_card_product_styles,
+                                        quick_add: 'standard',
+                                        section_id: section.id,
+                                        horizontal_class: true,
+                                        horizontal_quick_add: true
+                                    %}
+                            </div>
+                        {% endunless %}
+                        {%- assign skip_card_product_styles = true -%}
+                    {%- endfor -%}
+                  </div>
+                  {%- if number_of_slides > 1  -%}
+                    <div class="slider-buttons">
+                      <button
+                        type="button"
+                        class="slider-button slider-button--prev"
+                        name="previous"
+                        aria-label="{{ 'general.slider.previous_slide' | t }}"
+                      >
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </button>
+                      <div class="slider-counter slider-counter--dots">
+                          <div class="slideshow__control-wrapper">
+                            {%- for i in (1..number_of_slides) -%}
+                              <button
+                                class="slider-counter__link slider-counter__link--dots link"
+                                aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                                aria-controls="Slider-{{ section.id }}"
+                              >
+                                <span class="dot"></span>
+                              </button>
+                            {%- endfor -%}
+                          </div>
+                      </div>
+                      <button
+                        type="button"
+                        class="slider-button slider-button--next"
+                        name="next"
+                        aria-label="{{ 'general.slider.next_slide' | t }}"
+                      >
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </button>
+                    </div>
+                  {%- endif -%}
+                </slideshow-component>
+              </div>
+            </aside>
+          {{ 'component-card.css' | asset_url | stylesheet_tag }}
+          {{ 'component-complementary-products.css' | asset_url | stylesheet_tag }}
+          {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+    </div>
+</div>

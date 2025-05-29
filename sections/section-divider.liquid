@@ -1,0 +1,155 @@
+{% style %}
+    .section-{{ section.id }}-padding {
+      padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+      padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+    }
+
+    .divider-vector svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #shopify-section-{{ section.id }} .divider-wrapper {
+      background:{{ section.settings.top_color_mobile }};
+      background: {{ section.settings.top_color_mobile }};
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(99%, rgba({{ section.settings.top_color_mobile.red }}, {{ section.settings.top_color_mobile.green }}, {{ section.settings.top_color_mobile.blue }},1)), color-stop(99%, transparent));      background: -o-linear-gradient(top, rgba({{ section.settings.top_color_mobile.red }}, {{ section.settings.top_color_mobile.green }}, {{ section.settings.top_color_mobile.blue }},1) 99%, transparent 99%);      background: linear-gradient(180deg, rgba({{ section.settings.top_color_mobile.red }}, {{ section.settings.top_color_mobile.green }}, {{ section.settings.top_color_mobile.blue }},1) 99%, transparent 99%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .divider-wrapper:not(.direction-left) {
+      z-index: -1;
+    }
+
+    @media (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+      #shopify-section-{{ section.id }} .divider-wrapper {
+        background:{{ section.settings.top_color_desktop | default: 'transparent' }};
+      }
+      .offset-divider-top {
+        margin-top: calc(-1 * var(--height));
+      }
+    }
+
+    @media (max-width: 749px) {
+      /* .divider-wrapper.direction-left {
+        transform:
+      } */
+      #shopify-section-{{ section.id }} .divider-wrapper {
+        margin-bottom: -2px;
+      }
+    }
+{% endstyle %}
+
+<div class="divider-wrapper {% if section.settings.offset_top == true %}offset-divider-top{% endif %} direction-{{ section.settings.direction }}" style="--bottom-color:{{ section.settings.bottom_color }};">
+    <div class="section-{{ section.id }}-padding">
+      <div class="divider-vector small-hide">
+        {% if section.settings.direction == 'left'%}
+          <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="56" viewBox="0 0 1440 56" fill="none">
+            <path d="M720.498 12.5806L0 47.3032V78H1447V12.5806L1242.86 18.6194L1290.89 0L670.463 33.2129L720.498 12.5806Z" fill="var(--bottom-color)"/>
+          </svg>
+        {% else %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="50" viewBox="0 0 1440 50" fill="none">
+              <path d="M719.502 12.5806L1440 47.3032V78H-7V12.5806L197.141 18.6194L149.108 0L769.537 33.2129L719.502 12.5806Z" fill="var(--bottom-color)"/>
+          </svg>
+        {% endif %}
+      </div>
+      <div class="divider-vector large-up-hide medium-hide">
+        {% if section.settings.direction == 'left'%}
+          <svg xmlns="http://www.w3.org/2000/svg" width="360" height="48" viewBox="0 0 360 48" fill="none">
+            <path d="M180.5 12.5L360 48H0V12.5L50 18.5L38 0L193 33L180.5 12.5Z" fill="var(--bottom-color)"/>
+          </svg>
+        {% else %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="360" height="58" viewBox="0 0 360 58" fill="none">
+            <path d="M178 12.5L0 47V58H360V12.5L308.5 18.5L320.5 0L165.5 33L178 12.5Z" fill="var(--bottom-color)"/>
+          </svg>
+        {% endif %}
+      </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section Divider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "select",
+        "id": "direction",
+        "label": "Direction",
+        "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+        ],
+        "default": "right"
+    },
+    {
+        "type": "color",
+        "id": "top_color_desktop",
+        "label": "Top Color Desktop"
+    },
+    {
+      "type": "color",
+      "id": "top_color_mobile",
+      "label": "Top Color Mobile"
+    },
+    {
+        "type": "color",
+        "id": "bottom_color",
+        "label": "Bottom Color",
+        "default": "#00C6BC"
+    },
+    {
+        "type": "checkbox",
+        "id": "offset_top",
+        "label": "Offset to top",
+        "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Divider"
+    }
+  ]
+}
+{% endschema %}
