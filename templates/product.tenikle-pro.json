@@ -49,6 +49,7 @@
         "heading_nyh9zL",
         "button_U4G6mR"
       ],
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 749px) {.h1 {font-size: calc(var(--font-heading-scale) * 3rem); } .image-with-text__text {margin-top: 1rem; }}"
       ],
@@ -73,16 +74,8 @@
       "blocks": {
         "title": {
           "type": "title",
-          "disabled": true,
           "settings": {
             "custom_title": "",
-            "center": true
-          }
-        },
-        "subtitle_rwVK3G": {
-          "type": "subtitle",
-          "settings": {
-            "subtitle": "Save $75 On Tenikle Today, Be A Part Of America's Future Tomorrow!",
             "center": true
           }
         },
@@ -164,7 +157,6 @@
       },
       "block_order": [
         "title",
-        "subtitle_rwVK3G",
         "judge_me_reviews_preview_badge_QHBYzd",
         "text_cUr7dg",
         "custom_liquid_kcgaDf",
