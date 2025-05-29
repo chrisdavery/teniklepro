@@ -9,11 +9,71 @@
  */
 {
   "sections": {
+    "image_with_text_Wr6i9j": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_jYN7Bd": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Bring Manufacturing Back to America Deal</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_8djtqn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Today, you can be a part of the US Manufacturing Revolution.</p><p>We're building one of the only silicone factories in the USA. Creating American jobs, reducing costs, and delivering superior quality products.</p><p></p><p>Your purchase helps us get rid of the remaining Chinese inventory, and gets us the funds we need to open up our factory in the next couple months which is to be located in Riverside County.</p><p></p><p>Thank you!</p><p>-Hans Dose, Founder</p>",
+            "text_style": "body"
+          }
+        },
+        "heading_nyh9zL": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Bringing Manufacturing Back to America",
+            "heading_size": "h1"
+          }
+        },
+        "button_U4G6mR": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read My Article Here",
+            "button_link": "https://fortune.com/article/trump-tariffs-small-business-opening-factory/?abc123",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jYN7Bd",
+        "text_8djtqn",
+        "heading_nyh9zL",
+        "button_U4G6mR"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.h1 {font-size: calc(var(--font-heading-scale) * 3rem); } .image-with-text__text {margin-top: 1rem; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/factr.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
         "title": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "custom_title": "",
             "center": true
@@ -22,7 +82,7 @@
         "subtitle_rwVK3G": {
           "type": "subtitle",
           "settings": {
-            "subtitle": "Bringing Manufacturing Back to America",
+            "subtitle": "Save $75 On Tenikle Today, Be A Part Of America's Future Tomorrow!",
             "center": true
           }
         },
@@ -33,8 +93,9 @@
         },
         "text_cUr7dg": {
           "type": "text",
+          "disabled": true,
           "settings": {
-            "text": "We're building one of the only silicone factories in the USA. Creating American jobs, reducing costs, and delivering superior quality products.",
+            "text": "<em>We're building one of the only silicone factories in the USA. Creating American jobs, reducing costs, and delivering superior quality products.</em>",
             "text_style": "body"
           }
         },
@@ -46,6 +107,7 @@
         },
         "text_jWFdHy": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<strong>Save $15 - $75 Today, </strong><em>Help us build a better future tomorrow.</em>",
             "text_style": "uppercase"
@@ -652,7 +714,7 @@
         "subheading": "PRO",
         "subheading_color": "#ff3e4b",
         "bottom_heading": "TODAY",
-        "product": "tenikle-pro",
+        "product": "",
         "section_title": "PLUS - Buy two Tenikle PRO, get one FREE!",
         "content_label": "<p>Choose from 5 vibrant colors:</p>",
         "content_label_color_1": "#000000",
@@ -722,6 +784,7 @@
     }
   },
   "order": [
+    "image_with_text_Wr6i9j",
     "main",
     "testimonials_DydyyY",
     "one_product_jU98e6",

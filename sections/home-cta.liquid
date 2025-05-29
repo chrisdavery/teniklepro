@@ -154,8 +154,19 @@
                     {{ section.settings.bottom_heading }}
                     </h4>
                 {% endif %}
+
                 {% if section.settings.product != blank %}
                     {% assign product = all_products[section.settings.product] %}
+                {%endif %}
+
+                    {% liquid
+                        assign first_offer = nil
+                        for item in product.metafields.custom.homepage_offers.value
+                            if forloop.first
+                                assign first_offer = item
+                            endif
+                        endfor
+                    %}
 
                     <div class="boxed-content-price global-media-settings">
                         <div class="d-flex flex-boxed rte accent-color-shadow align-center justify-between">
@@ -163,7 +174,11 @@
                                 <span>{{- 'products.product.price.regular_price' | t -}}</span>
                             </div>
                             <div class="text-right">
-                                <span>{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                {% if first_offer != blank %}
+                                    <span>{{ first_offer.compare_price.value | money_without_trailing_zeros }}</span>
+                                {% else %}
+                                    <span>{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="d-flex flex-boxed accent-color-button rte align-center justify-between">
@@ -171,11 +186,14 @@
                                 <span>{{- 'products.product.price.sale_price' | t -}}</span>
                             </div>
                             <div class="text-right">
-                                <span>{{ product.price | money_without_trailing_zeros }}</span>
+                                {% if first_offer != blank %}
+                                    <span>{{ first_offer.sale_price.value | money_without_trailing_zeros }}</span>
+                                {% else %}
+                                    <span>{{ product.price | money_without_trailing_zeros }}</span>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
-                {%endif %}
 
                 {% if section.settings.section_title != blank %}
                     <div class="center section-title-labels">
